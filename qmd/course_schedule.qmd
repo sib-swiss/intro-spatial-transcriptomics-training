@@ -41,7 +41,7 @@ title: "Course schedule"
 
 | block       | start | end   | topic                                                 | instructors                       | presentation | exercise |
 |-------------|-------|-------|-------------------------------------------------------|-----------------------------------|--------------|----------|
-| recap       | 9:00  | 9:15  | Recap from day 1                                      | Joana Carlevaro-Fita              |  |  |
+| recap       | 9:00  | 9:15  | Recap from day 2                                      | Joana Carlevaro-Fita              |  |  |
 | block 1     | 9:15  | 10:15 | Spatial statistics                                    | Mark Robinson                     | [link](../assets/pdf/10_stats_methods.pdf) |  |
 | break       | 10:15 | 10:45 | Coffee break                                          |                                   | |  |
 | block 2     | 10:45 | 12:30 | Co-localization analysis                              | Martin Emons                      | [link](../assets/pdf/11_spastat_lecture.pdf)  | [Exercise 8](../day3/day3-1_spatial_stats.qmd) |
