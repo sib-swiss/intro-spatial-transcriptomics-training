@@ -8,16 +8,19 @@ title: "Course schedule"
 
 ## Day 1
 
-| block         | start | end   | topic                                                        | instructor            | presentation | exercise |
-|---------------|-------|-------|--------------------------------------------------------------|-----------------------|--------------|----------|
-| introduction  | 9:15  | 9:45  | introduction to the course                                   |  Deepak Tanwar        |  [Introduction](../assets/pdf/01_introduction.pdf)    |  |
-| block 1       | 9:45  | 10:30 | introduction to spatial omics                                |  Joana Carlevaro-Fita |  [Spatial omics](../assets/pdf/02_introduction_spatial_omics.pdf) |  |
-| break         | 10:30 | 11:00 |                                                              |                       | | |
-| block 2       | 10:45 | 12:30 | Setup, Space-ranger, and Data structure                      |  Deepak Tanwar        |  [Space-ranger and `SpatialExperiment`](../assets/pdf/03_space_ranger_spe.pdf) | [Setup](../day1/day1-0_setup.qmd), [Exercise 1](../day1/day1-1_SpatialExperiment.qmd) |
-| break         | 12:30 | 13:30 |                                                              |                       | | |
-| block 3       | 1:30  | 3:00  | Quality control and normalization                            |  Deepak Tanwar        |  [QC and normalization](../assets/pdf/04_qc_norm.pdf)  | [Exercise 2](../day1/day1-2_spotsweeper_qc.qmd) |
+| block         | start | end   | topic                                                        | instructor                   | presentation | exercise |
+|---------------|-------|-------|--------------------------------------------------------------|------------------------------|--------------|----------|
+| introduction  | 9:00  | 9:30  | Introduction to the course                                   | Deepak Tanwar                |  [link](../assets/pdf/01_introduction.pdf) | |
+| block 1       | 9:30  | 10:15 | Introduction to spatial omics                                | Joana Carlevaro-Fita         |  [link](../assets/pdf/02_introduction_spatial_omics.pdf)  | |
+| break         | 10:15 | 10:45 | Coffee break                                                 |                              | | |
+| block 2       | 10:45 | 11:45 | Segmentation                                                 | Ivan Berest                  |  [link](../assets/pdf/03_space_ranger_spe.pdf) | |
+| block 3       | 11:45 | 12:30 | Lecture: pre-processing, and data structure                  | Deepak Tanwar               |  [link](../assets/pdf/03_space_ranger_spe.pdf) | |
+| break         | 12:30 | 13:30 | Lunch                                                        |                              | | |
+| block 3       | 11:45 | 12:30 | Exercise: setup and data structure                           | Deepak Tanwar, Julien Roux  | | [Setup](../day1/day1-0_setup.qmd), [Exercise 1](../day1/day1-1_SpatialExperiment.qmd) |
+
+| block 3       | 1:30  | 3:00  | Quality control and normalization                            | Deepak Tanwar        |  [QC and normalization](../assets/pdf/04_qc_norm.pdf)  | [Exercise 2](../day1/day1-2_spotsweeper_qc.qmd) |
 | break         | 3:00  | 3:30  |                                                              |                       | | |
-| block 4       | 3:30  | 5:15  | Feature selection, dimensionality reduction                  |  Joana Carlevaro-Fita |  [Intermediate processing](../assets/pdf/05_preprocessing.pdf) |  [Exercise 3](../day1/day1-3_feature_dimred_cluster.qmd)  |
+| block 4       | 3:30  | 5:15  | Feature selection, dimensionality reduction                  | Joana Carlevaro-Fita |  [Intermediate processing](../assets/pdf/05_preprocessing.pdf) |  [Exercise 3](../day1/day1-3_feature_dimred_cluster.qmd)  |
 
 
 ## Day 2
