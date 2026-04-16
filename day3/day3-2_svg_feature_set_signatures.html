@@ -406,7 +406,7 @@ LEFTY1 ENSG00000243709      LEFTY1 Gene Expression        FALSE      TRUE
 CXCR4  ENSG00000121966       CXCR4 Gene Expression        FALSE      TRUE
          gene_name  sigma.sq      tau.sq       phi    loglik   runtime
        &lt;character&gt; &lt;numeric&gt;   &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-PIGR          PIGR  2.392157 2.39216e-08   6.99998 -149.7420     0.022
+PIGR          PIGR  2.392157 2.39216e-08   6.99998 -149.7420     0.023
 LEFTY1      LEFTY1  0.192993 1.92993e-09  10.94084  -37.4109     0.018
 CXCR4        CXCR4  0.802186 3.41954e-01   1.92394 -115.1814     0.015
             mean       var     spcov   prop_sv loglik_lm   LR_stat      rank
@@ -446,7 +446,7 @@ CXCR4  1.02662e-12 6.80993e-11</code></pre>
 <pre><code>min_counts = 20; min_non_zero_spots = 10.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>The number of genes that pass filtering is 56.</code></pre>
+<pre><code>The number of genes that pass filtering is 57.</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>single sample test</code></pre>
@@ -485,9 +485,9 @@ CXCR4  1.02662e-12 6.80993e-11</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">res_DESpace</span> <span class="op">&lt;-</span> <span class="va">res</span><span class="op">$</span><span class="va">gene_results</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       gene_id       LR   logCPM       PValue          FDR
-PIGR      PIGR 272.8949 16.79195 4.411248e-52 2.470299e-50
-CXCR4    CXCR4 148.2626 16.39836 3.374004e-26 9.447212e-25
-COL3A1  COL3A1 141.0795 17.10882 9.823560e-25 1.833731e-23</code></pre>
+PIGR      PIGR 373.9688 17.04873 3.236298e-74 1.844690e-72
+COL3A1  COL3A1 207.1602 17.26972 5.170893e-39 1.473705e-37
+EPCAM    EPCAM 112.7891 16.29633 1.459624e-19 2.773286e-18</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top_DESpace</span> <span class="op">&lt;-</span> <span class="va">res_DESpace</span><span class="op">$</span><span class="va">gene_id</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
