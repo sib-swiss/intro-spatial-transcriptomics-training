@@ -381,7 +381,7 @@ If you tried different parameters for Banksy, how does it affect the UMAP result
 
 ```{r}
 spe_HVG <- spe
-saveHDF5SummarizedExperiment(spe_HVG, dir="results/day1", prefix="01.3_spe", replace=TRUE,
+saveHDF5SummarizedExperiment(spe_HVG, dir="results/day2", prefix="01.3_spe", replace=TRUE,
                                 chunkdim=NULL, level=NULL, as.sparse=NA,
                                 verbose=NA)
 ```

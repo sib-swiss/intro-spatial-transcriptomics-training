@@ -48,7 +48,7 @@ By the end of this exercise, you will be able to:
 Load the previously saved `SpatialExperiment` object which contains information on the HVGs and dimensionationality reduction computed with Banksy and PCA.
 
 ```{r}
-spe <- loadHDF5SummarizedExperiment(dir="results/day1", prefix="01.3_spe")
+spe <- loadHDF5SummarizedExperiment(dir="results/day2", prefix="01.3_spe")
 ```
 
 
@@ -218,7 +218,7 @@ pheatmap(
 Save the `SpatialExperiment` object for the next steps:
 
 ```{r}
-saveHDF5SummarizedExperiment(spe, dir="results/day1", prefix="01.4_spe", replace=TRUE,
+saveHDF5SummarizedExperiment(spe, dir="results/day2", prefix="01.4_spe", replace=TRUE,
                                 chunkdim=NULL, level=NULL, as.sparse=NA,
                                 verbose=NA)
 ```

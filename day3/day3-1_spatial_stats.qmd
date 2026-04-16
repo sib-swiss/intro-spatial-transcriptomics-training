@@ -34,7 +34,7 @@ set.seed(1234)
 
 ```{r}
 # Load the SpatialExperiment objectq
-spe <- loadHDF5SummarizedExperiment(dir="results/day1", prefix="01.4_spe")
+spe <- loadHDF5SummarizedExperiment(dir="results/day2", prefix="01.4_spe")
 ```
 
 In order to use the big spatial statistics library `sf` we convert the `SpatialExperiment` object into a `SpatialFeatureExperiment` object [@Moses2025.02.24.640007]. In addition to the `SpatialExperiment` object it contains simple feature categories such as `Geometries` and `Graphs`. In this 10x Visium Dataset the `Geometries` stored are the coordinates of the spots

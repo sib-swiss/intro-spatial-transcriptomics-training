@@ -46,12 +46,12 @@ library(pheatmap)
 We begin by loading the `SpatialExperiment` object prepared in the previous exercise containing clustering results.
 
 ```{r day2-2-svg-feature-set-signatures-2}
-spe <- loadHDF5SummarizedExperiment(dir="results/day1", prefix="01.4_spe")
+spe <- loadHDF5SummarizedExperiment(dir="results/day2", prefix="01.4_spe")
 ```
 
 ## Spatially variable genes (SVGs)
 
-In Day 1, we performed the analyses using the set of most highly variable genes (HVGs), which capture overall transcriptional variability and are useful for identifying major sources of variation and reducing dimensionality. HVGs reflect global heterogeneity, but they do not use spatial information. 
+In Day 2, we performed the analyses using the set of most highly variable genes (HVGs), which capture overall transcriptional variability and are useful for identifying major sources of variation and reducing dimensionality. HVGs reflect global heterogeneity, but they do not use spatial information. 
 
 In spatial transcriptomics, however, we are often interested in genes whose expression changes across tissue in structured spatial patterns. These are called spatially variable genes (SVGs), which conceptually generalize HVGs by adding spatial information.
 
@@ -131,7 +131,7 @@ top_nnSVG <- c("PIGR", "LEFTY1", "CXCR4")
 
 ### DESpace
 
-`DESpace` detects genes that show significantly higher/lower expression in one spatial domain compared to the rest of the tissue. To run `DESpace`, we need cluster labels or manual annotation. Here we use pre-computed spatial clusters from the day1, exercise 4.
+`DESpace` detects genes that show significantly higher/lower expression in one spatial domain compared to the rest of the tissue. To run `DESpace`, we need cluster labels or manual annotation. Here we use pre-computed spatial clusters from the day2, exercise 6.
 
 ```{r day2-2-svg-feature-set-signatures-7}
 res <- svg_test(sub, cluster_col="Banksy", verbose = TRUE)

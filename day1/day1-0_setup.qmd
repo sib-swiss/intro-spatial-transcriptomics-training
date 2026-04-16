@@ -53,7 +53,7 @@ docker run \
 -p 8787:8787 \
 -e PASSWORD=test \
 -v $PWD:/home/rstudio \
-sibswiss/training-seq-spatial-transcriptomics-rstudio
+sibswiss/training-intro-spatial-transcriptomics-rstudio
 ```
 
 If this command has run successfully, approach Rstudio server like this:
