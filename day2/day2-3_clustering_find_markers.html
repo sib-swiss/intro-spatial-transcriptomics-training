@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Exercise 4 – Spatial Transcriptomics</title>
+<title>Exercise 6 – Spatial Transcriptomics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -148,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Exercise 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../day1/day1-3_feature_dimred_cluster.html">
+    <a class="dropdown-item" href="../day1/day1-3_img_qc.html">
  <span class="dropdown-text">Exercise 3</span></a>
   </li>  
     </ul>
@@ -159,20 +159,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-day-2">
 <li>
-    <a class="dropdown-item" href="../day1/day1-4_clustering_find_markers.html">
- <span class="dropdown-text">Exercise 4</span></a>
+    <a class="dropdown-item" href="../day2/day2-1_normalization.html">
+ <span class="dropdown-text">Exercise 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../day2/day2-1_spatial_stats.html">
+    <a class="dropdown-item" href="../day2/day2-2_feature_dimred.html">
  <span class="dropdown-text">Exercise 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../day2/day2-2_svg_feature_set_signatures.html">
+    <a class="dropdown-item" href="../day2/day2-3_clustering_find_markers.html">
  <span class="dropdown-text">Exercise 6</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../day2/day2-3_differential_spatial_pattern.html">
+    <a class="dropdown-item" href="../day2/day2-4_annotation.html">
  <span class="dropdown-text">Exercise 7</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">day 3</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">
+<li>
+    <a class="dropdown-item" href="../day3/day3-1_spatial_stats.html">
+ <span class="dropdown-text">Exercise 8</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day3/day3-2_svg_feature_set_signatures.html">
+ <span class="dropdown-text">Exercise 9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day3/day3-3_differential_spatial_pattern.html">
+ <span class="dropdown-text">Exercise 10</span></a>
   </li>  
     </ul>
 </li>
@@ -192,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Exercise 4</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Exercise 6</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -224,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Exercise 4</h1>
+<h1 class="title">Exercise 6</h1>
 </div>
 
 
@@ -267,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></section><section id="clustering" class="level2"><h2 class="anchored" data-anchor-id="clustering">Clustering</h2>
 <p>Load the previously saved <code>SpatialExperiment</code> object which contains information on the HVGs and dimensionationality reduction computed with Banksy and PCA.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">loadHDF5SummarizedExperiment</a></span><span class="op">(</span>dir<span class="op">=</span><span class="st">"results/day1"</span>, prefix<span class="op">=</span><span class="st">"01.3_spe"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">loadHDF5SummarizedExperiment</a></span><span class="op">(</span>dir<span class="op">=</span><span class="st">"results/day2"</span>, prefix<span class="op">=</span><span class="st">"01.3_spe"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="non-spatial-aware-clustering" class="level3"><h3 class="anchored" data-anchor-id="non-spatial-aware-clustering">Non-spatial aware clustering</h3>
 <p>Clustering methods can be categorized into non-spatially aware, classically used for scRNA-seq analysis, and spatially-aware methods. We will first explore non-spatially aware clustering using graph-based methods.</p>
@@ -284,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>
    1    2    3    4    5    6    7 
-1849 1466 1470 2195 2345 2201 1089 </code></pre>
+1848 2354 2010  915 2148 2198 1142 </code></pre>
 </div>
 </div>
 </section></section><section id="spatialy-aware-clustering" class="level3"><h3 class="anchored" data-anchor-id="spatialy-aware-clustering">Spatialy aware clustering</h3>
@@ -303,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stdout">
 <pre><code>
    1    2    3    4    5    6    7    8 
-2595 2351 1024 2549 1728 1039  532  797 </code></pre>
+2579  523 2339 1032 2589  785 1032 1736 </code></pre>
 </div>
 </div>
 </section><section id="graph-based-banksy" class="level4"><h4 class="anchored" data-anchor-id="graph-based-banksy">Graph-based: Banksy</h4>
@@ -317,8 +336,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">Banksy</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
-   1    2    3    4    5    6    7    8    9   10 
-1754 1397 1328 1171 1843 1164 1665  557  687 1049 </code></pre>
+   1    2    3    4    5    6    7    8    9   10   11 
+1750 1306  971  935 1610 1257 1077 1146 1121  535  907 </code></pre>
 </div>
 </div>
 </section></section></section><section id="visualisation-of-the-different-clustering-methods" class="level2"><h2 class="anchored" data-anchor-id="visualisation-of-the-different-clustering-methods">Visualisation of the different clustering methods:</h2>
@@ -338,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.key.size<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0</span>, <span class="st">"lines"</span><span class="op">)</span>, legend.justification<span class="op">=</span><span class="st">"left"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-4_clustering_find_markers_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="day2-3_clustering_find_markers_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -360,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span>, legend.position<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-4_clustering_find_markers_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="day2-3_clustering_find_markers_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -416,7 +435,7 @@ Intestinal Epithelial               Myeloid              Neuronal
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_colour_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-4_clustering_find_markers_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="day2-3_clustering_find_markers_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -424,7 +443,7 @@ Intestinal Epithelial               Myeloid              Neuronal
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-4_clustering_find_markers_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="day2-3_clustering_find_markers_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -481,7 +500,7 @@ Intestinal Epithelial               Myeloid              Neuronal
 <span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-4_clustering_find_markers_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="day2-3_clustering_find_markers_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -492,7 +511,7 @@ Intestinal Epithelial               Myeloid              Neuronal
 </section><section id="save-the-object" class="level2"><h2 class="anchored" data-anchor-id="save-the-object">Save the object</h2>
 <p>Save the <code>SpatialExperiment</code> object for the next steps:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">saveHDF5SummarizedExperiment</a></span><span class="op">(</span><span class="va">spe</span>, dir<span class="op">=</span><span class="st">"results/day1"</span>, prefix<span class="op">=</span><span class="st">"01.4_spe"</span>, replace<span class="op">=</span><span class="cn">TRUE</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">saveHDF5SummarizedExperiment</a></span><span class="op">(</span><span class="va">spe</span>, dir<span class="op">=</span><span class="st">"results/day2"</span>, prefix<span class="op">=</span><span class="st">"01.4_spe"</span>, replace<span class="op">=</span><span class="cn">TRUE</span>,</span>
 <span>                                chunkdim<span class="op">=</span><span class="cn">NULL</span>, level<span class="op">=</span><span class="cn">NULL</span>, as.sparse<span class="op">=</span><span class="cn">NA</span>,</span>
 <span>                                verbose<span class="op">=</span><span class="cn">NA</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>

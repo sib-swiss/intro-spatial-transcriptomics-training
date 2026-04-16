@@ -126,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">Exercise 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../day1/day1-3_feature_dimred_cluster.html">
+    <a class="dropdown-item" href="../day1/day1-3_img_qc.html">
  <span class="dropdown-text">Exercise 3</span></a>
   </li>  
     </ul>
@@ -137,20 +137,39 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-day-2">    
         <li>
-    <a class="dropdown-item" href="../day1/day1-4_clustering_find_markers.html">
- <span class="dropdown-text">Exercise 4</span></a>
+    <a class="dropdown-item" href="../day2/day2-1_normalization.html">
+ <span class="dropdown-text">Exercise 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../day2/day2-1_spatial_stats.html">
+    <a class="dropdown-item" href="../day2/day2-2_feature_dimred.html">
  <span class="dropdown-text">Exercise 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../day2/day2-2_svg_feature_set_signatures.html">
+    <a class="dropdown-item" href="../day2/day2-3_clustering_find_markers.html">
  <span class="dropdown-text">Exercise 6</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../day2/day2-3_differential_spatial_pattern.html">
+    <a class="dropdown-item" href="../day2/day2-4_annotation.html">
  <span class="dropdown-text">Exercise 7</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">day 3</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">    
+        <li>
+    <a class="dropdown-item" href="../day3/day3-1_spatial_stats.html">
+ <span class="dropdown-text">Exercise 8</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day3/day3-2_svg_feature_set_signatures.html">
+ <span class="dropdown-text">Exercise 9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day3/day3-3_differential_spatial_pattern.html">
+ <span class="dropdown-text">Exercise 10</span></a>
   </li>  
     </ul>
   </li>
@@ -198,6 +217,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#day-1" id="toc-day-1" class="nav-link active" data-scroll-target="#day-1">Day 1</a></li>
   <li><a href="#day-2" id="toc-day-2" class="nav-link" data-scroll-target="#day-2">Day 2</a></li>
+  <li><a href="#day-3" id="toc-day-3" class="nav-link" data-scroll-target="#day-3">Day 3</a></li>
   </ul>
 </nav>
     </div>
@@ -245,7 +265,7 @@ Note
 <th>start</th>
 <th>end</th>
 <th>topic</th>
-<th>instructor</th>
+<th>instructors</th>
 <th>presentation</th>
 <th>exercise</th>
 </tr>
@@ -307,18 +327,42 @@ Note
 </tr>
 <tr class="odd">
 <td>block 3</td>
-<td>11:45</td>
-<td>12:30</td>
+<td>1:30</td>
+<td>2:00</td>
 <td>Exercise: setup and data structure</td>
 <td>Deepak Tanwar, Julien Roux</td>
 <td></td>
 <td><a href="../day1/day1-0_setup.html">Setup</a>, <a href="../day1/day1-1_SpatialExperiment.html">Exercise 1</a></td>
 </tr>
+<tr class="even">
+<td>block 4</td>
+<td>2:00</td>
+<td>3:30</td>
+<td>Quality control and normalization (sequencing-based)</td>
+<td>Deepak Tanwar</td>
+<td><a href="../assets/pdf/04_qc_norm.pdf">link</a></td>
+<td><a href="../day1/day1-2_spotsweeper_qc.html">Exercise 2</a></td>
+</tr>
+<tr class="odd">
+<td>break</td>
+<td>3:30</td>
+<td>4:00</td>
+<td>Coffee break</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>block 4</td>
+<td>4:00</td>
+<td>5:00</td>
+<td>Quality control (image-based)</td>
+<td>Ivan Berest</td>
+<td><a href="../assets/pdf/05_qc_img.pdf">link</a></td>
+<td><a href="../day1/day1-3_img_qc.html">Exercise 3</a></td>
+</tr>
 </tbody>
 </table>
-<div class="line-block">block 3 | 1:30 | 3:00 | Quality control and normalization | Deepak Tanwar | <a href="../assets/pdf/04_qc_norm.pdf">QC and normalization</a> | <a href="../day1/day1-2_spotsweeper_qc.html">Exercise 2</a> |<br>
-break | 3:00 | 3:30 | | | | |<br>
-block 4 | 3:30 | 5:15 | Feature selection, dimensionality reduction | Joana Carlevaro-Fita | <a href="../assets/pdf/05_preprocessing.pdf">Intermediate processing</a> | <a href="../day1/day1-3_feature_dimred_cluster.html">Exercise 3</a> |</div>
 </section>
 <section id="day-2" class="level2">
 <h2 class="anchored" data-anchor-id="day-2">Day 2</h2>
@@ -329,100 +373,199 @@ block 4 | 3:30 | 5:15 | Feature selection, dimensionality reduction | Joana Carl
 <th>start</th>
 <th>end</th>
 <th>topic</th>
-<th>instructor</th>
+<th>instructors</th>
 <th>presentation</th>
 <th>exercise</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td>recap</td>
+<td>9:00</td>
+<td>9:15</td>
+<td>Recap from day 1</td>
+<td>Joana Carlevaro-Fita</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
 <td>block 1</td>
 <td>9:15</td>
-<td>10:30</td>
-<td>Clustering and annotation</td>
+<td>10:15</td>
+<td>Normalization and scaling</td>
+<td>Deepak Tanwar</td>
+<td><a href="../assets/pdf/06_normalization.pdf">link</a></td>
+<td><a href="../day1/day2-1_normalization.qmd">Exercise 4</a></td>
+</tr>
+<tr class="odd">
+<td>break</td>
+<td>10:15</td>
+<td>10:45</td>
+<td>Coffee break</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>block 2</td>
+<td>10:45</td>
+<td>11:30</td>
+<td>Lecture: feature selection, dimensionality reduction</td>
 <td>Joana Carlevaro-Fita</td>
-<td><a href="../assets/pdf/06_spatial_domains.pdf">Clustering</a></td>
-<td><a href="../day1/day1-4_clustering_find_markers.html">Exercise 4</a></td>
-</tr>
-<tr class="even">
-<td>break</td>
-<td>10:30</td>
-<td>11:00</td>
-<td></td>
-<td></td>
-<td></td>
+<td><a href="../assets/pdf/07_feature_selection_dim_red.pdf">link</a></td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>block 2</td>
-<td>11:00</td>
-<td>11:45</td>
-<td>Spatial statistics</td>
-<td>Mark Robinson</td>
-<td><a href="../assets/pdf/07_stats_methods.pdf">Statistical methods</a></td>
+<td>11:30</td>
+<td>12:30</td>
+<td>Exercise: feature selection, dimensionality reduction</td>
+<td>Joana Carlevaro-Fita, Julien Roux</td>
 <td></td>
+<td><a href="../day2/day2-2_feature_dimred.html">Exercise 5</a></td>
 </tr>
 <tr class="even">
-<td>block 2</td>
-<td>11:45</td>
+<td>break</td>
 <td>12:30</td>
-<td>Co-localization analysis</td>
-<td>Martin Emons</td>
-<td><a href="../assets/pdf/08_spastat_lecture.pdf">Spatial stats</a></td>
+<td>13:30</td>
+<td>Lunch</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr class="odd">
-<td>break</td>
-<td>12:30</td>
+<td>block 3</td>
 <td>1:30</td>
-<td></td>
-<td></td>
-<td></td>
+<td>2:00</td>
+<td>Lecture: clustering</td>
+<td>Joana Carlevaro-Fita</td>
+<td><a href="../assets/pdf/08_clustering.pdf">link</a></td>
 <td></td>
 </tr>
 <tr class="even">
 <td>block 3</td>
-<td>1:30</td>
-<td>2:15</td>
-<td>Exercises: co-localisation analysis</td>
-<td>Martin Emons</td>
+<td>2:00</td>
+<td>2:45</td>
+<td>Exercise: clustering and visualization</td>
+<td>Joana Carlevaro-Fita, Julien Roux</td>
 <td></td>
-<td><a href="../day2/day2-1_spatial_stats.html">Exercise 5</a></td>
+<td><a href="../day2/day2-3_clustering_find_markers.html">Exercise 6</a></td>
 </tr>
 <tr class="odd">
-<td>block 3</td>
-<td>2:15</td>
-<td>3:00</td>
-<td>SVG and DSP for spatial data</td>
-<td>Peiying Cai</td>
-<td><a href="../assets/pdf/09_svg_dsp.pdf">SVG and DSP</a></td>
+<td>break</td>
+<td>2:45</td>
+<td>3:15</td>
+<td>Coffee break</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr class="even">
-<td>break</td>
-<td>3:00</td>
-<td>3:30</td>
-<td></td>
-<td></td>
-<td></td>
+<td>block 4</td>
+<td>3:15</td>
+<td>3:45</td>
+<td>Lecture: annotation</td>
+<td>Ivan Berest</td>
+<td><a href="../assets/pdf/09_annotation.pdf">link</a></td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>block 4</td>
-<td>3:30</td>
-<td>4:15</td>
-<td>Exercise: SVG and DSP for spatial data</td>
-<td>Peiying Cai</td>
+<td>3:45</td>
+<td>4:45</td>
+<td>Exercise: annotation</td>
+<td>Ivan Berest, Julien Roux</td>
 <td></td>
-<td><a href="../day2/day2-2_svg_feature_set_signatures.html">Exercise 6</a>, <a href="../day2/day2-3_differential_spatial_pattern.html">Exercise 7</a></td>
+<td><a href="../day2/day2-4_annotation.html">Exercise 7</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="day-3" class="level2">
+<h2 class="anchored" data-anchor-id="day-3">Day 3</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>block</th>
+<th>start</th>
+<th>end</th>
+<th>topic</th>
+<th>instructors</th>
+<th>presentation</th>
+<th>exercise</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>recap</td>
+<td>9:00</td>
+<td>9:15</td>
+<td>Recap from day 1</td>
+<td>Joana Carlevaro-Fita</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>block 1</td>
+<td>9:15</td>
+<td>10:15</td>
+<td>Spatial statistics</td>
+<td>Mark Robinson</td>
+<td><a href="../assets/pdf/10_stats_methods.pdf">link</a></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>break</td>
+<td>10:15</td>
+<td>10:45</td>
+<td>Coffee break</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>block 2</td>
+<td>10:45</td>
+<td>12:30</td>
+<td>Co-localization analysis</td>
+<td>Martin Emons</td>
+<td><a href="../assets/pdf/11_spastat_lecture.pdf">link</a></td>
+<td><a href="../day3/day3-1_spatial_stats.html">Exercise 8</a></td>
+</tr>
+<tr class="odd">
+<td>break</td>
+<td>12:30</td>
+<td>13:30</td>
+<td>Lunch</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>block 3</td>
+<td>1:30</td>
+<td>3:00</td>
+<td>SVG and DSP for spatial data</td>
+<td>Peiying Cai</td>
+<td><a href="../assets/pdf/12_svg_dsp.pdf">SVG and DSP</a></td>
+<td><a href="../day3/day3-2_svg_feature_set_signatures.html">Exercise 9</a>, <a href="../day3/day3-3_differential_spatial_pattern.html">Exercise 10</a></td>
+</tr>
+<tr class="odd">
+<td>break</td>
+<td>3:00</td>
+<td>3:30</td>
+<td>Coffee break</td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="even">
 <td>post-course</td>
-<td>4:15</td>
-<td>4:30</td>
+<td>4:45</td>
+<td>5:00</td>
 <td>Post-course information</td>
 <td>Deepak Tanwar</td>
-<td><a href="../assets/pdf/10_post_course.pdf">Closing remarks</a></td>
+<td><a href="../assets/pdf/13_post_course.pdf">link</a></td>
 <td></td>
 </tr>
 </tbody>

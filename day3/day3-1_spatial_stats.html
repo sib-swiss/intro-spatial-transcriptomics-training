@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Exercise 5 – Spatial Transcriptomics</title>
+<title>Exercise 8 – Spatial Transcriptomics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -193,7 +193,7 @@ window.Quarto = {
  <span class="dropdown-text">Exercise 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../day1/day1-3_feature_dimred_cluster.html">
+    <a class="dropdown-item" href="../day1/day1-3_img_qc.html">
  <span class="dropdown-text">Exercise 3</span></a>
   </li>  
     </ul>
@@ -204,20 +204,39 @@ window.Quarto = {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-day-2">
 <li>
-    <a class="dropdown-item" href="../day1/day1-4_clustering_find_markers.html">
- <span class="dropdown-text">Exercise 4</span></a>
+    <a class="dropdown-item" href="../day2/day2-1_normalization.html">
+ <span class="dropdown-text">Exercise 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../day2/day2-1_spatial_stats.html">
+    <a class="dropdown-item" href="../day2/day2-2_feature_dimred.html">
  <span class="dropdown-text">Exercise 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../day2/day2-2_svg_feature_set_signatures.html">
+    <a class="dropdown-item" href="../day2/day2-3_clustering_find_markers.html">
  <span class="dropdown-text">Exercise 6</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../day2/day2-3_differential_spatial_pattern.html">
+    <a class="dropdown-item" href="../day2/day2-4_annotation.html">
  <span class="dropdown-text">Exercise 7</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">day 3</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">
+<li>
+    <a class="dropdown-item" href="../day3/day3-1_spatial_stats.html">
+ <span class="dropdown-text">Exercise 8</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day3/day3-2_svg_feature_set_signatures.html">
+ <span class="dropdown-text">Exercise 9</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day3/day3-3_differential_spatial_pattern.html">
+ <span class="dropdown-text">Exercise 10</span></a>
   </li>  
     </ul>
 </li>
@@ -237,7 +256,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Exercise 5</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Exercise 8</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -276,7 +295,7 @@ window.Quarto = {
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">Exercise 5</h1>
+<h1 class="title">Exercise 8</h1>
 </div>
 
 
@@ -312,7 +331,7 @@ window.Quarto = {
 </section><section id="load-data" class="level2"><h2 class="anchored" data-anchor-id="load-data">Load data</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the SpatialExperiment objectq</span></span>
-<span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">loadHDF5SummarizedExperiment</a></span><span class="op">(</span>dir<span class="op">=</span><span class="st">"results/day1"</span>, prefix<span class="op">=</span><span class="st">"01.4_spe"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">loadHDF5SummarizedExperiment</a></span><span class="op">(</span>dir<span class="op">=</span><span class="st">"results/day2"</span>, prefix<span class="op">=</span><span class="st">"01.4_spe"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In order to use the big spatial statistics library <code>sf</code> we convert the <code>SpatialExperiment</code> object into a <code>SpatialFeatureExperiment</code> object <span class="citation" data-cites="Moses2025.02.24.640007">(<a href="#ref-Moses2025.02.24.640007" role="doc-biblioref">Moses et al. 2025</a>)</span>. In addition to the <code>SpatialExperiment</code> object it contains simple feature categories such as <code>Geometries</code> and <code>Graphs</code>. In this 10x Visium Dataset the <code>Geometries</code> stored are the coordinates of the spots</p>
 <div class="cell">
@@ -377,7 +396,7 @@ W 12615 159138225 12615 4579.72 50687.2</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">g</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">spatialCoords</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="day3-1_spatial_stats_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -388,7 +407,7 @@ W 12615 159138225 12615 4579.72 50687.2</code></pre>
 <span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="day3-1_spatial_stats_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -458,7 +477,7 @@ W 12615 159138225 12615 4579.72 50687.2</code></pre>
 <span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="va">topGenes</span>, ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="day3-1_spatial_stats_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -513,7 +532,7 @@ W 12615 159138225 12615 4579.72 50687.2</code></pre>
 <span>                divergent <span class="op">=</span> <span class="cn">TRUE</span>, diverge_center <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="day3-1_spatial_stats_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -566,7 +585,7 @@ W 12615 159138225 12615 4579.72 50687.2</code></pre>
 <span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/moranPlot.html">moranPlot</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="va">topGenes</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, graphName <span class="op">=</span> <span class="st">"visium"</span>, swap_rownames <span class="op">=</span> <span class="st">"symbol"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="day3-1_spatial_stats_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -582,7 +601,7 @@ W 12615 159138225 12615 4579.72 50687.2</code></pre>
 <span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="day3-1_spatial_stats_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -664,7 +683,7 @@ W 12615 159138225 12615 4579.72 50687.2</code></pre>
 <span>                colGeometryName <span class="op">=</span> <span class="st">"centroids"</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="day3-1_spatial_stats_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -837,9 +856,9 @@ PIGR                          201                 0.00497512
      moran.mc_alternative_Normal_P5 moran.mc_method_Normal_P5
                         &lt;character&gt;               &lt;character&gt;
 PIGR                        greater    Monte-Carlo simulati..
-                      moran.mc_res_Normal_P5 moran.mc_statistic_Cancer_P5
-                                      &lt;list&gt;                    &lt;numeric&gt;
-PIGR -0.00651143, 0.00199326, 0.00581879,...                     0.662601
+                   moran.mc_res_Normal_P5 moran.mc_statistic_Cancer_P5
+                                   &lt;list&gt;                    &lt;numeric&gt;
+PIGR 0.00708651,0.00659180,0.00275277,...                     0.662601
      moran.mc_parameter_Cancer_P5 moran.mc_p.value_Cancer_P5
                         &lt;numeric&gt;                  &lt;numeric&gt;
 PIGR                          201                 0.00497512
@@ -848,16 +867,16 @@ PIGR                          201                 0.00497512
 PIGR                        greater    Monte-Carlo simulati..
                       moran.mc_res_Cancer_P5 moran.mc_statistic_Cancer_P1
                                       &lt;list&gt;                    &lt;numeric&gt;
-PIGR  0.00583179, 0.00653266,-0.00146005,...                     0.839516
+PIGR -0.00875160,-0.00215655,-0.00687971,...                     0.839516
      moran.mc_parameter_Cancer_P1 moran.mc_p.value_Cancer_P1
                         &lt;numeric&gt;                  &lt;numeric&gt;
 PIGR                          201                 0.00497512
      moran.mc_alternative_Cancer_P1 moran.mc_method_Cancer_P1
                         &lt;character&gt;               &lt;character&gt;
 PIGR                        greater    Monte-Carlo simulati..
-                      moran.mc_res_Cancer_P1 moran.mc_statistic_Normal_P3
-                                      &lt;list&gt;                    &lt;numeric&gt;
-PIGR -0.00123341, 0.00264815,-0.00555270,...                     0.554004
+                   moran.mc_res_Cancer_P1 moran.mc_statistic_Normal_P3
+                                   &lt;list&gt;                    &lt;numeric&gt;
+PIGR 0.00187408,0.00676951,0.00428473,...                     0.554004
      moran.mc_parameter_Normal_P3 moran.mc_p.value_Normal_P3
                         &lt;numeric&gt;                  &lt;numeric&gt;
 PIGR                          201                 0.00497512
@@ -866,7 +885,7 @@ PIGR                          201                 0.00497512
 PIGR                        greater    Monte-Carlo simulati..
                       moran.mc_res_Normal_P3
                                       &lt;list&gt;
-PIGR -0.00299195,-0.00312027, 0.00708293,...</code></pre>
+PIGR -0.00427791, 0.00296796,-0.00918384,...</code></pre>
 </div>
 </div>
 <p>In order to model these measures, we have to convert the data into long format</p>
@@ -951,7 +970,7 @@ boundary (singular) fit: see help('isSingular')</code></pre>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">resid</a></span><span class="op">(</span><span class="va">mdl</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="day3-1_spatial_stats_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
