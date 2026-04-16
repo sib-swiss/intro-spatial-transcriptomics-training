@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Exercise 5 – Sequencing-based Spatial Transcriptomics</title>
 <style>
@@ -84,14 +84,15 @@ div.csl-indent {
 <link href="../assets/SIB_logo.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d7c71df65b5363f6f7750ba122c526e6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-04feb1dfa86de9cddb7a20bd83ef3b7a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -129,7 +130,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -150,6 +151,8 @@ window.Quarto = {
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sequencing-based Spatial Transcriptomics</span>
     </a>
@@ -242,7 +245,7 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
       </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -296,7 +299,7 @@ window.Quarto = {
 </li>
 </ul></section><section id="libraries" class="level2"><h2 class="anchored" data-anchor-id="libraries">Libraries</h2>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/drighelli/SpatialExperiment">"SpatialExperiment"</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/drighelli/SpatialExperiment">"SpatialExperiment"</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://ggplot2.tidyverse.org">"ggplot2"</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/pachterlab/voyager">"Voyager"</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://bioconductor.org/packages/HDF5Array">"HDF5Array"</a></span><span class="op">)</span></span>
@@ -304,17 +307,17 @@ window.Quarto = {
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/lme4/lme4/">"lme4"</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/runehaubo/lmerTestR">"lmerTest"</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="load-data" class="level2"><h2 class="anchored" data-anchor-id="load-data">Load data</h2>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the SpatialExperiment objectq</span></span>
-<span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">loadHDF5SummarizedExperiment</a></span><span class="op">(</span>dir<span class="op">=</span><span class="st">"results/day1"</span>, prefix<span class="op">=</span><span class="st">"01.4_spe"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the SpatialExperiment objectq</span></span>
+<span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">loadHDF5SummarizedExperiment</a></span><span class="op">(</span>dir<span class="op">=</span><span class="st">"results/day1"</span>, prefix<span class="op">=</span><span class="st">"01.4_spe"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In order to use the big spatial statistics library <code>sf</code> we convert the <code>SpatialExperiment</code> object into a <code>SpatialFeatureExperiment</code> object <span class="citation" data-cites="Moses2025.02.24.640007">(<a href="#ref-Moses2025.02.24.640007" role="doc-biblioref">Moses et al. 2025</a>)</span>. In addition to the <code>SpatialExperiment</code> object it contains simple feature categories such as <code>Geometries</code> and <code>Graphs</code>. In this 10x Visium Dataset the <code>Geometries</code> stored are the coordinates of the spots</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/SpatialFeatureExperiment-coercion.html">toSpatialFeatureExperiment</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span></span>
-<span><span class="va">sfe</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/SpatialFeatureExperiment-coercion.html">toSpatialFeatureExperiment</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span></span>
+<span><span class="va">sfe</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>class: SpatialFeatureExperiment 
 dim: 17952 12615 
@@ -350,12 +353,12 @@ sample01: </code></pre>
 <p>In what follows we will focus on analysing the regular lattice of the pixel measurements with techniques from lattice data analysis.</p>
 <p>First, we will define a neighbourhood on which we want to compute spatial statistics metrics. In 10x Visium it is very natural to consider the direct neigbours of hexagonal visium lattice. We do this with the function <code>Voyager::findVisiumGraph()</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/findSpatialNeighbors.html">findSpatialNeighbors</a></span><span class="op">(</span><span class="va">sfe</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">(</span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/findSpatialNeighbors.html">findSpatialNeighbors</a></span><span class="op">(</span><span class="va">sfe</span>,</span>
 <span>    method <span class="op">=</span> <span class="st">"knearneigh"</span>, <span class="co"># wraps the spdep function with the same name</span></span>
 <span>    k <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>    zero.policy <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    sample_id <span class="op">=</span> <span class="st">"all"</span></span>
-<span>  <span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Characteristics of weights list object:
 Neighbour list object:
@@ -371,18 +374,18 @@ Weights constants summary:
       n        nn    S0      S1      S2
 W 12615 159138225 12615 4579.72 50687.2</code></pre>
 </div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">g</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">spatialCoords</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">g</span>, coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">spatialCoords</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/spatialGraphs.html">colGraph</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="st">"visium"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">g</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/spatialGraphs.html">colGraph</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="st">"visium"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">g</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotColGraph.html">plotColGraph</a></span><span class="op">(</span><span class="va">sfe</span>,</span>
 <span>  colGraphName <span class="op">=</span> <span class="st">"visium"</span></span>
-<span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
@@ -408,7 +411,7 @@ W 12615 159138225 12615 4579.72 50687.2</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise
+<span class="screen-reader-only">Important</span>Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -424,12 +427,12 @@ Exercise
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Answer
+<span class="screen-reader-only">Tip</span>Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -437,22 +440,22 @@ Answer
 <div class="callout-body-container callout-body">
 <p>First, we model the variance on a subset of the genes for computational reasons Then, we extract the 200 most highly variable genes</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stats</span> <span class="op">&lt;-</span> <span class="fu">scran</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/scran/man/modelGeneVar.html">modelGeneVar</a></span><span class="op">(</span><span class="va">sfe</span>, subset.row <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2000</span><span class="op">)</span></span>
-<span><span class="va">hvg</span> <span class="op">&lt;-</span> <span class="fu">scran</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/scran/man/getTopHVGs.html">getTopHVGs</a></span><span class="op">(</span><span class="va">stats</span>, n <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">stats</span> <span class="op">&lt;-</span> <span class="fu">scran</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/scran/man/modelGeneVar.html">modelGeneVar</a></span><span class="op">(</span><span class="va">sfe</span>, subset.row <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2000</span><span class="op">)</span></span>
+<span><span class="va">hvg</span> <span class="op">&lt;-</span> <span class="fu">scran</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/scran/man/getTopHVGs.html">getTopHVGs</a></span><span class="op">(</span><span class="va">stats</span>, n <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Next, we calculate global Moran’s I for these 200 genes</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/calculateUnivariate.html">runUnivariate</a></span><span class="op">(</span><span class="va">sfe</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/calculateUnivariate.html">runUnivariate</a></span><span class="op">(</span><span class="va">sfe</span>, </span>
 <span>    type<span class="op">=</span><span class="st">"moran"</span>, </span>
 <span>    features<span class="op">=</span><span class="va">hvg</span>, </span>
-<span>    colGraphName<span class="op">=</span><span class="st">"visium"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>    colGraphName<span class="op">=</span><span class="st">"visium"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We order them and plot the gene expression top 3 genes wiht the <code>plotSpatialFeature</code> function from the <code>Voyager</code> package.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">I</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">$</span><span class="va">moran_sample01</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">I</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">$</span><span class="va">moran_sample01</span></span>
 <span><span class="va">o</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">I</span>, decreasing<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">topGenes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">o</span>, <span class="fl">3</span><span class="op">)</span><span class="op">]</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="va">topGenes</span>, ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="va">topGenes</span>, ncol<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
@@ -473,7 +476,7 @@ Answer
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise
+<span class="screen-reader-only">Important</span>Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -484,12 +487,12 @@ Exercise
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Answer
+<span class="screen-reader-only">Tip</span>Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -497,17 +500,17 @@ Answer
 <div class="callout-body-container callout-body">
 <p>First, we have to calculate the metric on the first most autocorrelated genes.</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/calculateUnivariate.html">runUnivariate</a></span><span class="op">(</span><span class="va">sfe</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/calculateUnivariate.html">runUnivariate</a></span><span class="op">(</span><span class="va">sfe</span>,</span>
 <span>                     features <span class="op">=</span> <span class="va">topGenes</span>,</span>
 <span>                     colGraphName <span class="op">=</span> <span class="st">"visium"</span>,</span>
-<span>                     type <span class="op">=</span> <span class="st">"localmoran"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>                     type <span class="op">=</span> <span class="st">"localmoran"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then, we plot the local Moran’s <span class="math inline">\(I\)</span> values in space.</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotLocalResult.html">plotLocalResult</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="st">"localmoran"</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotLocalResult.html">plotLocalResult</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="st">"localmoran"</span>,</span>
 <span>                features <span class="op">=</span><span class="va">topGenes</span>, ncol <span class="op">=</span> <span class="fl">3</span>,</span>
 <span>                colGeometryName <span class="op">=</span> <span class="st">"centroids"</span>,</span>
-<span>                divergent <span class="op">=</span> <span class="cn">TRUE</span>, diverge_center <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>                divergent <span class="op">=</span> <span class="cn">TRUE</span>, diverge_center <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
@@ -526,7 +529,7 @@ Answer
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Bonus Exercise
+<span class="screen-reader-only">Important</span>Bonus Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -537,12 +540,12 @@ Bonus Exercise
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Answer
+<span class="screen-reader-only">Tip</span>Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -550,17 +553,17 @@ Answer
 <div class="callout-body-container callout-body">
 <p>First, we have to calculate the metric on the first three most variable hvgs.</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/calculateUnivariate.html">runUnivariate</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/calculateUnivariate.html">runUnivariate</a></span><span class="op">(</span></span>
 <span>    <span class="va">sfe</span>,</span>
 <span>    features <span class="op">=</span>  <span class="va">topGenes</span>,</span>
 <span>    colGraphName <span class="op">=</span> <span class="st">"visium"</span>,</span>
 <span>    type <span class="op">=</span> <span class="st">"moran.plot"</span></span>
-<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We will show the Moran’s scatter plot for the gene <code>PIGR</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># we will show one Moran's scatterplot</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/moranPlot.html">moranPlot</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="va">topGenes</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, graphName <span class="op">=</span> <span class="st">"visium"</span>, swap_rownames <span class="op">=</span> <span class="st">"symbol"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># we will show one Moran's scatterplot</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/moranPlot.html">moranPlot</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="va">topGenes</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>, graphName <span class="op">=</span> <span class="st">"visium"</span>, swap_rownames <span class="op">=</span> <span class="st">"symbol"</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
@@ -570,13 +573,13 @@ Answer
 </div>
 <p>The grey dashed lines indicate the mean expreession of the “PIGR” expression in the spots themselves and among their neighbours. According to to these means the spots are categorised into 4 categories, which can be plotted back in space. We notice that there is quite part of the tissue that constitute as “high-high” for all three genes in the same region (bottom left).</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotLocalResult.html">plotLocalResult</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotLocalResult.html">plotLocalResult</a></span><span class="op">(</span></span>
 <span>    <span class="va">sfe</span>,</span>
 <span>    name <span class="op">=</span> <span class="st">"localmoran"</span>,</span>
 <span>    features <span class="op">=</span> <span class="va">topGenes</span>,</span>
 <span>    attribute <span class="op">=</span> <span class="st">"mean"</span>,</span>
 <span>    colGeometryName <span class="op">=</span> <span class="st">"centroids"</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
@@ -595,7 +598,7 @@ Answer
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Question
+<span class="screen-reader-only">Important</span>Question
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -605,12 +608,12 @@ Question
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Answer
+<span class="screen-reader-only">Tip</span>Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -626,7 +629,7 @@ Answer
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Bonus Exercise
+<span class="screen-reader-only">Important</span>Bonus Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -637,28 +640,28 @@ Bonus Exercise
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Answer
+<span class="screen-reader-only">Tip</span>Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/calculateBivariate.html">runBivariate</a></span><span class="op">(</span><span class="va">sfe</span>, type <span class="op">=</span> <span class="st">"localmoran_bv"</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/calculateBivariate.html">runBivariate</a></span><span class="op">(</span><span class="va">sfe</span>, type <span class="op">=</span> <span class="st">"localmoran_bv"</span>,</span>
 <span>                    feature1 <span class="op">=</span> <span class="st">"PIGR"</span>, feature2 <span class="op">=</span> <span class="st">"CLCA1"</span>,</span>
 <span>                    colGraphName <span class="op">=</span> <span class="st">"visium"</span>,</span>
-<span>                    nsim <span class="op">=</span> <span class="fl">499</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>                    nsim <span class="op">=</span> <span class="fl">499</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotLocalResult.html">plotLocalResult</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="st">"localmoran_bv"</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotLocalResult.html">plotLocalResult</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="st">"localmoran_bv"</span>, </span>
 <span>                features <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/localResults.html">localResultFeatures</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="st">"localmoran_bv"</span><span class="op">)</span>,</span>
 <span>                ncol <span class="op">=</span> <span class="fl">2</span>, divergent <span class="op">=</span> <span class="cn">TRUE</span>, diverge_center <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>                colGeometryName <span class="op">=</span> <span class="st">"centroids"</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>                colGeometryName <span class="op">=</span> <span class="st">"centroids"</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
@@ -676,26 +679,26 @@ Answer
 <p>First we will load 4 slides from the dataset (2 healthy slides and 2 cancerous slides).</p>
 <p>Due to conversion issues, this code creates a <code>SpatialFeatureExperiment</code> via a <code>SingleCellExperiment</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">speMult</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">loadHDF5SummarizedExperiment</a></span><span class="op">(</span>dir<span class="op">=</span><span class="st">"data/Human_Colon_Cancer_P1/"</span>, prefix<span class="op">=</span><span class="st">"02.3_spe_tmp"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">speMult</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">loadHDF5SummarizedExperiment</a></span><span class="op">(</span>dir<span class="op">=</span><span class="st">"data/Human_Colon_Cancer_P1/"</span>, prefix<span class="op">=</span><span class="st">"02.3_spe_tmp"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">speMult</span><span class="op">$</span><span class="va">array_row</span> <span class="op">&lt;-</span> <span class="va">speMult</span><span class="op">$</span><span class="va">row</span></span>
 <span><span class="va">speMult</span><span class="op">$</span><span class="va">array_col</span> <span class="op">&lt;-</span> <span class="va">speMult</span><span class="op">$</span><span class="va">col</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">colData</a></span><span class="op">(</span><span class="va">speMult</span><span class="op">)</span><span class="op">$</span><span class="va">sample_id</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/unique.html">unique</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">colData</a></span><span class="op">(</span><span class="va">speMult</span><span class="op">)</span><span class="op">$</span><span class="va">sample_id</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/unique.html">unique</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] Normal_P5 Cancer_P5 Cancer_P1 Normal_P3
 Levels: Cancer_P1 Cancer_P5 Normal_P3 Normal_P5</code></pre>
 </div>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sceMult</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/methods/as.html">as</a></span><span class="op">(</span><span class="va">speMult</span>, <span class="st">"SingleCellExperiment"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">colData</a></span><span class="op">(</span><span class="va">sceMult</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">colData</a></span><span class="op">(</span><span class="va">sceMult</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/cbind.html">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">spatialCoords</a></span><span class="op">(</span><span class="va">speMult</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sceMult</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/methods/as.html">as</a></span><span class="op">(</span><span class="va">speMult</span>, <span class="st">"SingleCellExperiment"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">colData</a></span><span class="op">(</span><span class="va">sceMult</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">colData</a></span><span class="op">(</span><span class="va">sceMult</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/cbind.html">cbind</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">spatialCoords</a></span><span class="op">(</span><span class="va">speMult</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Next, we will convert the <code>SingelCellExperiment</code> to a <code>SpatialFeatureExperiment</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfeMult</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/SpatialFeatureExperiment-coercion.html">toSpatialFeatureExperiment</a></span><span class="op">(</span><span class="va">sceMult</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfeMult</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/SpatialFeatureExperiment-coercion.html">toSpatialFeatureExperiment</a></span><span class="op">(</span><span class="va">sceMult</span>,</span>
 <span> sample_id <span class="op">=</span> <span class="st">"sample_id"</span>,</span>
 <span> spatialCoordsNames <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"pxl_col_in_fullres"</span>, <span class="st">"pxl_row_in_fullres"</span><span class="op">)</span>,</span>
 <span> loadImage <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="va">sfeMult</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">sfeMult</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>class: SpatialFeatureExperiment 
 dim: 18045 56120 
@@ -727,21 +730,21 @@ Normal_P3: </code></pre>
 <section id="preprocessing-and-neighbourhood-defintion" class="level2"><h2 class="anchored" data-anchor-id="preprocessing-and-neighbourhood-defintion">Preprocessing and neighbourhood defintion</h2>
 <p>We note that the counts in our <code>SpatialFeatureExperiment</code> object are still raw counts therefore we will log normalise them with <code><a href="https://rdrr.io/pkg/scuttle/man/logNormCounts.html">scuttle::logNormCounts()</a></code></p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># identify mitochondrial genes</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># identify mitochondrial genes</span></span>
 <span><span class="va">gn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">sfeMult</span><span class="op">)</span><span class="op">$</span><span class="va">Symbol</span></span>
 <span><span class="va">mt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"^MT-"</span>, <span class="va">gn</span>, ignore.case <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">mt</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">mt</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>mt
 FALSE  TRUE 
 18034    11 </code></pre>
 </div>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># remove them</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># remove them</span></span>
 <span><span class="va">sfeMult</span> <span class="op">&lt;-</span> <span class="va">sfeMult</span><span class="op">[</span><span class="op">!</span><span class="va">mt</span>, <span class="op">]</span></span>
 <span></span>
 <span><span class="co">#log-normalise the counts</span></span>
 <span><span class="va">sfeMult</span> <span class="op">&lt;-</span> <span class="fu">scuttle</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/scuttle/man/logNormCounts.html">logNormCounts</a></span><span class="op">(</span><span class="va">sfeMult</span><span class="op">)</span></span>
-<span><span class="va">sfeMult</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">sfeMult</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>class: SpatialFeatureExperiment 
 dim: 18034 56120 
@@ -773,14 +776,14 @@ Normal_P3: </code></pre>
 <p>Now, we notice a <code>logcounts</code> assay in our object.</p>
 <p>Next, we will define a neighbourhood on which we want to compute spatial statistics metrics. For computational reasons we will consider a <span class="math inline">\(k\)</span> nearest neighbourhood around the cells.</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">allGraphs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/findSpatialNeighbors.html">findSpatialNeighbors</a></span><span class="op">(</span><span class="va">sfeMult</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">allGraphs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/findSpatialNeighbors.html">findSpatialNeighbors</a></span><span class="op">(</span><span class="va">sfeMult</span>,</span>
 <span>    method <span class="op">=</span> <span class="st">"knearneigh"</span>, <span class="co"># wraps the spdep function with the same name</span></span>
 <span>    k <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>    zero.policy <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>    sample_id <span class="op">=</span> <span class="st">"all"</span></span>
 <span>  <span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/spatialGraphs.html">colGraphs</a></span><span class="op">(</span><span class="va">sfeMult</span>, <span class="st">"knn5"</span>, sample_id <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">allGraphs</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/spatialGraphs.html">colGraphs</a></span><span class="op">(</span><span class="va">sfeMult</span>, <span class="st">"knn5"</span>, sample_id <span class="op">=</span> <span class="st">"all"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">allGraphs</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -788,7 +791,7 @@ Normal_P3: </code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Question
+<span class="screen-reader-only">Important</span>Question
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -799,12 +802,12 @@ Question
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Answer
+<span class="screen-reader-only">Tip</span>Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -812,17 +815,17 @@ Answer
 <div class="callout-body-container callout-body">
 <p>First, we need to calculate univariate Moran’s <span class="math inline">\(I\)</span> for all samples</p>
 <div class="cell">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfeMult</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/calculateUnivariate.html">runUnivariate</a></span><span class="op">(</span><span class="va">sfeMult</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfeMult</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/calculateUnivariate.html">runUnivariate</a></span><span class="op">(</span><span class="va">sfeMult</span>,</span>
 <span>                     features <span class="op">=</span> <span class="st">"PIGR"</span>,</span>
 <span>                     colGraphName <span class="op">=</span> <span class="st">"knn5"</span>,</span>
 <span>                     exprs_values <span class="op">=</span> <span class="st">"logcounts"</span>,</span>
 <span>                     sample_id <span class="op">=</span> <span class="st">"all"</span>,</span>
 <span>                     type <span class="op">=</span> <span class="st">"moran.mc"</span>,</span>
-<span>                     nsim <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>                     nsim <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">sfeMult</span><span class="op">)</span><span class="op">[</span><span class="st">"PIGR"</span>,<span class="op">]</span></span>
-<span><span class="va">res</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">sfeMult</span><span class="op">)</span><span class="op">[</span><span class="st">"PIGR"</span>,<span class="op">]</span></span>
+<span><span class="va">res</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>DataFrame with 1 row and 27 columns
                   ID      Symbol            Type moran.mc_statistic_Normal_P5
@@ -868,7 +871,7 @@ PIGR -0.00299195,-0.00312027, 0.00708293,...</code></pre>
 </div>
 <p>In order to model these measures, we have to convert the data into long format</p>
 <div class="cell">
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_long</span> <span class="op">&lt;-</span> <span class="va">res</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_long</span> <span class="op">&lt;-</span> <span class="va">res</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html">rownames_to_column</a></span><span class="op">(</span><span class="st">"gene"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span></span>
 <span>    cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"moran.mc_statistic"</span><span class="op">)</span>,</span>
@@ -878,7 +881,7 @@ PIGR -0.00299195,-0.00312027, 0.00708293,...</code></pre>
 <span>  <span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">sample</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"condition"</span>, <span class="st">"replicate"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"_"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span> <span class="st">"gene"</span>, <span class="st">"condition"</span>,  <span class="st">"replicate"</span>, <span class="st">"measure"</span>, <span class="st">"morans"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">df_long</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">df_long</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
   gene  condition replicate measure   morans
@@ -890,7 +893,7 @@ PIGR -0.00299195,-0.00312027, 0.00708293,...</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">df_long</span><span class="op">$</span><span class="va">condition</span>, <span class="va">df_long</span><span class="op">$</span><span class="va">replicate</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">df_long</span><span class="op">$</span><span class="va">condition</span>, <span class="va">df_long</span><span class="op">$</span><span class="va">replicate</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        
          P1 P3 P5
@@ -901,14 +904,14 @@ PIGR -0.00299195,-0.00312027, 0.00708293,...</code></pre>
 <p>We see that we have a nested variance structure in this data. We have two conditions “Normal” and “Cancer”. We note that the patient identifiers are not unique, meaning that we have some samples from the same patient.</p>
 <p>In order to account for this dependence, we have to model the data with a mixed-effects model. One option is the <code>lme4</code> package in R.</p>
 <div class="cell">
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#convert condition to a factor and relevel to have Normal as comparison group</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#convert condition to a factor and relevel to have Normal as comparison group</span></span>
 <span><span class="va">df_long</span><span class="op">$</span><span class="va">condition</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">df_long</span><span class="op">$</span><span class="va">condition</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/relevel.html">relevel</a></span><span class="op">(</span>ref <span class="op">=</span> <span class="st">"Normal"</span><span class="op">)</span></span>
-<span><span class="va">mdl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html">lmer</a></span><span class="op">(</span><span class="va">morans</span> <span class="op">~</span> <span class="va">condition</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span><span class="op">|</span><span class="va">replicate</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">df_long</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">mdl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/lme4/man/lmer.html">lmer</a></span><span class="op">(</span><span class="va">morans</span> <span class="op">~</span> <span class="va">condition</span> <span class="op">+</span> <span class="op">(</span><span class="fl">1</span><span class="op">|</span><span class="va">replicate</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">df_long</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>boundary (singular) fit: see help('isSingular')</code></pre>
 </div>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">mdl</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">mdl</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear mixed model fit by REML. t-tests use Satterthwaite's method [
 lmerModLmerTest]
@@ -944,8 +947,8 @@ boundary (singular) fit: see help('isSingular')</code></pre>
 <p>We note that in this example there is no difference in the global Moran’s <span class="math inline">\(I\)</span> value for the gene “PIGR”. This not surprising since a model with 3 independent samples is strongly under-powered.</p>
 <p>An important step in interpreting a statistical model is looking at some model diagnostics. We will plot the qq plot of this mixed effects model. We note that the four samples follow the theoretical line well. But we notice again, that having only four samples is a great limitation of this dataset.</p>
 <div class="cell">
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">resid</a></span><span class="op">(</span><span class="va">mdl</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">resid</a></span><span class="op">(</span><span class="va">mdl</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">resid</a></span><span class="op">(</span><span class="va">mdl</span><span class="op">)</span>, pch <span class="op">=</span> <span class="fl">16</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">resid</a></span><span class="op">(</span><span class="va">mdl</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="day2-1_spatial_stats_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
@@ -1032,13 +1035,14 @@ Rao, Anjali, Dalia Barkley, Gustavo S França, and Itai Yanai. 2021. <span>“Ex
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

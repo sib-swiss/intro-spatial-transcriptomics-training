@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Exercise 4 – Sequencing-based Spatial Transcriptomics</title>
 <style>
@@ -64,14 +64,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../assets/SIB_logo.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d7c71df65b5363f6f7750ba122c526e6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-04feb1dfa86de9cddb7a20bd83ef3b7a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -105,6 +106,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Sequencing-based Spatial Transcriptomics</span>
     </a>
@@ -197,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
       </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -236,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/prabhakarlab/Banksy">Banksy</a></span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/prabhakarlab/Banksy">Banksy</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r.igraph.org/">igraph</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/ggspavis">ggspavis</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">BayesSpace</span><span class="op">)</span></span>
@@ -251,7 +254,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/qsbase/qs2">qs2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sjmgarnier.github.io/viridis/">viridis</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">pheatmap</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">pheatmap</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="clustering-and-spatially-aware-clustering" class="level2"><h2 class="anchored" data-anchor-id="clustering-and-spatially-aware-clustering">Clustering and Spatially-aware clustering</h2>
 <p>In the next section we will explore clustering methods for spatial transcriptomics data, including classical non-spatially aware and spatially-aware approaches.</p>
@@ -264,20 +267,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></section><section id="clustering" class="level2"><h2 class="anchored" data-anchor-id="clustering">Clustering</h2>
 <p>Load the previously saved <code>SpatialExperiment</code> object which contains information on the HVGs and dimensionationality reduction computed with Banksy and PCA.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">loadHDF5SummarizedExperiment</a></span><span class="op">(</span>dir<span class="op">=</span><span class="st">"results/day1"</span>, prefix<span class="op">=</span><span class="st">"01.3_spe"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">loadHDF5SummarizedExperiment</a></span><span class="op">(</span>dir<span class="op">=</span><span class="st">"results/day1"</span>, prefix<span class="op">=</span><span class="st">"01.3_spe"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="non-spatial-aware-clustering" class="level3"><h3 class="anchored" data-anchor-id="non-spatial-aware-clustering">Non-spatial aware clustering</h3>
 <p>Clustering methods can be categorized into non-spatially aware, classically used for scRNA-seq analysis, and spatially-aware methods. We will first explore non-spatially aware clustering using graph-based methods.</p>
 <section id="leiden-clustering" class="level4"><h4 class="anchored" data-anchor-id="leiden-clustering">Leiden clustering</h4>
 <p>As commonly done in single-cell RNA-seq analysis, we can perform graph-based clustering using the Leiden algorithm on a shared nearest-neighbor (SNN) graph constructed from the PCA results.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># build cellular shared nearest-neighbor (SNN) graph</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># build cellular shared nearest-neighbor (SNN) graph</span></span>
 <span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scran/man/buildSNNGraph.html">buildSNNGraph</a></span><span class="op">(</span><span class="va">spe</span>, use.dimred<span class="op">=</span><span class="st">"PCA"</span>, type<span class="op">=</span><span class="st">"jaccard"</span>, k<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span>
 <span><span class="co"># cluster using Leiden community detection algorithm</span></span>
 <span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r.igraph.org/reference/cluster_leiden.html">cluster_leiden</a></span><span class="op">(</span><span class="va">g</span>, objective_function<span class="op">=</span><span class="st">"modularity"</span>, resolution<span class="op">=</span><span class="fl">0.6</span><span class="op">)</span></span>
 <span><span class="co"># assign cluster labels to spe object</span></span>
 <span><span class="va">spe</span><span class="op">$</span><span class="va">Leiden</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">membership</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">Leiden</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">Leiden</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    1    2    3    4    5    6    7 
@@ -289,14 +292,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="probabilistic-bayesspace" class="level4"><h4 class="anchored" data-anchor-id="probabilistic-bayesspace">Probabilistic: BayesSpace</h4>
 <p>We can use the <code>BayesSpace</code> package to perform spatially aware clustering using a Bayesian modeling approach.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># prepare data for 'BayesSpace'</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># prepare data for 'BayesSpace'</span></span>
 <span><span class="co"># skipping PCA (already computed)</span></span>
 <span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BayesSpace/man/spatialPreprocess.html">spatialPreprocess</a></span><span class="op">(</span><span class="va">spe</span>, skip.PCA<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co"># perform spatial clustering with 'BayesSpace'</span></span>
 <span><span class="co"># using 'd=10' PCs and targeting 'q=8' clusters</span></span>
 <span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BayesSpace/man/spatialCluster.html">spatialCluster</a></span><span class="op">(</span><span class="va">spe</span>, q<span class="op">=</span><span class="fl">8</span>, d<span class="op">=</span><span class="fl">10</span>, nrep<span class="op">=</span><span class="fl">1e3</span>, burn.in<span class="op">=</span><span class="fl">100</span><span class="op">)</span> </span>
 <span><span class="va">spe</span><span class="op">$</span><span class="va">BayesSpace</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">spatial.cluster</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">BayesSpace</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">BayesSpace</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    1    2    3    4    5    6    7    8 
@@ -306,12 +309,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="graph-based-banksy" class="level4"><h4 class="anchored" data-anchor-id="graph-based-banksy">Graph-based: Banksy</h4>
 <p>We have computed spatially-aware principal components using Banksy already in the previous practical. We will now used these to perform SNN graph-based Leiden clustering, in order to obtain spatially-aware clusters. When building the SNN graph, we will use the same parameters we have used before for the non-spatially aware graph.</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># perform SNN graph-based clustering on 'Banksy' PCs using</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># perform SNN graph-based clustering on 'Banksy' PCs using</span></span>
 <span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scran/man/buildSNNGraph.html">buildSNNGraph</a></span><span class="op">(</span><span class="va">spe</span>, use.dimred<span class="op">=</span><span class="st">"PCA_banksy"</span>, type<span class="op">=</span><span class="st">"jaccard"</span>, k<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span>
 <span><span class="co"># cluster using Leiden community detection algorithm</span></span>
 <span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r.igraph.org/reference/cluster_leiden.html">cluster_leiden</a></span><span class="op">(</span><span class="va">g</span>, objective_function<span class="op">=</span><span class="st">"modularity"</span>, resolution<span class="op">=</span><span class="fl">0.6</span><span class="op">)</span></span>
 <span><span class="va">spe</span><span class="op">$</span><span class="va">Banksy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">membership</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">Banksy</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">Banksy</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    1    2    3    4    5    6    7    8    9   10 
@@ -321,7 +324,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section></section></section><section id="visualisation-of-the-different-clustering-methods" class="level2"><h2 class="anchored" data-anchor-id="visualisation-of-the-different-clustering-methods">Visualisation of the different clustering methods:</h2>
 <p>Let’s visualize the clustering results from the different methods on the tissue slide.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define the three clustering methods to compare</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define the three clustering methods to compare</span></span>
 <span><span class="va">ks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"BayesSpace"</span>, <span class="st">"Leiden"</span>, <span class="st">"Banksy"</span><span class="op">)</span> </span>
 <span><span class="co"># Plot spatial distribution of clusters for each method</span></span>
 <span><span class="va">plots</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">ks</span>, \<span class="op">(</span><span class="va">.</span><span class="op">)</span> <span class="op">{</span></span>
@@ -332,7 +335,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co"># combine plots</span></span>
 <span><span class="va">plots</span> <span class="op">|&gt;</span>  <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/wrap_plots.html">wrap_plots</a></span><span class="op">(</span>nrow<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">&amp;</span></span>
 <span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span> <span class="op">&amp;</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.key.size<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0</span>, <span class="st">"lines"</span><span class="op">)</span>, legend.justification<span class="op">=</span><span class="st">"left"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.key.size<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/grid/unit.html">unit</a></span><span class="op">(</span><span class="fl">0</span>, <span class="st">"lines"</span><span class="op">)</span>, legend.justification<span class="op">=</span><span class="st">"left"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="day1-4_clustering_find_markers_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
@@ -342,7 +345,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>It can help us to visualise the clusters one by one, in order to better see their spatial distribution. We take as an example the Banksy clusters:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot selected clusters in order of frequency,</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot selected clusters in order of frequency,</span></span>
 <span><span class="co"># highlighting cells assigned to cluster 'k'</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">tail</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">Banksy</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>, <span class="fl">8</span><span class="op">)</span>, \<span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="va">spe</span><span class="op">$</span><span class="va">foo</span> <span class="op">&lt;-</span> <span class="va">spe</span><span class="op">$</span><span class="va">Banksy</span> <span class="op">==</span> <span class="va">k</span></span>
@@ -354,7 +357,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="op">}</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/wrap_plots.html">wrap_plots</a></span><span class="op">(</span>nrow<span class="op">=</span><span class="fl">3</span><span class="op">)</span> <span class="op">&amp;</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"white"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span> <span class="op">&amp;</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span>, legend.position<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span>, legend.position<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="day1-4_clustering_find_markers_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
@@ -368,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 1
+<span class="screen-reader-only">Important</span>Exercise 1
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -379,8 +382,8 @@ Exercise 1
 <p>We’ll use the annotation of the scRNA-seq dataset (10X FLEX technology) generated along with the VisiumHD used in the practicals (See the record on <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE280311">GEO</a> and the related <a href="https://github.com/10XGenomics/HumanColonCancer_VisiumHD/tree/main">Github repository</a>). We subsetted this reference dataset to 5,000 cells.</p>
 <p>To annotate each spot, we use the <code><a href="https://rdrr.io/pkg/SingleR/man/SingleR.html">SingleR()</a></code> method, which uses a correlation-based approach comparing test cells (here: spots) to reference samples with known cell-type annotation.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ref.se</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/qs2/man/qs_read.html">qs_read</a></span><span class="op">(</span><span class="st">"data/Human_Colon_Cancer_P1/NatGenetics2025_CRC_5k.SE.qs"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">colData</a></span><span class="op">(</span><span class="va">ref.se</span><span class="op">)</span><span class="op">$</span><span class="va">labels</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ref.se</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/qs2/man/qs_read.html">qs_read</a></span><span class="op">(</span><span class="st">"data/Human_Colon_Cancer_P1/NatGenetics2025_CRC_5k.SE.qs"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">colData</a></span><span class="op">(</span><span class="va">ref.se</span><span class="op">)</span><span class="op">$</span><span class="va">labels</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
               B cells           Endothelial            Fibroblast 
@@ -390,7 +393,7 @@ Intestinal Epithelial               Myeloid              Neuronal
         Smooth Muscle               T cells                 Tumor 
                   649                   351                  1090 </code></pre>
 </div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Predict cell-type using SingleR </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Predict cell-type using SingleR </span></span>
 <span><span class="va">pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleR/man/SingleR.html">SingleR</a></span><span class="op">(</span>test   <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/assays.html">logcounts</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span>,</span>
 <span>                ref    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">assay</a></span><span class="op">(</span><span class="va">ref.se</span>, <span class="st">"data"</span><span class="op">)</span>, <span class="co"># log-normalized counts        </span></span>
 <span>                labels <span class="op">=</span> <span class="va">ref.se</span><span class="op">$</span><span class="va">labels</span>,</span>
@@ -398,7 +401,7 @@ Intestinal Epithelial               Myeloid              Neuronal
 <span>                fine.tune <span class="op">=</span> <span class="cn">FALSE</span>,              <span class="co"># for faster computation here</span></span>
 <span><span class="op">)</span></span>
 <span><span class="va">spe</span><span class="op">$</span><span class="va">SingleR_label</span> <span class="op">&lt;-</span> <span class="va">pred</span><span class="op">$</span><span class="va">pruned.labels</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">SingleR_label</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">SingleR_label</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
               B cells           Endothelial            Fibroblast 
@@ -408,17 +411,17 @@ Intestinal Epithelial               Myeloid              Neuronal
         Smooth Muscle               T cells                 Tumor 
                   505                  1570                  2991 </code></pre>
 </div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># visualize the predictions on the tissue slide.</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># visualize the predictions on the tissue slide.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotCoords.html">plotCoords</a></span><span class="op">(</span><span class="va">spe</span>, annotate<span class="op">=</span><span class="st">"SingleR_label"</span>, point_shape <span class="op">=</span> <span class="fl">15</span>, point_size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_colour_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_colour_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="day1-4_clustering_find_markers_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotVisium.html">plotVisium</a></span><span class="op">(</span><span class="va">spe</span>, annotate<span class="op">=</span><span class="st">"SingleR_label"</span>, zoom <span class="op">=</span> <span class="cn">T</span>, point_shape <span class="op">=</span> <span class="fl">22</span>, point_size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotVisium.html">plotVisium</a></span><span class="op">(</span><span class="va">spe</span>, annotate<span class="op">=</span><span class="st">"SingleR_label"</span>, zoom <span class="op">=</span> <span class="cn">T</span>, point_shape <span class="op">=</span> <span class="fl">22</span>, point_size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_fill_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="day1-4_clustering_find_markers_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
@@ -432,7 +435,7 @@ Intestinal Epithelial               Myeloid              Neuronal
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exercise 2
+<span class="screen-reader-only">Important</span>Exercise 2
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -440,12 +443,12 @@ Exercise 2
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Answer
+<span class="screen-reader-only">Tip</span>Answer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -453,7 +456,7 @@ Answer
 <div class="callout-body-container callout-body">
 <p>Let’s compare to the Leiden cluster for example:</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tab_prop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">Leiden</span>, <span class="va">spe</span><span class="op">$</span><span class="va">SingleR_label</span><span class="op">)</span>, margin <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tab_prop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/proportions.html">prop.table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">Leiden</span>, <span class="va">spe</span><span class="op">$</span><span class="va">SingleR_label</span><span class="op">)</span>, margin <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="co">## For display: round and remove 0s</span></span>
 <span><span class="va">num_mat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">tab_prop</span>, <span class="fl">2</span><span class="op">)</span></span>
 <span><span class="va">num_mat</span><span class="op">[</span><span class="va">num_mat</span> <span class="op">==</span> <span class="fl">0</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="st">""</span></span>
@@ -475,7 +478,7 @@ Answer
 <span>  main <span class="op">=</span> <span class="st">"Leiden clusters vs. SingleR labels"</span>, </span>
 <span>  annotation_col <span class="op">=</span> <span class="va">group_df</span>,</span>
 <span>  annotation_colors <span class="op">=</span> <span class="va">ann_colors</span>  </span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure"><p><img src="day1-4_clustering_find_markers_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
@@ -489,15 +492,15 @@ Answer
 </section><section id="save-the-object" class="level2"><h2 class="anchored" data-anchor-id="save-the-object">Save the object</h2>
 <p>Save the <code>SpatialExperiment</code> object for the next steps:</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">saveHDF5SummarizedExperiment</a></span><span class="op">(</span><span class="va">spe</span>, dir<span class="op">=</span><span class="st">"results/day1"</span>, prefix<span class="op">=</span><span class="st">"01.4_spe"</span>, replace<span class="op">=</span><span class="cn">TRUE</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">saveHDF5SummarizedExperiment</a></span><span class="op">(</span><span class="va">spe</span>, dir<span class="op">=</span><span class="st">"results/day1"</span>, prefix<span class="op">=</span><span class="st">"01.4_spe"</span>, replace<span class="op">=</span><span class="cn">TRUE</span>,</span>
 <span>                                chunkdim<span class="op">=</span><span class="cn">NULL</span>, level<span class="op">=</span><span class="cn">NULL</span>, as.sparse<span class="op">=</span><span class="cn">NA</span>,</span>
-<span>                                verbose<span class="op">=</span><span class="cn">NA</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>                                verbose<span class="op">=</span><span class="cn">NA</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Clear your environment:</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/gc.html">gc</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu">.rs.restartR</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="fu">.rs.restartR</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
@@ -552,13 +555,14 @@ Answer
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
