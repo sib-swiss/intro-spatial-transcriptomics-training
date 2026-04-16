@@ -25,13 +25,18 @@ website:
           - href: "day1/day1-0_setup.qmd"
           - href: "day1/day1-1_SpatialExperiment.qmd"
           - href: "day1/day1-2_spotsweeper_qc.qmd"
-          - href: "day1/day1-3_feature_dimred_cluster.qmd"
+          - href: "day1/day1-3_img_qc.qmd"
       - text: "day 2"
-        menu: 
-          - href: "day1/day1-4_clustering_find_markers.qmd"
-          - href: "day2/day2-1_spatial_stats.qmd"
-          - href: "day2/day2-2_svg_feature_set_signatures.qmd"
-          - href: "day2/day2-3_differential_spatial_pattern.qmd"
+        menu:
+          - href: "day2/day2-1_normalization.qmd"
+          - href: "day2/day2-2_feature_dimred.qmd"
+          - href: "day2/day2-3_clustering_find_markers.qmd"
+          - href: "day2/day2-4_annotation.qmd"
+      - text: "day 3"
+        menu:
+          - href: "day3/day3-1_spatial_stats.qmd"
+          - href: "day3/day3-2_svg_feature_set_signatures.qmd"
+          - href: "day3/day3-3_differential_spatial_pattern.qmd"
     right:
       - icon: github
         href: https://github.com/sib-swiss/seq-spatial-transcriptomics-training

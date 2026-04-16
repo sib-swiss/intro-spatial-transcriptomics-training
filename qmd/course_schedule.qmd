@@ -8,32 +8,44 @@ title: "Course schedule"
 
 ## Day 1
 
-| block         | start | end   | topic                                                        | instructor                   | presentation | exercise |
+| block         | start | end   | topic                                                        | instructors                 | presentation | exercise |
 |---------------|-------|-------|--------------------------------------------------------------|------------------------------|--------------|----------|
 | introduction  | 9:00  | 9:30  | Introduction to the course                                   | Deepak Tanwar                |  [link](../assets/pdf/01_introduction.pdf) | |
 | block 1       | 9:30  | 10:15 | Introduction to spatial omics                                | Joana Carlevaro-Fita         |  [link](../assets/pdf/02_introduction_spatial_omics.pdf)  | |
 | break         | 10:15 | 10:45 | Coffee break                                                 |                              | | |
 | block 2       | 10:45 | 11:45 | Segmentation                                                 | Ivan Berest                  |  [link](../assets/pdf/03_space_ranger_spe.pdf) | |
-| block 3       | 11:45 | 12:30 | Lecture: pre-processing, and data structure                  | Deepak Tanwar               |  [link](../assets/pdf/03_space_ranger_spe.pdf) | |
+| block 3       | 11:45 | 12:30 | Lecture: pre-processing, and data structure                  | Deepak Tanwar                |  [link](../assets/pdf/03_space_ranger_spe.pdf) | |
 | break         | 12:30 | 13:30 | Lunch                                                        |                              | | |
-| block 3       | 11:45 | 12:30 | Exercise: setup and data structure                           | Deepak Tanwar, Julien Roux  | | [Setup](../day1/day1-0_setup.qmd), [Exercise 1](../day1/day1-1_SpatialExperiment.qmd) |
-
-| block 3       | 1:30  | 3:00  | Quality control and normalization                            | Deepak Tanwar        |  [QC and normalization](../assets/pdf/04_qc_norm.pdf)  | [Exercise 2](../day1/day1-2_spotsweeper_qc.qmd) |
-| break         | 3:00  | 3:30  |                                                              |                       | | |
-| block 4       | 3:30  | 5:15  | Feature selection, dimensionality reduction                  | Joana Carlevaro-Fita |  [Intermediate processing](../assets/pdf/05_preprocessing.pdf) |  [Exercise 3](../day1/day1-3_feature_dimred_cluster.qmd)  |
-
+| block 3       | 1:30  | 2:00  | Exercise: setup and data structure                           | Deepak Tanwar, Julien Roux   | | [Setup](../day1/day1-0_setup.qmd), [Exercise 1](../day1/day1-1_SpatialExperiment.qmd) |
+| block 4       | 2:00  | 3:30  | Quality control and normalization (sequencing-based)         | Deepak Tanwar                |  [link](../assets/pdf/04_qc_norm.pdf)  | [Exercise 2](../day1/day1-2_spotsweeper_qc.qmd) |
+| break         | 3:30  | 4:00  | Coffee break                                                 |                              | | |
+| block 4       | 4:00  | 5:00  | Quality control (image-based)                                | Ivan Berest                  |  [link](../assets/pdf/05_qc_img.pdf)  | [Exercise 3](../day1/day1-3_img_qc.qmd) |
 
 ## Day 2
 
-| block   | start | end   | topic                                                 | instructor           | presentation | exercise |
-|---------|-------|-------|-------------------------------------------------------|----------------------|--------------|----------|
-| block 1 | 9:15  | 10:30 | Clustering and annotation                             | Joana Carlevaro-Fita |  [Clustering](../assets/pdf/06_spatial_domains.pdf)  | [Exercise 4](../day1/day1-4_clustering_find_markers.qmd) |
-| break   | 10:30 | 11:00 |                                                       |                      |  |  |
-| block 2 | 11:00 | 11:45 | Spatial statistics                                    | Mark Robinson        | [Statistical methods](../assets/pdf/07_stats_methods.pdf) |  |
-| block 2 | 11:45 | 12:30 | Co-localization analysis                              | Martin Emons         |  [Spatial stats](../assets/pdf/08_spastat_lecture.pdf)  |          |
-| break   | 12:30 | 1:30 |                                                        |                      |  |  |
-| block 3 | 1:30  | 2:15  | Exercises: co-localisation analysis                   | Martin Emons         |              | [Exercise 5](../day2/day2-1_spatial_stats.qmd) |
-| block 3 | 2:15  | 3:00  | SVG and DSP for spatial data                          | Peiying Cai          |  [SVG and DSP](../assets/pdf/09_svg_dsp.pdf) |          |
-| break   | 3:00  | 3:30  |                                                       |                      |  |  |
-| block 4 | 3:30  | 4:15  | Exercise: SVG and DSP for spatial data                | Peiying Cai          |              | [Exercise 6](../day2/day2-2_svg_feature_set_signatures.qmd), [Exercise 7](../day2/day2-3_differential_spatial_pattern.qmd) |
-| post-course | 4:15  | 4:30  | Post-course information                           | Deepak Tanwar        | [Closing remarks](../assets/pdf/10_post_course.pdf)  |          |
+| block   | start | end   | topic                                                 | instructors                       | presentation | exercise |
+|---------|-------|-------|-------------------------------------------------------|-----------------------------------|--------------|----------|
+| recap   | 9:00  | 9:15  | Recap from day 1                                      | Joana Carlevaro-Fita              |  |  |
+| block 1 | 9:15  | 10:15 | Normalization and scaling                             | Deepak Tanwar                     |  [link](../assets/pdf/06_normalization.pdf)  | [Exercise 4](../day1/day2-1_normalization.qmd) |
+| break   | 10:15 | 10:45 | Coffee break                                          |                                   |  |  |
+| block 2 | 10:45 | 11:30 | Lecture: feature selection, dimensionality reduction  | Joana Carlevaro-Fita              |  [link](../assets/pdf/07_feature_selection_dim_red.pdf) | |
+| block 2 | 11:30 | 12:30 | Exercise: feature selection, dimensionality reduction | Joana Carlevaro-Fita, Julien Roux | |  [Exercise 5](../day2/day2-2_feature_dimred.qmd)  |
+| break   | 12:30 | 13:30 | Lunch                                                 |                                   | | |
+| block 3 | 1:30  | 2:00  | Lecture: clustering                                   | Joana Carlevaro-Fita              |  [link](../assets/pdf/08_clustering.pdf)  | |
+| block 3 | 2:00  | 2:45  | Exercise: clustering and visualization                | Joana Carlevaro-Fita, Julien Roux | | [Exercise 6](../day2/day2-3_clustering_find_markers.qmd) |
+| break   | 2:45  | 3:15  | Coffee break                                          |                                   |  |  |
+| block 4 | 3:15  | 3:45  | Lecture: annotation                                   | Ivan Berest                       | [link](../assets/pdf/09_annotation.pdf) |  |
+| block 4 | 3:45  | 4:45  | Exercise: annotation                                  | Ivan Berest, Julien Roux          | | [Exercise 7](../day2/day2-4_annotation.qmd) |
+
+## Day 3
+
+| block       | start | end   | topic                                                 | instructors                       | presentation | exercise |
+|-------------|-------|-------|-------------------------------------------------------|-----------------------------------|--------------|----------|
+| recap       | 9:00  | 9:15  | Recap from day 1                                      | Joana Carlevaro-Fita              |  |  |
+| block 1     | 9:15  | 10:15 | Spatial statistics                                    | Mark Robinson                     | [link](../assets/pdf/10_stats_methods.pdf) |  |
+| break       | 10:15 | 10:45 | Coffee break                                          |                                   | |  |
+| block 2     | 10:45 | 12:30 | Co-localization analysis                              | Martin Emons                      | [link](../assets/pdf/11_spastat_lecture.pdf)  | [Exercise 8](../day3/day3-1_spatial_stats.qmd) |
+| break       | 12:30 | 13:30 | Lunch                                                 |                                   | | |
+| block 3     | 1:30  | 3:00  | SVG and DSP for spatial data                          | Peiying Cai                       |  [SVG and DSP](../assets/pdf/12_svg_dsp.pdf) | [Exercise 9](../day3/day3-2_svg_feature_set_signatures.qmd), [Exercise 10](../day3/day3-3_differential_spatial_pattern.qmd) |
+| break       | 3:00  | 3:30  | Coffee break                                          |                                   |  |  |
+| post-course | 4:45  | 5:00  | Post-course information                               | Deepak Tanwar                     | [link](../assets/pdf/13_post_course.pdf)  | |

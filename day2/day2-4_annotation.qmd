@@ -1,0 +1,9 @@
+---
+title: "Exercise 7"
+format: html
+editor: source
+editor_options: 
+  chunk_output_type: console
+execute:
+  warning: false
+---
