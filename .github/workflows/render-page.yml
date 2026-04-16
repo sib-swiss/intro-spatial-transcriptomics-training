@@ -20,7 +20,7 @@ jobs:
   publish-site:
     runs-on: ubuntu-24.04-arm
     container:
-      image: sibswiss/training-seq-spatial-transcriptomics-rstudio:latest
+      image: sibswiss/training-intro-spatial-transcriptomics-rstudio:latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4

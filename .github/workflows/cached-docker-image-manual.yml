@@ -22,7 +22,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            sibswiss/training-seq-spatial-transcriptomics-rstudio
+            sibswiss/training-intro-spatial-transcriptomics-rstudio
           tags: latest
 
       # 4. Log in to Docker Hub
@@ -43,7 +43,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./Docker
-          platforms: linux/amd64
+          platforms: linux/arm64
           push: true
           tags: |
             ${{ steps.meta.outputs.tags }}
