@@ -46,6 +46,6 @@ title: "Course schedule"
 | break       | 10:15 | 10:45 | Coffee break                                          |                                   | |  |
 | block 2     | 10:45 | 12:30 | Co-localization analysis                              | Martin Emons                      | [link](../assets/pdf/11_spastat_lecture.pdf)  | [Exercise 8](../day3/day3-1_spatial_stats.qmd) |
 | break       | 12:30 | 13:30 | Lunch                                                 |                                   | | |
-| block 3     | 1:30  | 3:00  | SVG and DSP for spatial data                          | Peiying Cai                       |  [SVG and DSP](../assets/pdf/12_svg_dsp.pdf) | [Exercise 9](../day3/day3-2_svg_feature_set_signatures.qmd), [Exercise 10](../day3/day3-3_differential_spatial_pattern.qmd) |
+| block 3     | 1:30  | 3:00  | SVG and DSP for spatial data                          | Peiying Cai                       |  [link](../assets/pdf/12_svg_dsp.pdf) | [Exercise 9](../day3/day3-2_svg_feature_set_signatures.qmd), [Exercise 10](../day3/day3-3_differential_spatial_pattern.qmd) |
 | break       | 3:00  | 3:30  | Coffee break                                          |                                   |  |  |
 | post-course | 4:45  | 5:00  | Post-course information                               | Deepak Tanwar                     | [link](../assets/pdf/13_post_course.pdf)  | |
