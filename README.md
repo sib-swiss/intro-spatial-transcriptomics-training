@@ -1,14 +1,12 @@
-![build workflow](https://github.com/sib-swiss/seq-spatial-transcriptomics-training/actions/workflows/docker-image.yml/badge.svg)
-![GitHub Release Date](https://img.shields.io/github/release-date/sib-swiss/seq-spatial-transcriptomics-training)
+![build workflow](https://github.com/sib-swiss/intro-spatial-transcriptomics-training/actions/workflows/docker-image.yml/badge.svg)
+![GitHub Release Date](https://img.shields.io/github/release-date/sib-swiss/intro-spatial-transcriptomics-training)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-This website is hosted at: https://sib-swiss.github.io/seq-spatial-transcriptomics-training
+This website is hosted at: https://sib-swiss.github.io/intro-spatial-transcriptomics-training
 
-Please refer to [issues](https://github.com/sib-swiss/seq-spatial-transcriptomics-training/issues) for improvements/bugs for course material or the website. 
+Please refer to [issues](https://github.com/sib-swiss/intro-spatial-transcriptomics-training/issues) for improvements/bugs for course material or the website. 
 
 Any contribution to this course material is highly appreciated :+1:. Please have a look at the [CONTRIBUTING.md](CONTRIBUTING.md) file to learn more on how to contribute. 
-
-# Course website biology-informed-multiomics
 
 ## Authors
 
@@ -27,8 +25,8 @@ This website is generated with [quarto](https://quarto.org/). To contribute or r
 
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/sib-swiss/seq-spatial-transcriptomics-training.git
-   cd seq-spatial-transcriptomics-training
+   git clone https://github.com/sib-swiss/intro-spatial-transcriptomics-training.git
+   cd intro-spatial-transcriptomics-training
    ```
 
 2. **Install R packages:** This project uses `renv` to manage R dependencies. To install the required packages, open R and run:
@@ -64,7 +62,7 @@ For a reproducible environment, you can use the provided Docker setup. A pre-bui
 
 1. **Pull the Docker image:**
    ```sh
-   docker pull sibswiss/training-seq-spatial-transcriptomics-rstudio:latest
+   docker pull sibswiss/training-intro-spatial-transcriptomics-rstudio:latest
    ```
 
 2. **Run the Docker container:** Navigate to the `Docker` directory and use the provided script to run the container:
@@ -74,6 +72,6 @@ For a reproducible environment, you can use the provided Docker setup. A pre-bui
    ```
    Alternatively, you can run the container manually from the project root directory:
    ```sh
-   docker run --rm -p 8787:8787 -v $PWD:/home/rstudio sibswiss/training-seq-spatial-transcriptomics-rstudio:latest
+   docker run --rm -p 8787:8787 -v $PWD:/home/rstudio sibswiss/training-intro-spatial-transcriptomics-rstudio:latest
    ```
    This will start an RStudio server on http://localhost:8787. The `-v $PWD:/home/rstudio` command mounts the current directory into the container, so you can edit the files locally and see the changes reflected in the container.

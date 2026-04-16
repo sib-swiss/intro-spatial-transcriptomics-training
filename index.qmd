@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Sequencing-based Spatial Transcriptomics Data Analysis"
+title: "Introduction to Spatial Transcriptomics Data Analysis"
 ---
 
 <!-- <figure> -->
@@ -19,7 +19,7 @@ title: "Introduction to Sequencing-based Spatial Transcriptomics Data Analysis"
 
 ## License & copyright
 
-**License:** [CC BY 4.0](https://github.com/sib-swiss/seq-spatial-transcriptomics-training/blob/master/LICENSE.md)
+**License:** [CC BY 4.0](https://github.com/sib-swiss/intro-spatial-transcriptomics-training/blob/master/LICENSE.md)
 
 **Copyright:** [SIB Swiss Institute of Bioinformatics](https://www.sib.swiss/)
 
@@ -29,11 +29,11 @@ title: "Introduction to Sequencing-based Spatial Transcriptomics Data Analysis"
 
 At the end of the course, the participants are expected to:
 
-- Explain the principles and describe applications of sequencing-based spatially-resolved transcriptomics (SRT)
-- Define the differences between sequencing-based SRT methods and imaging-based SRT methods.
-- Identify potential pitfalls and limitations of sequencing-based SRT experiments and analysis workflows.
-- Assess and interpret raw sequencing outputs and spatial metadata files, understanding their structure and relevance for downstream analyses.
-- Define important aspects of quality control, feature selection, dimensionality reduction and differentail gene expression to SRT data and apply those.
+- Explain the principles and describe applications of both sequencing-based and imaging-based spatially-resolved transcriptomics (SRT)
+- Identify potential pitfalls and limitations of SRT experiments and analysis workflows.
+- Define applications for cell segmentation and apply frequently-used cell segmentation methods
+- Assess and interpret raw outputs and spatial metadata files, understanding their structure and relevance for downstream analyses.
+- Define important aspects of quality control, feature selection, dimensionality reduction and differential gene expression to SRT data and apply those.
 - Clarify various spatial statistics and their application to biological questions.
 - Use frequently-used methods to analyze multi-sample SRT experiments.
 
@@ -48,4 +48,4 @@ To reach the learning outcomes we will use lectures, exercises, polls and group 
 
 ### Exercises
 
-Each block has practical work involved. Some more than others. The practicals are subdivided into chapters, and we'll have a (short) discussion after each chapter. All answers to the practicals are incorporated, but they are hidden. Do the exercise first by yourself, before checking out the answer. If your answer is different from the answer in the practicals, try to figure out why they are different.
+Several blocks has practical work involved. Some more than others. We'll have a (short) discussion after each exercise block. All answers to the practicals are incorporated, but they are hidden. Do the exercise first by yourself, before checking out the answer. If your answer is different from the answer in the practicals, try to figure out why they are different.

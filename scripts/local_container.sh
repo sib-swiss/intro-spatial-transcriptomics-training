@@ -4,4 +4,4 @@ docker run \
 --name rstudio_admin \
 -e PASSWORD=test123 \
 -v $PWD:/home/rstudio \
-sibswiss/training-singlecell-rstudio:latest
+training-intro-spatial-transcriptomics-rstudio:latest
