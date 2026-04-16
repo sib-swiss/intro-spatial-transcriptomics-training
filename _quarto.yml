@@ -7,7 +7,7 @@ project:
     - "!LICENSE.md"
 
 website:
-  title: "Sequencing-based Spatial Transcriptomics"
+  title: "Spatial Transcriptomics"
   favicon: assets/SIB_logo.svg
   search: true
   page-navigation: true
