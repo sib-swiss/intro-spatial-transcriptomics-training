@@ -8,6 +8,8 @@ FROM rocker/rstudio:4.5.3
 # Install system dependencies required for R packages
 RUN apt-get update && apt-get install -y \
     build-essential \
+    git \
+    openssh-client \
     libxt6 \
     libgl1 \
     libcurl4-openssl-dev \
