@@ -22,7 +22,7 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            sibswiss/training-seq-spatial-transcriptomics-rstudio
+            sibswiss/training-intro-spatial-transcriptomics-rstudio
           tags: latest
 
       - name: Log in to Docker Hub
@@ -31,14 +31,24 @@ jobs:
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
         shell: bash
 
+      - name: Cache R packages
+        uses: actions/cache@v3
+        with:
+          path: /renv_cache
+          key: ${{ runner.os }}-renv-${{ hashFiles('Docker/renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
+            
       # Step 5: Build and push Docker image to GHCR
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: ./Docker
-          platforms: linux/amd64
+          platforms: linux/arm64
           push: true
           tags: |
             ${{ steps.meta.outputs.tags }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          build-args: |
+            RENV_PATHS_CACHE=/renv_cache

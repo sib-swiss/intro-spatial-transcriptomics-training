@@ -30,6 +30,8 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     libicu-dev \
+    libabsl-dev \
+    libfftw3-dev \
     tree \
     cmake \
     gdal-bin \
@@ -37,11 +39,10 @@ RUN apt-get update && apt-get install -y \
     fontconfig \
     && rm -rf /var/lib/apt/lists/*
 
-
 COPY renv.lock ./
 
 ENV RENV_INSTALL_THREADS=8
 
 RUN Rscript -e 'install.packages("renv", version = "1.1.8", repos="https://cloud.r-project.org", type="source")'
 
-#RUN Rscript -e 'renv::restore()'
+RUN Rscript -e 'renv::restore()'
