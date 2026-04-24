@@ -1,0 +1,80 @@
+---
+title: "Data Preparation (2026 Course)"
+format: html
+editor: source
+execute:
+  eval: false
+---
+
+## Overview
+
+This document describes the steps to download and prepare the datasets for the 2026 version of the course. We have shifted our focus to **Patient 2 (P2CRC)** from the Oliveira et al. (2025) study, utilizing both **Visium HD (Segmented)** and **Xenium** data.
+
+## Official 10X Genomics Datasets
+
+We will use the following datasets:
+
+1.  **Visium HD (v4.0):** [Human Colon Cancer, CytAssist Gene Expression Libraries](https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-libraries-of-human-crc-v4)
+2.  **Xenium:** [Human Colon Cancer (P2CRC)](https://www.10xgenomics.com/platforms/xenium/product-family/dataset-human-crc)
+
+## 1. Download Datasets
+
+```{r download-data}
+# Create data directory
+if (!dir.exists("data")) dir.create("data")
+
+# --- Visium HD (P2CRC) ---
+# We download the 'Feature / Cell Matrix (Raw)' and 'Spatial Imaging Data' 
+# or the full output folder if available. 
+# Note: For the segmented output, we specifically need Space Ranger v4.0 outputs.
+
+vhd_url <- "https://cf.10xgenomics.com/samples/spatial-exp/4.0.0/Visium_HD_Human_Colon_Cancer/Visium_HD_Human_Colon_Cancer_feature_slice.tar.gz"
+
+if (!file.exists("data/Visium_HD_P2CRC.tar.gz")) {
+  download.file(vhd_url, destfile = "data/Visium_HD_P2CRC.tar.gz")
+  untar("data/Visium_HD_P2CRC.tar.gz", exdir = "data/P2CRC_VisiumHD")
+}
+
+# --- Xenium (P2CRC) ---
+# We download the bundle containing the cell-feature matrix and spatial coordinates.
+
+xen_url <- "https://cf.10xgenomics.com/samples/xenium/1.0.2/Xenium_V1_human_Colon_Cancer_P2_CRC/Xenium_V1_human_Colon_Cancer_P2_CRC_outs.tar.gz"
+
+if (!file.exists("data/Xenium_P2CRC.tar.gz")) {
+  download.file(xen_url, destfile = "data/Xenium_P2CRC.tar.gz")
+  untar("data/Xenium_P2CRC.tar.gz", exdir = "data/P2CRC_Xenium")
+}
+```
+
+## 2. Load and Inspect Objects
+
+```{r load-data}
+library(SpatialExperiment)
+library(VisiumIO)
+# library(XeniumIO) # Ensure this is installed
+
+# Load Visium HD (Segmented)
+spe_hd <- TENxVisiumHD(
+  spacerangerOut = "data/P2CRC_VisiumHD/outs/",
+  processing = "filtered",
+  bin_size = "002" # or segmented
+) |> import()
+
+# Load Xenium
+# spe_xen <- readXenium("data/P2CRC_Xenium/outs/")
+```
+
+## 3. Spatial Subsetting (TO DO)
+
+The PDF requires subsetting both datasets to the **~same region** for side-by-side comparison. 
+
+```{r subsetting-task}
+# TO DO: Identify overlapping coordinates
+# Example:
+# spe_hd_sub <- spe_hd[, spatialCoords(spe_hd)[,1] > Xmin & ...]
+# spe_xen_sub <- spe_xen[, spatialCoords(spe_xen)[,1] > Xmin & ...]
+
+# Save the subsetted objects for Exercise 1
+# saveRDS(spe_hd_sub, "data/spe_hd_P2CRC_sub.rds")
+# saveRDS(spe_xen_sub, "data/spe_xen_P2CRC_sub.rds")
+```
