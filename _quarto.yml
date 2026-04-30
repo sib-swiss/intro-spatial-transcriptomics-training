@@ -5,9 +5,7 @@ project:
     - "**/*.qmd"
     - "!CONTRIBUTIONG.md"
     - "!LICENSE.md"
-    - "!day1/day1-1_SpatialExperiment.qmd"
-    - "!day1/day1-1b_SpatialExperiment.qmd"
-    - "!day1/day1-1c_SpatialFeatureExperiment.qmd"
+    - "!scripts/prepare_2026_course_data.qmd"
 
 website:
   title: "Spatial Transcriptomics"
@@ -29,10 +27,13 @@ website:
           - href: "day1/day1-1a_SpatialExperiment.qmd"
           - href: "day1/day1-1b_SpatialFeatureExperiment.qmd"
           - href: "day1/day1-2_spotsweeper_qc.qmd"
+          - href: "day1/day1-1_SpatialExperiment_P1.qmd"
+          - href: "day1/day1-2_spotsweeper_qc_P1.qmd"
           - href: "day1/day1-3_img_qc.qmd"
       - text: "day 2"
         menu:
-          - href: "day2/day2-1_normalization.qmd"
+          - href: "day2/day2-1a_normalization_visium.qmd"
+          - href: "day2/day2-1b_normalization_xenium.qmd"
           - href: "day2/day2-2_feature_dimred.qmd"
           - href: "day2/day2-3_clustering_find_markers.qmd"
           - href: "day2/day2-4_annotation.qmd"
