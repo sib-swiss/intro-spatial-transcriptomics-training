@@ -1,5 +1,5 @@
 ---
-title: "Exercise 2: SpotSweeper QC (P1 legacy)"
+title: "Exercise 2: SpotSweeper QC (P1)"
 format: html
 editor: source
 editor_options:

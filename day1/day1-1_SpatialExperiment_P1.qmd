@@ -1,5 +1,5 @@
 ---
-title: "Exercise 1: SpatialExperiment (P1 legacy)"
+title: "Exercise 1: SpatialExperiment (P1)"
 format: html
 editor: source
 editor_options:
