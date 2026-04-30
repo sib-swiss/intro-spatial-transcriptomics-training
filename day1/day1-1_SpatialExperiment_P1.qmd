@@ -1,8 +1,8 @@
 ---
-title: "Exercise 1"
+title: "Exercise 1: SpatialExperiment (P1)"
 format: html
 editor: source
-editor_options: 
+editor_options:
   chunk_output_type: console
 execute:
   warning: false
@@ -58,15 +58,15 @@ library(HDF5Array)
 
 ## Data for the course
 
-We will start with downloading the data. We will work on a VisiumHD dataset from a human colon cancer study [published recently](https://www.nature.com/articles/s41588-025-02193-3). A Visium HD slide from one patient (P2CRC) used in the article is available [from the 10X website](https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-libraries-of-human-crc). We will focus on the "binned output" provided available as an output of the Space Ranger pipeline. 
+We will start with downloading the data. We will work on a VisiumHD dataset from a human colon cancer study [published recently](https://www.nature.com/articles/s41588-025-02193-3). A Visium HD slide from one patient (P2CRC) used in the article is available [from the 10X website](https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-libraries-of-human-crc). We will focus on the "binned output" provided available as an output of the Space Ranger pipeline.
 
-The dataset contains normal adjacent tissue (NAT) and colorectal carcinoma (CRC) from 5 patients.  
-We will start downloading and processing one of the Human colon cancer samples (P1).   
+The dataset contains normal adjacent tissue (NAT) and colorectal carcinoma (CRC) from 5 patients.
+We will start downloading and processing one of the Human colon cancer samples (P1).
 
 ::: callout-important
 ## Exercise 1a
 
-Have a look at the paper and 10X website, to find out how was the tissue processed for spatial profiling. How are the transcript molecules measured? 
+Have a look at the paper and 10X website, to find out how was the tissue processed for spatial profiling. How are the transcript molecules measured?
 
 Which version of the Space Ranger tool was used to process the data, and what is the output folders containing? This page will be useful: https://www.10xgenomics.com/support/software/space-ranger/latest/analysis/outputs/output-overview. Additionally the Space Ranger "web summary" gives a good idea about the quality of the processed sample: https://cf.10xgenomics.com/samples/spatial-exp/3.0.0/Visium_HD_Human_Colon_Cancer/Visium_HD_Human_Colon_Cancer_web_summary.html
 :::
@@ -131,7 +131,7 @@ spe <- spe[, spatialCoords(spe)[, 1] * scaleFactors(spe) > 70 &
 
 In `data/Human_Colon_Cancer_P1/binned_outputs` you will find three directories:
 
-```         
+```
 square_002um
 square_008um
 square_016um
@@ -212,7 +212,7 @@ The slot `spatialCoords` maps each spot to the full resolution image:
 ```{r day1-1-SpatialExperiment-10 }
 spatialCoords(spe) |> head()
 ```
-The slot `imgData` lists all available images linked to the dataset, their resolution and a scaling factor used to convert pixels coordinates relative to the full resolution image coordinates (above). 
+The slot `imgData` lists all available images linked to the dataset, their resolution and a scaling factor used to convert pixels coordinates relative to the full resolution image coordinates (above).
 
 ```{r day1-1-SpatialExperiment-11 }
 imgData(spe)
@@ -256,7 +256,7 @@ After loading the object above, we subsetted the dataset for faster processing. 
 
 :::
 
-It's possible to colour spots according to some variable, e.g., the number of read counts for a selected gene (i.e., PIGR): 
+It's possible to colour spots according to some variable, e.g., the number of read counts for a selected gene (i.e., PIGR):
 
 ```{r day1-1-SpatialExperiment-16 }
 plotVisium(spe,
@@ -288,7 +288,7 @@ p
 ```
 :::
 
-## Retain only observations that map to tissue 
+## Retain only observations that map to tissue
 
 ::: callout-important
 ## Exercise 5
@@ -312,7 +312,7 @@ dim(spe)
 dim(sub)
 ```
 
-Both objects have the same dimensions. Our spe object is a subset of tissue slice were all spots map tissue. Therefore the filtering here is not relevant. 
+Both objects have the same dimensions. Our spe object is a subset of tissue slice were all spots map tissue. Therefore the filtering here is not relevant.
 :::
 
 
@@ -322,7 +322,7 @@ Save the filtered `SpatialExperiment` object for the next steps:
 ```{r day1-1-SpatialExperiment-20 }
 dir.create("results/day1", showWarnings = FALSE, recursive = TRUE)
 saveHDF5SummarizedExperiment(spe,
-  dir = "results/day1", prefix = "01.1_spe", replace = TRUE,
+  dir = "results/day1", prefix = "01.1_spe_P1", replace = TRUE,
   chunkdim = NULL, level = NULL, as.sparse = NA,
   verbose = NA
 )

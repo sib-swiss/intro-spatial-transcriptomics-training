@@ -30,3 +30,8 @@ results/
 single_cell_course
 *.html
 /.quarto/
+personal/
+.positai
+
+**/*.quarto_ipynb
+site_libs/

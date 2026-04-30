@@ -1,0 +1,302 @@
+---
+title: "Exercise 1B: SpatialFeatureExperiment"
+format: html
+editor: source
+editor_options:
+  chunk_output_type: console
+execute:
+  warning: false
+---
+
+## Learning Objectives
+
+By the end of this exercise, you will be able to:
+
+-   Understand the structure of a `SpatialFeatureExperiment` object.
+-   Explain when `SpatialFeatureExperiment` is useful compared with `SpatialExperiment`.
+-   Access cell-level metadata and spatial coordinates from Xenium data.
+-   Inspect geometry information such as cell or nucleus boundaries.
+-   Compare the Xenium representation with the Visium HD representation from Exercise 1 A.
+
+## Libraries
+
+```{r day1-1b-SFE-1}
+#| message: false
+#| warning: false
+
+library(SpatialFeatureExperiment)
+library(SpatialExperiment)
+library(Voyager)
+library(ggplot2)
+library(patchwork)
+library(scuttle)
+```
+
+## Data for the course
+
+We will work with the **Xenium In Situ, sample P2 CRC** dataset from the same human colorectal cancer study used in `Exercise 1 A`. The Xenium section is a serial section of the Visium HD P2 CRC sample.
+
+This means the two datasets are biologically related but not the exact same physical tissue section. We therefore subset Xenium to an **approximately matching tissue region**, guided by the Visium HD region and by morphology. This makes the two exercises comparable while avoiding a full image-registration workflow during the practical.
+
+The full Xenium output is large and includes cell boundaries, nucleus boundaries, transcript locations, morphology images, and expression matrices. For this exercise, we use a compact course data folder that contains the required Xenium output files.
+
+The selected Xenium region is:
+
+```{r day1-1b-SFE-2}
+roi_xenium <- c(
+  xmin = 2200,
+  xmax = 4500,
+  ymin = 2500,
+  ymax = 4900
+)
+roi_xenium
+```
+
+We import the compact Xenium output with `flip = "none"` so the exercise uses the native Xenium coordinate orientation. The same visual region may appear with negative y coordinates if the geometry has been flipped during import with morphology images. Because the compact course folder does not include morphology images, we use the positive y coordinates shown above.
+
+This region was chosen from the overview plot because it contains gland-like epithelial structures together with stromal or lower-density areas.
+
+```{r day1-1b-SFE-3}
+options(timeout = 600)
+
+if (!dir.exists("data/Human_Colon_Cancer_P2/")) {
+  dir.create("data", showWarnings = FALSE)
+  download.file(
+    url = "https://seq-spatial-transcriptomics-training.s3.eu-central-1.amazonaws.com/Human_Colon_Cancer_P2.tar.gz",
+    destfile = "data/Human_Colon_Cancer_P2.tar.gz",
+    mode = "wb"
+  )
+
+  untar(
+    tarfile = "data/Human_Colon_Cancer_P2.tar.gz",
+    exdir = "data/"
+  )
+
+  file.remove("data/Human_Colon_Cancer_P2.tar.gz")
+} else {
+  message("Data exists, please proceed to next steps!")
+}
+```
+
+We import the compact Xenium output into a `SpatialFeatureExperiment` object:
+
+```{r day1-1b-SFE-4}
+sfe_full <- readXenium("data/Human_Colon_Cancer_P2/xenium/outs", flip = "none")
+
+if (ncol(sfe_full) == 0) {
+  stop("The Xenium object has 0 cells before ROI subsetting. Check that cell_feature_matrix.h5 is present in data/Human_Colon_Cancer_P2/xenium/outs/.")
+}
+
+rownames(sfe_full) <- uniquifyFeatureNames(
+  ID = rowData(sfe_full)$ID,
+  names = rowData(sfe_full)$Symbol
+)
+
+dim(sfe_full)
+range(spatialCoords(sfe_full)[, 1])
+range(spatialCoords(sfe_full)[, 2])
+```
+
+Then we subset it to the course region:
+
+```{r day1-1b-SFE-5}
+sfe <- sfe_full[, spatialCoords(sfe_full)[, 1] >= roi_xenium[["xmin"]] &
+  spatialCoords(sfe_full)[, 1] <= roi_xenium[["xmax"]] &
+  spatialCoords(sfe_full)[, 2] >= roi_xenium[["ymin"]] &
+  spatialCoords(sfe_full)[, 2] <= roi_xenium[["ymax"]]]
+
+if (ncol(sfe) == 0) {
+  stop("The Xenium ROI selected 0 cells. Check range(spatialCoords(sfe)) and revise roi_xenium.")
+}
+
+sfe
+```
+
+::: callout-important
+## Exercise 1
+
+Why is a `SpatialFeatureExperiment` useful for Xenium data?
+
+Which information does Xenium provide that is not naturally represented by a simple spot- or bin-level `SpatialExperiment`?
+:::
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+Xenium is an image-based spatial transcriptomics technology. In addition to a count matrix and cell coordinates, it can provide cell boundaries, nucleus boundaries, transcript locations, and morphology images.
+
+`SpatialFeatureExperiment` extends `SpatialExperiment` with geometry support, making it better suited to storing and manipulating these spatial shapes.
+:::
+
+## Exploring the object
+
+`SpatialFeatureExperiment` extends `SpatialExperiment`, so familiar accessors still apply:
+
+```{r day1-1b-SFE-6}
+dim(sfe)
+colData(sfe) |> head()
+rowData(sfe) |> head()
+spatialCoords(sfe) |> head()
+```
+
+::: callout-important
+## Exercise 2
+
+Check the dimensions and metadata of the `sfe` object.
+
+Questions:
+
+-   What do the columns represent?
+-   What do the rows represent?
+-   How is this different from the Visium HD `spe` object in Exercise 1 A?
+:::
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+In this object, columns represent Xenium cells, while rows represent measured genes/features. This differs from the Visium HD binned `SpatialExperiment`, where columns represent spatial bins rather than segmented cells.
+
+```{r day1-1b-SFE-7}
+dim(sfe)
+ncol(sfe)
+nrow(sfe)
+```
+:::
+
+## Inspecting geometries
+
+One of the key features of `SpatialFeatureExperiment` is that it can store geometries associated with cells or features.
+
+```{r day1-1b-SFE-8}
+colGeometries(sfe)
+```
+
+::: callout-important
+## Exercise 3
+
+Inspect the available column geometries in the Xenium object.
+
+Which geometries are available? What biological structures do they correspond to?
+:::
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+For Xenium data, the available geometries commonly include cell centroids, cell boundaries, and nucleus boundaries. The exact names depend on the reader and package versions.
+
+```{r day1-1b-SFE-9}
+colGeometries(sfe)
+```
+:::
+
+## Visualizing Xenium cells
+
+We can start with a simple coordinate plot of the selected Xenium region:
+
+```{r day1-1b-SFE-10}
+xy <- as.data.frame(spatialCoords(sfe))
+names(xy)[1:2] <- c("x", "y")
+
+ggplot(xy, aes(x = x, y = y)) +
+  geom_point(size = 0.08, alpha = 0.4) +
+  coord_fixed() +
+  theme_bw() +
+  labs(x = "x", y = "y")
+```
+
+::: callout-important
+## Exercise 4
+
+Compare this point-based visualization with the Visium HD plot from Exercise 1 A.
+
+What does one point represent in each dataset?
+:::
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+In the Visium HD exercise, each point or square represents a 16 um spatial bin. In the Xenium exercise, each point represents a segmented cell centroid. This is one of the key conceptual differences between binned sequencing-based spatial data and image-based cell-resolved spatial data.
+:::
+
+We can also visualize expression for a marker gene. For example, `PIGR` is present in the Xenium panel and shows a clear spatial pattern in this region. We renamed the rows to gene symbols after import, which is why we can refer to this marker as `"PIGR"` rather than by its Ensembl ID.
+
+At this stage of the course we plot `raw counts`. `Log-normalized` values will be introduced later, in the normalization part of the course.
+
+```{r day1-1b-SFE-11}
+plotSpatialFeature(sfe, "PIGR", exprs_values = "counts")
+```
+
+::: callout-important
+## Exercise 5
+
+Choose another marker gene and visualize its spatial pattern.
+
+How does the interpretation differ from plotting a gene on Visium HD bins?
+:::
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+The Xenium signal is measured over segmented cells, while the Visium HD binned signal aggregates molecules within fixed spatial bins. Xenium can therefore represent cell-level heterogeneity more directly, but it measures a targeted panel rather than the whole transcriptome.
+:::
+
+## Subsetting with coordinates
+
+At the start of the exercise, we subsetted the full imported Xenium object to a course region. We can still apply coordinate-based subsetting again in the same spirit:
+
+```{r day1-1b-SFE-12}
+xy <- spatialCoords(sfe)
+
+roi <- c(
+  xmin = unname(quantile(xy[, 1], 0.25)),
+  xmax = unname(quantile(xy[, 1], 0.75)),
+  ymin = unname(quantile(xy[, 2], 0.25)),
+  ymax = unname(quantile(xy[, 2], 0.75))
+)
+
+keep <- xy[, 1] > roi[["xmin"]] & xy[, 1] < roi[["xmax"]] &
+  xy[, 2] > roi[["ymin"]] & xy[, 2] < roi[["ymax"]]
+
+sfe_sub <- sfe[, keep]
+dim(sfe)
+dim(sfe_sub)
+```
+
+::: callout-important
+## Exercise 6
+
+Why did we subset Xenium at the start of the exercise instead of using the full public output directly throughout the practical?
+:::
+
+::: {.callout-tip collapse="true"}
+## Answer
+
+The full Xenium output is large and contains many cells, boundaries, transcript coordinates, and morphology images. A course-sized subset keeps the exercise responsive while preserving the structure of a real Xenium object.
+
+The subset is also chosen to approximately match the Visium HD P2 CRC region from Exercise 1 A. Because Visium HD and Xenium are serial sections, this is a morphology-matched comparison rather than an exact same-cell comparison.
+:::
+
+## Save the object
+
+```{r day1-1b-SFE-13}
+dir.create("results/day1", showWarnings = FALSE, recursive = TRUE)
+saveRDS(sfe, "results/day1/01.1b_sfe_p2.rds")
+```
+
+Clear your environment:
+
+```{r day1-1b-SFE-14}
+#| eval: false
+rm(list = ls())
+gc()
+.rs.restartR()
+```
+
+::: callout-important
+**Key Takeaways:**
+
+-   `SpatialFeatureExperiment` is useful for geometry-rich spatial data.
+-   Xenium observations are cell-resolved, while the Visium HD object in Exercise 1 A is bin-resolved.
+-   The P2 CRC subsets are designed to be comparable in course scope and approximate tissue region, not identical at cell level.
+:::
+
