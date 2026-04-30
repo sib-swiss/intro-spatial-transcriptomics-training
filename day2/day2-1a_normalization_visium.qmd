@@ -10,7 +10,7 @@ execute:
 
 ## Normalization and scaling for Visium HD
 
-In this exercise, we normalize the filtered Visium HD object from Exercise 2. The observations are 16 um spatial bins, not individual cells.
+In this exercise, we normalize the filtered Visium HD object from `Exercise 2`. The observations are 16 um spatial bins, not individual cells.
 
 Standard library-size normalization is a useful starting point, but spatial data need careful interpretation: total counts can vary because of local capture efficiency, tissue density, morphology, or real biology.
 

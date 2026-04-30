@@ -1,5 +1,5 @@
 ---
-title: "Exercise 1 A: `SpatialExperiment`"
+title: "Exercise 1 A: SpatialExperiment"
 format: html
 editor: source
 editor_options:

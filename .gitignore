@@ -34,3 +34,4 @@ personal/
 .positai
 
 **/*.quarto_ipynb
+site_libs/
