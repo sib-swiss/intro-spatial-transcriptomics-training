@@ -8,15 +8,14 @@ execute:
   warning: false
 ---
 
-## Normalisation, Feature Selection and Dimensionality Reduction
+## Feature Selection and Dimensionality Reduction
 
-In this section we will focus on normalisation, feature selection and dimensionality reduction of spatial transcriptomics data, which are important preprocessing steps before downstream analysis such as clustering and marker gene identification. We will focus on the specific challenges and considerations when dealing with spatially-resolved transcriptomics data, as opposed to traditional single-cell RNA-seq data.
+In this section we will focus on feature selection and dimensionality reduction of spatial transcriptomics data, which are important preprocessing steps before downstream analysis such as clustering and marker gene identification. We will focus on the specific challenges and considerations when dealing with spatially-resolved transcriptomics data, as opposed to traditional single-cell RNA-seq data.
 
 ## Learning Objectives
 
 By the end of this exercise, you will be able to:
 
--   Normalize spatial transcriptomics data to account for technical variations.
 -   Perform feature selection to identify highly variable genes (HVGs).
 -   Apply dimensionality reduction techniques like PCA.
 -   Visualize the results of dimensionality reduction in both reduced dimension space and spatial context.
@@ -45,57 +44,12 @@ library(igraph)
 
 ## Load SpatialExperiment Object
 
-We will start by loading the `SpatialExperiment` object from the previous exercise, which contains only filtered spots and genes with more than 1 count across all spots.
+We will start by loading the normalized `SpatialExperiment` object from the previous exercise, which contains filtered bins and genes with more than 1 count across all retained bins.
 
 ```{r}
-# Load the SpatialExperiment object from the .qs2 file.
-spe <- loadHDF5SummarizedExperiment(dir="results/day1/", prefix="01.2_spe")
+# Load the normalized SpatialExperiment object.
+spe <- loadHDF5SummarizedExperiment(dir="results/day2", prefix="02.1_spe")
 ```
-
-## Normalization
-
-Normalization is a critical step in preprocessing spatial transcriptomics data to account for technical variations and make gene expression levels comparable across spots. We will log normalise raw counts with `scuttle::logNormCounts()`
-
-```{r}
-# Log-normalize counts for downstream analysis
-spe <- logNormCounts(spe)
-```
-
-::: callout-important
-## Exercise 1
-What is the name of the new assay added for normalized counts?
-:::
-
-::: {.callout-tip collapse="true"}
-### Answer
-```{r}
-# Have a look at the assays
-spe@assays
-# Directly get the assay names(x)
-assayNames(spe)
-```
-:::
-
-After log-normalization, we can inspect the computed size factors. Size factors are used to account for differences in sequencing depth between spots.
-
-```{r}
-# Display a summary of the calculated size factors.
-summary(sizeFactors(spe))
-
-# Visualise the spatial distribution of size factors on the tissue slide.
-colData(spe)$sizeFactors <- sizeFactors(spe)
-plotVisium(spe, annotate = "sizeFactors", zoom = TRUE, point_shape = 22)
-```
-
-::: callout-important
-## Exercise 2
-Do you observe any spatial patterns or gradients for the size factors across the tissue section? What do you think they reflect?
-:::
-
-### Bonus: spatially-aware normalization 
-While `logNormCounts` provides a general-purpose normalization, specialized spatially-aware normalization methods exist.  These methods aim to correct for technical variations while preserving true spatial biological patterns. Depending on the dataset and research question, exploring such advanced normalization techniques might be beneficial.
-
-If time is left at the end of this practical, explore the normalization strategy implemented in the `SpaNorm` package.
 
 ## Feature Selection
 
@@ -123,7 +77,7 @@ curve(metadata(dec)$trend(x), add = TRUE, col = "dodgerblue", lwd = 2)
 ```
 
 ::: callout-important
-## Exercise 3
+## Exercise 1
 How do you interpret this plot, compared to similar ones generated from scRNA-seq datasets?
 :::
 
@@ -152,7 +106,7 @@ patchwork::wrap_plots(ps, nrow = 2) &
 ```
 
 ::: callout-important
-## Exercise 4
+## Exercise 2
 How would you define the spatial expression patterns of these genes? Look a bit for some information on these genes (e.g., on the Uniprot website) to get a hint at which cell types and domains they could highlight.
 :::
 
@@ -195,7 +149,7 @@ patchwork::wrap_plots(ps, nrow = 2) &
 ```
 
 ::: callout-important
-## Exercise 5
+## Exercise 3
 How would you define the spatial expression patterns of these genes? What is the difference with genes at the top of the list? Which ones would you qualify as SVGs?
 :::
 
@@ -221,7 +175,7 @@ plot(attr(reducedDim(spe, "PCA"), "percentVar"),
 ```
 
 ::: callout-important
-## Exercise 6
+## Exercise 4
 Based on the scree plot, how many principal components would you consider for downstream analysis? Why? 
 
 Bonus: You can also have look at the `scran::getDenoisedPCs` function to help you make this choice.
@@ -254,7 +208,7 @@ patchwork::wrap_plots(ps, nrow = 2) &
 ```
 
 ::: callout-important
-## Exercise 7
+## Exercise 5
 What do you notice? How do you interpret it?
 
 ## Bonus Exercise
@@ -301,7 +255,7 @@ reducedDim(spe, "PCA_banksy") <- reducedDim(tmp, "PCA_M0_lam0.8") # store 'Banks
 ```
 
 ::: callout-important
-## Exercise 8
+## Exercise 6
 While this is running, have a look at the [Banksy paper](https://www.nature.com/articles/s41588-024-01664-3) to understand better what the method is doing.
 
 Have a look at the spe object to see the dimensionality reduction slots. How many dimensionality reductions are stored now? What are their names and what do they represent?
@@ -323,7 +277,7 @@ There are now three dimensionality reductions stored in the `spe` object: :"PCA_
 In the same way as before, we can visualise the Banksy PCs on the tissue slice coordinates.
 
 ::: callout-important
-## Exercise 9
+## Exercise 7
 Select PCs from Banksy dimensionality reduction space and visualise them on the tissue slice. Do you observe any spatial patterns? How do they compare to the non-spatial PCs?
 :::
 
@@ -385,4 +339,3 @@ saveHDF5SummarizedExperiment(spe_HVG, dir="results/day2", prefix="01.3_spe", rep
                                 chunkdim=NULL, level=NULL, as.sparse=NA,
                                 verbose=NA)
 ```
-
