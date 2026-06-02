@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Exercise 1C: SpatialFeatureExperiment - VisiumHD segmented – Spatial Transcriptomics</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/SIB_logo.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-ce06823db246deb9c37f96fb669243f2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+<!-- Cookie Consent & Matomo Tracking --><script src="assets/cookie-consent.js"></script><!-- End Matomo Code -->
+</head>
+<body class="nav-sidebar floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Spatial Transcriptomics</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+<li class="nav-item">
+    <a class="nav-link" href="../index.qmd"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../qmd/precourse_preparations.qmd"> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../qmd/course_schedule.qmd"> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">day 1</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-1">
+<li>
+    <a class="dropdown-item" href="../day1/day1-0_setup.html">
+ <span class="dropdown-text">Setup</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day1/day1-1a_SpatialExperiment.html">
+ <span class="dropdown-text">Exercise 1A: SpatialExperiment - VisiumHD binned</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day1/day1-1b_SpatialFeatureExperiment.html">
+ <span class="dropdown-text">Exercise 1B: SpatialFeatureExperiment - Xenium</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day1/day1-1c_visium_HD_segmented.html">
+ <span class="dropdown-text">Exercise 1C: SpatialFeatureExperiment - VisiumHD segmented</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day1/day1-2a_spotsweeper_qc_segmented.html">
+ <span class="dropdown-text">Exercise 2A: Visium HD QC</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day1/day1-2b_img_qc.html">
+ <span class="dropdown-text">Exercise 2B: Xenium QC</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">day 2</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-2">
+<li>
+    <a class="dropdown-item" href="../day2/day2-1a_normalization_visium.qmd">
+ <span class="dropdown-text"></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day2/day2-1b_normalization_xenium.html">
+ <span class="dropdown-text">Exercise 4B: Xenium Normalization</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day2/day2-2_feature_dimred.html">
+ <span class="dropdown-text">Exercise 5</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day2/day2-3_clustering_find_markers.html">
+ <span class="dropdown-text">Exercise 6</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day2/day2-4_annotation.html">
+ <span class="dropdown-text">Exercise 7</span></a>
+  </li>  
+    </ul>
+</li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">day 3</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">
+<li>
+    <a class="dropdown-item" href="../day3/day3-1_spatial_stats.html">
+ <span class="dropdown-text">Exercise 8</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../day3/day3-2_differential_spatial_pattern.html">
+ <span class="dropdown-text">Exercise 9</span></a>
+  </li>  
+    </ul>
+</li>
+</ul>
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/sib-swiss/intro-spatial-transcriptomics-training"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Exercise 1C: SpatialFeatureExperiment - VisiumHD segmented</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
+      </div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#libraries" id="toc-libraries" class="nav-link" data-scroll-target="#libraries">Libraries</a></li>
+  <li><a href="#data-download" id="toc-data-download" class="nav-link" data-scroll-target="#data-download">Data download</a></li>
+  <li><a href="#import-into-a-spatialexperiment-object-and-subset" id="toc-import-into-a-spatialexperiment-object-and-subset" class="nav-link" data-scroll-target="#import-into-a-spatialexperiment-object-and-subset">Import into a SpatialExperiment object and subset</a></li>
+  <li><a href="#create-a-spatialfeatureexperiment-object" id="toc-create-a-spatialfeatureexperiment-object" class="nav-link" data-scroll-target="#create-a-spatialfeatureexperiment-object">Create a <code>SpatialFeatureExperiment</code> object</a></li>
+  <li><a href="#saving-the-object" id="toc-saving-the-object" class="nav-link" data-scroll-target="#saving-the-object">Saving the object</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">Exercise 1C: SpatialFeatureExperiment - VisiumHD segmented</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="learning-objectives" class="level2"><h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this exercise, you will be able to:</p>
+<ul>
+<li>Load and manipulate Visium HD segmented data using <code>SpatialExperiment</code> and <code>SpatialFeatureExperiment</code> objects.</li>
+<li>Compare the data structure and spatial coordinates of binned and segmented Visium HD data.</li>
+<li>Visualize gene expression in both binned and segmented data to understand the differences in resolution and spatial representation.</li>
+<li>Save and export the processed data for downstream analysis.</li>
+</ul></section><section id="libraries" class="level2"><h2 class="anchored" data-anchor-id="libraries">Libraries</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">scuttle</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/apache/arrow/">arrow</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/drighelli/SpatialExperiment">SpatialExperiment</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/pachterlab/SpatialFeatureExperiment">SpatialFeatureExperiment</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/pachterlab/voyager">Voyager</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/VisiumIO">VisiumIO</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/ggspavis">ggspavis</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bioconductor.org/packages/HDF5Array">HDF5Array</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/ArtifactDB/alabaster.base">alabaster.base</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://pachterlab.github.io/alabaster.sfe/">alabaster.sfe</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org">fs</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Finally, we will work with the <strong>Visium HD segmented output</strong>. This data corresponds to the same sample and region of interest as the binned data from <code>Exercise 1A</code>, but instead of being binned, it contains the output of cell segmentation. Since <code>Space Ranger</code> version 4, the output of cell segmentation is available as an optional output of the pipeline, and it contains the coordinates of the segmented cells and their boundaries.</p>
+<!-- TO DO: we need to make a smaller version of the dataset for the course. Can it include the imgData as well?
+Be careful that there are 2 versions of the dataset, one mapped with SpaceRanger 4.0.1 and one with SpaceRanger 4.1.0!!!
+https://www.10xgenomics.com/datasets/visium-hd-cytassist-gene-expression-libraries-of-human-crc-v4
+https://www.10xgenomics.com/datasets/visium-hd-cytassist-11mm-human-colon-cancer-HE
+-->
+</section><section id="data-download" class="level2"><h2 class="anchored" data-anchor-id="data-download">Data download</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>timeout <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.exists</a></span><span class="op">(</span><span class="st">"data/segmented_outputs/"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/files2.html">dir.create</a></span><span class="op">(</span><span class="st">"data"</span>, showWarnings <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span></span>
+<span>    url <span class="op">=</span> <span class="st">"https://cf.10xgenomics.com/samples/spatial-exp/4.0.1/Visium_HD_Human_Colon_Cancer/Visium_HD_Human_Colon_Cancer_segmented_outputs.tar.gz"</span>,</span>
+<span>    destfile <span class="op">=</span> <span class="st">"data/Visium_HD_Human_Colon_Cancer_segmented_outputs.tar.gz"</span>,</span>
+<span>    mode <span class="op">=</span> <span class="st">"wb"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/untar.html">untar</a></span><span class="op">(</span></span>
+<span>    tarfile <span class="op">=</span> <span class="st">"data/Visium_HD_Human_Colon_Cancer_segmented_outputs.tar.gz"</span>,</span>
+<span>    exdir <span class="op">=</span> <span class="st">"data/"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span></span>
+<span>    url <span class="op">=</span> <span class="st">"https://cf.10xgenomics.com/samples/spatial-exp/4.0.1/Visium_HD_Human_Colon_Cancer/Visium_HD_Human_Colon_Cancer_barcode_mappings.parquet"</span>,</span>
+<span>    destfile <span class="op">=</span> <span class="st">"data/segmented_outputs/Visium_HD_Human_Colon_Cancer_barcode_mappings.parquet"</span>,</span>
+<span>    mode <span class="op">=</span> <span class="st">"wb"</span></span>
+<span>  <span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/files.html">file.remove</a></span><span class="op">(</span><span class="st">"data/Visium_HD_Human_Colon_Cancer_segmented_outputs.tar.gz"</span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"Data exists, please proceed to next steps!"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Exercise 1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Which class do you think should be used to store the Visium HD segmented data? <code>SpatialExperiment</code> as we used in Exercise 1A or <code>SpatialFeatureExperiment</code> as we used in Exercise 1B?</li>
+<li>What does the data for each segmented cell represent? What is the binning strategy? What are the potential limitations?</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Since segmented data contains cell boundaries, the coordinates of the segmented cells are not limited to the spot coordinates as in the binned data. Therefore, we will use <code>SpatialFeatureExperiment</code> to work with the segmented data, as it allows us to store and visualize spatial features such as cell boundaries, as we did for the Xenium data in Exercise 1B. <code>SpatialExperiment</code> is more suitable for binned data where the coordinates correspond to the spot centroids on a regular grid and there are no additional spatial features to store.</p></li>
+<li><p>The Visium HD still captures the data on 2x2 µm bins. These are partitioned into larger bins based on the cell they correspond to (see Figure below). The partitioning of aggregated bins mimics single-cell data since the UMI counts are reported per segmented cell basis.</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="../assets/images/VisiumHD_nuclei_segmentation_binning_figure1.png" class="img-fluid figure-img"></p>
+<figcaption>Binning approach in the Visium HD segmented output data (segmented nuclei here)</figcaption></figure>
+</div>
+<p>One limitation is that a bin can overlap more than one cell, so the assignment of the transcripts captured would be ambiguous. Of course this approach relies also on the quality of the segmentation mask.</p>
+</div>
+</div>
+</div>
+<p>Here we will proceed in two steps:<br>
+- We start reading the object into a <code>SpatialExperiment</code> object and subset it to the region of interest, as we have done for Visium HD binned data in the previous exercises. This allows a quick comparison of the two types of processing for the same slide<br>
+- We then convert the object to create a <code>SpatialFeatureExperiment</code> object and add the cell segmentation information to it</p>
+</section><section id="import-into-a-spatialexperiment-object-and-subset" class="level2"><h2 class="anchored" data-anchor-id="import-into-a-spatialexperiment-object-and-subset">Import into a SpatialExperiment object and subset</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define the region of interest</span></span>
+<span><span class="va">roi_visium</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  xmin <span class="op">=</span> <span class="fl">49000</span>,</span>
+<span>  xmax <span class="op">=</span> <span class="fl">58000</span>,</span>
+<span>  ymin <span class="op">=</span> <span class="fl">7500</span>,</span>
+<span>  ymax <span class="op">=</span> <span class="fl">16000</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">roi_visium</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> xmin  xmax  ymin  ymax 
+49000 58000  7500 16000 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read the segmented output into a SpatialExperiment object</span></span>
+<span><span class="va">spe_seg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/VisiumIO/man/TENxVisiumHD-class.html">TENxVisiumHD</a></span><span class="op">(</span></span>
+<span>  segmented_outputs <span class="op">=</span> <span class="st">"data/segmented_outputs/"</span>,</span>
+<span>  processing <span class="op">=</span> <span class="st">"raw"</span>,</span>
+<span>  format <span class="op">=</span> <span class="st">"h5"</span>,</span>
+<span>  images <span class="op">=</span> <span class="st">"lowres"</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="fu">import</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Use unique Symbol for rownames</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">spe_seg</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scuttle/man/uniquifyFeatureNames.html">uniquifyFeatureNames</a></span><span class="op">(</span></span>
+<span>  ID <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">spe_seg</span><span class="op">)</span><span class="op">$</span><span class="va">ID</span>,</span>
+<span>  names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">spe_seg</span><span class="op">)</span><span class="op">$</span><span class="va">Symbol</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">spe_seg</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>class: SpatialExperiment 
+dim: 39125 220704 
+metadata(3): resources spatialList cellseg
+assays(1): counts
+rownames(39125): DDX11L2 MIR1302-2HG ... DEPRECATED_ENSG00000291096
+  DEPRECATED_TRIM16L
+rowData names(3): ID Symbol Type
+colnames(220704): cellid_000000003-1 cellid_000000004-1 ...
+  cellid_000268813-1 cellid_000268814-1
+colData names(1): sample_id
+reducedDimNames(0):
+mainExpName: Gene Expression
+altExpNames(0):
+spatialCoords names(2) : pxl_col_in_fullres pxl_row_in_fullres
+imgData names(4): sample_id image_id data scaleFactor</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Subset to the region of interest</span></span>
+<span><span class="va">spe_seg</span> <span class="op">&lt;-</span> <span class="va">spe_seg</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">spatialCoords</a></span><span class="op">(</span><span class="va">spe_seg</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">&gt;=</span> <span class="va">roi_visium</span><span class="op">[[</span><span class="st">"xmin"</span><span class="op">]</span><span class="op">]</span> <span class="op">&amp;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">spatialCoords</a></span><span class="op">(</span><span class="va">spe_seg</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">&lt;=</span> <span class="va">roi_visium</span><span class="op">[[</span><span class="st">"xmax"</span><span class="op">]</span><span class="op">]</span> <span class="op">&amp;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">spatialCoords</a></span><span class="op">(</span><span class="va">spe_seg</span><span class="op">)</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">&gt;=</span> <span class="va">roi_visium</span><span class="op">[[</span><span class="st">"ymin"</span><span class="op">]</span><span class="op">]</span> <span class="op">&amp;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">spatialCoords</a></span><span class="op">(</span><span class="va">spe_seg</span><span class="op">)</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">&lt;=</span> <span class="va">roi_visium</span><span class="op">[[</span><span class="st">"ymax"</span><span class="op">]</span><span class="op">]</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<!--
+The slot spe_seg$map includes interesting info, which allows us to calculate the cell area for example
+
+::: {.cell}
+
+```{.r .cell-code}
+spe_seg$map |> head()
+```
+:::
+
+--->
+<p>Load the previous binned object for comparison:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">loadHDF5SummarizedExperiment</a></span><span class="op">(</span>dir<span class="op">=</span><span class="st">"results/day1/"</span>, prefix<span class="op">=</span><span class="st">"01.1a_spe_"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Exercise 2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Compare the elements in the <code>colnames</code> of the two objects, what do they represent? How many elements are there in each object?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "s_016um_00144_00175-1" "s_016um_00204_00145-1" "s_016um_00237_00273-1"
+[4] "s_016um_00191_00159-1" "s_016um_00245_00233-1" "s_016um_00116_00279-1"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 22419</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">spe_seg</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "cellid_000080404-1" "cellid_000080411-1" "cellid_000080412-1"
+[4] "cellid_000080429-1" "cellid_000080439-1" "cellid_000080443-1"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">spe_seg</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 34874</code></pre>
+</div>
+</div>
+<p>The object from exercise 1A contains bin IDs, while the new object contains cell IDs. The number of bins is different from the number of cells in the segmented object, since the segmentation process can lead to a different number of cells compared to the number of bins in the same region of interest.</p>
+</div>
+</div>
+</div>
+<p>We can compare visually the spatial coordinates of the two objects:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotVisium.html">plotVisium</a></span><span class="op">(</span><span class="va">spe</span>, zoom<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="day1-1c_visium_HD_segmented_files/figure-html/day1-1c-visium_HD_segmented-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotVisium.html">plotVisium</a></span><span class="op">(</span><span class="va">spe_seg</span>, zoom<span class="op">=</span><span class="cn">T</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="day1-1c_visium_HD_segmented_files/figure-html/day1-1c-visium_HD_segmented-8-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Exercise 3
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Compare the expression of <code>PIGR</code> gene in the two objects usign the function <code><a href="https://rdrr.io/pkg/ggspavis/man/plotVisium.html">plotVisium()</a></code> (as previously done in exercise 1A). What do you observe?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">p_vis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotVisium.html">plotVisium</a></span><span class="op">(</span><span class="va">spe</span>,</span>
+<span>                    annotate <span class="op">=</span> <span class="st">"PIGR"</span>,</span>
+<span>                    assay <span class="op">=</span> <span class="st">"counts"</span>,</span>
+<span>                    zoom <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                    point_size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                    point_shape <span class="op">=</span> <span class="fl">22</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p_vis_seg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotVisium.html">plotVisium</a></span><span class="op">(</span><span class="va">spe_seg</span>,</span>
+<span>                      annotate <span class="op">=</span> <span class="st">"PIGR"</span>,</span>
+<span>                      assay <span class="op">=</span> <span class="st">"counts"</span>,</span>
+<span>                      zoom <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>                      point_size <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>                      point_shape <span class="op">=</span> <span class="fl">21</span><span class="op">)</span></span>
+<span><span class="va">p_vis</span> <span class="op">+</span> <span class="va">p_vis_seg</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="day1-1c_visium_HD_segmented_files/figure-html/day1-1c-visium_HD_segmented-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Using visium HD segmented data allows us to have a more detailed view of the tissue, as we are not limited to the resolution of the bins. The x and y coordinates of the <code>SpatialExperiment</code> object corresponds to the centroids of the cells.</p>
+</div>
+</div>
+</div>
+<p>We can also have access to the full segmentation of the cells (i.e., the boundaries of each segmented cell), but contrary to the <code>SpatialFeatureExperiment</code>, this cannot be stored natively in a slot of the <code>SpatialExperiment</code> object, so it is stored in the <code>metadata</code> of the object.</p>
+</section><section id="create-a-spatialfeatureexperiment-object" class="level2"><h2 class="anchored" data-anchor-id="create-a-spatialfeatureexperiment-object">Create a <code>SpatialFeatureExperiment</code> object</h2>
+<p>In order to manipulate the segmentation in an easier way, we create a <code>SpatialFeatureExperiment</code> object, which allows us to store and visualize spatial features (e.g., see the <code><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/colGeometries.html">colGeometries()</a></code> function used in Exercise 1B). We need to add the cell segmentation boundaries to the list of geometries.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfe_seg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/SpatialFeatureExperiment-coercion.html">toSpatialFeatureExperiment</a></span><span class="op">(</span><span class="va">spe_seg</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/colGeometries.html">colGeometries</a></span><span class="op">(</span><span class="va">sfe_seg</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of length 1
+names(1): centroids</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Extract cell segmentation boundaries from the metadata. </span></span>
+<span><span class="va">seg</span> <span class="op">&lt;-</span> <span class="fu">metadata</span><span class="op">(</span><span class="va">sfe_seg</span><span class="op">)</span><span class="op">$</span><span class="va">cellseg</span></span>
+<span><span class="co">## This was not subsetted to the ROI so we need to do the filtering. The cells are in the same order as the initial unfiltered SpatialExperiment</span></span>
+<span><span class="va">seg_coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_coordinates.html">st_coordinates</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_unary.html">st_centroid</a></span><span class="op">(</span><span class="va">seg</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">seg</span> <span class="op">&lt;-</span> <span class="va">seg</span><span class="op">[</span><span class="va">seg_coords</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">&gt;=</span> <span class="va">roi_visium</span><span class="op">[[</span><span class="st">"xmin"</span><span class="op">]</span><span class="op">]</span> <span class="op">&amp;</span></span>
+<span>             <span class="va">seg_coords</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">&lt;=</span> <span class="va">roi_visium</span><span class="op">[[</span><span class="st">"xmax"</span><span class="op">]</span><span class="op">]</span> <span class="op">&amp;</span></span>
+<span>             <span class="va">seg_coords</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">&gt;=</span> <span class="va">roi_visium</span><span class="op">[[</span><span class="st">"ymin"</span><span class="op">]</span><span class="op">]</span> <span class="op">&amp;</span></span>
+<span>             <span class="va">seg_coords</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">&lt;=</span> <span class="va">roi_visium</span><span class="op">[[</span><span class="st">"ymax"</span><span class="op">]</span><span class="op">]</span>, <span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">seg</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">colnames</a></span><span class="op">(</span><span class="va">sfe_seg</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Add the geometry to the object</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/colGeometries.html">colGeometries</a></span><span class="op">(</span><span class="va">sfe_seg</span><span class="op">)</span><span class="op">[[</span><span class="st">"cellSeg"</span><span class="op">]</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">seg</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/colGeometries.html">colGeometries</a></span><span class="op">(</span><span class="va">sfe_seg</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of length 2
+names(2): centroids cellSeg</code></pre>
+</div>
+</div>
+<!--
+Testing import of segmentation data directly from the data/ folder instead 
+
+
+::: {.cell}
+
+```{.r .cell-code}
+geo_data <- st_read("data/segmented_outputs/cell_segmentations.geojson")
+## Assuming the cells are in the same order
+geo_data <- geo_data[spatialCoords(spe_seg)[, 1] >= roi_visium[["xmin"]] &
+  spatialCoords(spe_seg)[, 1] <= roi_visium[["xmax"]] &
+  spatialCoords(spe_seg)[, 2] >= roi_visium[["ymin"]] &
+  spatialCoords(spe_seg)[, 2] <= roi_visium[["ymax"]], ]
+geo_data$cell_id <- colnames(sfe_seg)
+row.names(geo_data) <- colnames(sfe_seg)
+# colGeometries(sfe_seg)[["cellSeg"]] <- geo_data[colnames(sfe_seg), ]
+
+## Importing other segmentations mask, for example it is nice to see the exact segmentation performed by SpaceRanger, or use another method for segmentation?
+
+geo_data <- st_read("data/segmented_outputs/nucleus_segmentations.geojson")
+geo_data <- geo_data[spatialCoords(spe_seg)[, 1] >= roi_visium[["xmin"]] &
+  spatialCoords(spe_seg)[, 1] <= roi_visium[["xmax"]] &
+  spatialCoords(spe_seg)[, 2] >= roi_visium[["ymin"]] &
+  spatialCoords(spe_seg)[, 2] <= roi_visium[["ymax"]], ]
+geo_data$cell_id <- colnames(sfe_seg)
+row.names(geo_data) <- colnames(sfe_seg)
+st_crs(geo_data) <- NA_crs_
+
+colGeometries(sfe_seg)[["nucleusSeg"]] <- geo_data[colnames(sfe_seg), ]
+
+plotSpatialFeature(sfe_seg, 
+                   colGeometryName="nucleusSeg", 
+                   features="PIGR", 
+                  exprs_values = "counts")
+```
+:::
+
+Details on SpaceRanger segmentation algo: https://www.10xgenomics.com/support/software/space-ranger/latest/algorithms-overview/image-processing
+
+-->
+<!--
+TO DO? 
+Julien: could be potentially nice to add the cell area, here is some code inspired from the OSTA book to do it
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# get cell area = 4um x number of 2um bins
+um2 <- 4*sapply(sfe_seg$map, nrow) 
+sfe_seg$um2 <- um2
+plotSpatialFeature(sfe_seg, 
+                   colGeometryName="cellSeg", 
+                   features="um2")
+
+# get fraction of 2um bins that are nuclear
+sfe_seg$nuc <- sapply(sfe_seg$map, \(.) mean(.$in_nucleus))
+# get nucleus areas = cell area x nuclear fraction
+sfe_seg$nuc_um2 <- sfe_seg$um2*sfe_seg$nuc
+```
+:::
+
+
+But see below, it's simpler to calculate the area from the geometry directly anyway 
+
+::: {.cell}
+
+```{.r .cell-code}
+st_area(colGeometries(sfe_seg)[["cellSeg"]]) |> head()
+plot(st_area(colGeometries(sfe_seg)[["cellSeg"]]), sfe_seg$um2)
+## just a scaling factor, from um^2 to pixels (?)
+
+## Correlated to the total counts
+plot(st_area(colGeometries(sfe_seg)[["cellSeg"]]), colSums(counts(sfe_seg)), log="xy")
+```
+:::
+
+
+TO DO: Maybe simpler to import directly to SFE with function from SpatialFeatureExperiment package?
+
+::: {.cell}
+
+```{.r .cell-code}
+sfe3 <- readVisiumHD(data_dir="data/", use_cellseg = TRUE, unit = "full_res_image_pixel")
+## TO DO: uniquifyFeatureNames, etc
+
+## Subsetting
+sfe3 <- sfe3[, spatialCoords(sfe3)[, 1] >= roi_visium[["xmin"]] &
+  spatialCoords(sfe3)[, 1] <= roi_visium[["xmax"]] &
+  spatialCoords(sfe3)[, 2] >= roi_visium[["ymin"]] &
+  spatialCoords(sfe3)[, 2] <= roi_visium[["ymax"]]]
+colGeometries(sfe3)
+
+plot(st_area(colGeometries(sfe3)[["cellSeg"]]), colSums(counts(sfe3)), log="xy")
+```
+:::
+
+
+-->
+<p>We can visualize the geometries with a simple scatterplot:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/colGeometries.html">colGeometries</a></span><span class="op">(</span><span class="va">sfe_seg</span><span class="op">)</span><span class="op">[[</span><span class="st">"centroids"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, </span>
+<span>     col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/colors.html">colors</a></span><span class="op">(</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, </span>
+<span>     pch<span class="op">=</span><span class="fl">16</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="day1-1c_visium_HD_segmented_files/figure-html/day1-1c-visium_HD_segmented-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/colGeometries.html">colGeometries</a></span><span class="op">(</span><span class="va">sfe_seg</span><span class="op">)</span><span class="op">[[</span><span class="st">"cellSeg"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, </span>
+<span>     col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/colors.html">colors</a></span><span class="op">(</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, </span>
+<span>     lty<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="day1-1c_visium_HD_segmented_files/figure-html/day1-1c-visium_HD_segmented-11-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Or these can be used in wrapper functions such as <code><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature()</a></code> from the <code>Voyager</code> package and plot information of different features on top:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Plot the area of the cells. It's easy to calculate it from the geometry using the sf package</span></span>
+<span><span class="va">sfe_seg</span><span class="op">$</span><span class="va">area</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/geos_measures.html">st_area</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/colGeometries.html">colGeometries</a></span><span class="op">(</span><span class="va">sfe_seg</span><span class="op">)</span><span class="op">[[</span><span class="st">"cellSeg"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature</a></span><span class="op">(</span><span class="va">sfe_seg</span>, </span>
+<span>                   colGeometryName<span class="op">=</span><span class="st">"cellSeg"</span>, </span>
+<span>                   features<span class="op">=</span><span class="st">"area"</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="day1-1c_visium_HD_segmented_files/figure-html/day1-1c-visium_HD_segmented-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Plot the expression of PIGR on each segmented cell</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature</a></span><span class="op">(</span><span class="va">sfe_seg</span>, </span>
+<span>                   colGeometryName<span class="op">=</span><span class="st">"cellSeg"</span>, </span>
+<span>                   features<span class="op">=</span><span class="st">"PIGR"</span>, </span>
+<span>                   exprs_values <span class="op">=</span> <span class="st">"counts"</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="day1-1c_visium_HD_segmented_files/figure-html/day1-1c-visium_HD_segmented-12-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>BONUS: Exercise 3
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Plot the cell segmentation mask of very small region of interest on the slide, for example:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">roi_zoomed</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  xmin <span class="op">=</span> <span class="fl">54500</span>,</span>
+<span>  xmax <span class="op">=</span> <span class="fl">55000</span>,</span>
+<span>  ymin <span class="op">=</span> <span class="fl">12500</span>,</span>
+<span>  ymax <span class="op">=</span> <span class="fl">13000</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>What do you observe?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfe_zoomed</span> <span class="op">&lt;-</span> <span class="va">sfe_seg</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">spatialCoords</a></span><span class="op">(</span><span class="va">sfe_seg</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">&gt;=</span> <span class="va">roi_zoomed</span><span class="op">[[</span><span class="st">"xmin"</span><span class="op">]</span><span class="op">]</span> <span class="op">&amp;</span></span>
+<span>                        <span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">spatialCoords</a></span><span class="op">(</span><span class="va">sfe_seg</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">]</span> <span class="op">&lt;=</span> <span class="va">roi_zoomed</span><span class="op">[[</span><span class="st">"xmax"</span><span class="op">]</span><span class="op">]</span> <span class="op">&amp;</span></span>
+<span>                        <span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">spatialCoords</a></span><span class="op">(</span><span class="va">sfe_seg</span><span class="op">)</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">&gt;=</span> <span class="va">roi_zoomed</span><span class="op">[[</span><span class="st">"ymin"</span><span class="op">]</span><span class="op">]</span> <span class="op">&amp;</span></span>
+<span>                        <span class="fu"><a href="https://rdrr.io/pkg/SpatialExperiment/man/SpatialExperiment-methods.html">spatialCoords</a></span><span class="op">(</span><span class="va">sfe_seg</span><span class="op">)</span><span class="op">[</span>, <span class="fl">2</span><span class="op">]</span> <span class="op">&lt;=</span> <span class="va">roi_zoomed</span><span class="op">[[</span><span class="st">"ymax"</span><span class="op">]</span><span class="op">]</span><span class="op">]</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_geometry.html">st_geometry</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SpatialFeatureExperiment/man/colGeometries.html">colGeometries</a></span><span class="op">(</span><span class="va">sfe_zoomed</span><span class="op">)</span><span class="op">[[</span><span class="st">"cellSeg"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span>, </span>
+<span>     col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/colors.html">colors</a></span><span class="op">(</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>, </span>
+<span>     lty<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="day1-1c_visium_HD_segmented_files/figure-html/day1-1c-visium_HD_segmented-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature</a></span><span class="op">(</span><span class="va">sfe_zoomed</span>, </span>
+<span>                   colGeometryName<span class="op">=</span><span class="st">"cellSeg"</span>, </span>
+<span>                   features<span class="op">=</span><span class="st">"area"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="day1-1c_visium_HD_segmented_files/figure-html/day1-1c-visium_HD_segmented-14-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>When zooming in, we can clearly see that 2 um bins make up each cell in the dataset.</p>
+</div>
+</div>
+</div>
+</section><section id="saving-the-object" class="level2"><h2 class="anchored" data-anchor-id="saving-the-object">Saving the object</h2>
+<p>In the <code>Exercise 1A</code> we used the function <code>saveHDF5SummarizedExperiment</code> because the count matrix of the <code>SpatialExperiment</code> object is stored on-disk for efficiency.</p>
+<p>As you could see above, the <code>SpatialFeatureExperiment</code> includes additional layers, and some of them are also not loaded in memory. This complicates things further and even saving the object with the <code>saveHDF5SummarizedExperiment</code> function does not allow to fully re-import it.</p>
+<p>A nice way to save the object is to use the <code>alabaster.sfe</code> package, implementing a (language agnostic) format to represent <code>SpatialFeatureExperiment</code> on disk (see the ArtifactDB project https://github.com/ArtifactDB). See the package vignette here: https://bioconductor.org/packages/3.23/bioc/vignettes/alabaster.sfe/inst/doc/Overview.html</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># The "cellseg" slot of the metadata is problematic, let's remove it because it's now stored as colGeometry slot </span></span>
+<span><span class="fu">metadata</span><span class="op">(</span><span class="va">sfe_seg</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">metadata</span><span class="op">(</span><span class="va">sfe_seg</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span>  </span>
+<span></span>
+<span><span class="co"># mkdir("results/day1")</span></span>
+<span><span class="fu">alabaster.sfe</span><span class="fu">::</span><span class="fu">saveObject</span><span class="op">(</span><span class="va">sfe_seg</span>, <span class="st">"results/day1/01.1c_sfe_visium"</span><span class="op">)</span></span>
+<span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="st">"results/day1/01.1c_sfe_visium"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>results/day1/01.1c_sfe_visium
+├── OBJECT
+├── _environment.json
+├── assays
+│   ├── 0
+│   │   ├── OBJECT
+│   │   └── matrix.h5
+│   └── names.json
+├── colgeometries
+│   ├── 0
+│   │   ├── OBJECT
+│   │   └── map.parquet
+│   ├── 1
+│   │   ├── OBJECT
+│   │   └── map.parquet
+│   └── names.json
+├── column_data
+│   ├── OBJECT
+│   └── basic_columns.h5
+├── coordinates
+│   ├── OBJECT
+│   └── array.h5
+├── images
+│   ├── 0
+│   │   ├── OBJECT
+│   │   ├── image.tiff
+│   │   └── image.tiff.aux.xml
+│   └── mapping.h5
+├── other_data
+│   ├── OBJECT
+│   └── list_contents.json.gz
+└── row_data
+    ├── OBJECT
+    └── basic_columns.h5</code></pre>
+</div>
+</div>
+<p>For the rest of the exercises, we will use this Visium HD segmented object, but feel free to replace by the binned object (<code>Exercise 1A</code>) or the Xenium object (<code>Exercise 1B</code>) to compare the results.</p>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+</body></html>
