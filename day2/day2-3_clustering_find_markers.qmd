@@ -1,5 +1,5 @@
 ---
-title: "Exercise 6"
+title: "Exercise 6: Clustering and Domains"
 format: html
 editor: source
 editor_options: 
@@ -8,7 +8,7 @@ execute:
   warning: false
 ---
 
-```{r}
+```{r day2-3-clustering-find-markers-1}
 #| message: false
 #| warning: false
 #| output: false
@@ -51,7 +51,7 @@ By the end of this exercise, you will be able to:
 
 We will start by loading the normalized Visium HD dataset stored in the `SpatialFeatureExperiment` object generated in the previous exercise. It contains information on the HVGs and dimensionationality reduction computed with Banksy and PCA.
 
-```{r}
+```{r day2-3-clustering-find-markers-2}
 # Reload the SpatialFeatureExperiment object if not in the R session already
 sfe <- readObject("results/day2/02.2_sfe/")
 sfe
@@ -63,7 +63,7 @@ Clustering methods can be categorized into non-spatially aware, e.g., these incl
 
 As commonly done in single-cell RNA-seq analysis, we can perform graph-based clustering using the Leiden algorithm on a shared nearest-neighbor (SNN) graph constructed from the PCA results.
 
-```{r}
+```{r day2-3-clustering-find-markers-3}
 # build cellular shared nearest-neighbor (SNN) graph
 g <- makeSNNGraph(reducedDim(sfe, "PCA"), type="jaccard", k=20)
 # cluster using Leiden community detection algorithm
@@ -86,7 +86,7 @@ The `BayesSpace` package performs spatially-aware clustering using a Bayesian mo
 
 Go back to our binned data stored in a `SpatialExperiment` object to run `BayesSpace`. We need to quickly go through all the steps of normalization, HVG selection and dimensionality reduction.
 
-```{r}
+```{r day2-3-clustering-find-markers-4}
 spe <- loadHDF5SummarizedExperiment(dir="results/day1/", prefix="01.1a_spe_")
 spe <- logNormCounts(spe)
 
@@ -132,7 +132,7 @@ table(spe$BayesSpace)
 We have computed spatially-aware principal components using Banksy already in the previous practical. We will now used these to perform SNN graph-based Leiden clustering, in order to obtain spatially-aware clusters.
 When building the SNN graph, we will use the same parameters we have used before for the non-spatially aware graph.
 
-```{r}
+```{r day2-3-clustering-find-markers-5}
 # perform SNN graph-based clustering on 'Banksy' PCs using
 g <- buildSNNGraph(sfe, use.dimred="PCA_banksy", type="jaccard", k=20)
 # cluster using Leiden community detection algorithm
@@ -148,12 +148,12 @@ Perform a similar graph-based clustering on Banksy PCs in the binned `spe` objec
 
 Let's visualize the clustering results from the different methods on the tissue slide.
 
-```{r}
+```{r day2-3-clustering-find-markers-6}
 ## 2 methods to compare for the sfe object
 ks <- c("Leiden", "Banksy") 
 plotSpatialFeature(sfe, features = ks)
 
-## If BayesSpace waas run on the spe object
+## If BayesSpace was run on the spe object
 # Colorblind friendly palette
 data("ditto_colors")
 plotVisium(spe,
@@ -167,7 +167,7 @@ plotVisium(spe,
 
 It can help us to visualise the clusters one by one, in order to better see their spatial distribution. We take as an example the Banksy clusters:
 
-```{r}
+```{r day2-3-clustering-find-markers-7}
 # plot selected clusters in order of frequency, highlighting cells assigned to cluster 'k'
 lapply(names(sort(table(sfe$Banksy), decreasing = TRUE)), \(k) {
     sfe$foo <- sfe$Banksy == k
@@ -175,7 +175,7 @@ lapply(names(sort(table(sfe$Banksy), decreasing = TRUE)), \(k) {
     plt <- plotSpatialFeature(sfe, features = "foo")
     plt + ggtitle(k) + guides(fill="none")
 }) |>
-  wrap_plots(nrow=3) &
+  wrap_plots(nrow=2) &
   scale_color_manual(values=c("white", "red")) &
   theme(plot.title=element_text(hjust=0.5), legend.position="none")
 ```
@@ -197,13 +197,13 @@ TO DO: answer this
 
 Save the `SpatialFeatureExperiment` object for the next steps:
 
-```{r}
+```{r day2-3-clustering-find-markers-8}
 alabaster.sfe::saveObject(sfe, "results/day2/02.3_sfe")
 ```
 
 Potentially save the `SpatialExperiment` object used in bonus exercises
 
-```{r}
+```{r day2-3-clustering-find-markers-9}
 saveHDF5SummarizedExperiment(spe,
   dir = "results/day2", prefix = "02.3_spe_", replace = TRUE,
   chunkdim = NULL, level = NULL, as.sparse = NA,
@@ -212,7 +212,7 @@ saveHDF5SummarizedExperiment(spe,
 ```
 
 Clear your environment:
-```{r}
+```{r day2-3-clustering-find-markers-10}
 #| eval: false
 rm(list = ls())
 gc()

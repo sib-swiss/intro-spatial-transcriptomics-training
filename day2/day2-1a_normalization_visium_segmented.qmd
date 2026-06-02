@@ -23,7 +23,7 @@ By the end of this exercise, you will be able to:
 
 ## Libraries
 
-```{r}
+```{r day2-1a-normalization-visium-segmented-1}
 #| message: false
 #| warning: false
 #| output: false
@@ -43,7 +43,7 @@ library(Voyager)
 
 We start with the filtered Visium HD object saved at the end of Exercise 2.
 
-```{r}
+```{r day2-1a-normalization-visium-segmented-2}
 # Reload the SpatialFeatureExperiment object if not in the R session already
 sfe <- readObject("results/day1/01.2_sfe_visium/")
 sfe
@@ -53,9 +53,11 @@ sfe
 
 The object contains raw counts. We use the `scuttle::logNormCounts()` function to compute size factors and add a `logcounts` assay.
 
-*NOTE:* This function will deprecate soon and replaced by the faster `scrapper::normalizeRnaCounts.se()` function.
+::: callout-note
+This function will deprecate soon and replaced by the faster `scrapper::normalizeRnaCounts.se()` function.
+:::
 
-```{r}
+```{r day2-1a-normalization-visium-segmented-3}
 assayNames(sfe)
 sfe <- logNormCounts(sfe)
 ```
@@ -69,20 +71,21 @@ What assay was added to the Visium HD object? What do the size factors represent
 ::: {.callout-tip collapse="true"}
 ## Answer
 
-```{r}
+```{r day2-1a-normalization-visium-segmented-4}
 assayNames(sfe)
 summary(sizeFactors(sfe))
 ```
 
 The `logcounts` assay contains log-normalized expression values. The size factors adjust for differences in total count depth between cells.
 
-*NOTE*: Other more advanced normalization methods exist for scRNA-seq data, which aim at adjusting for compositional biases across cells, for example `scuttle::computePooledFactors()`, or at stabilizing the variance of such low-counts data, for example `Seurat:SCTranform()`
-
+::: callout-note
+Other more advanced normalization methods exist for scRNA-seq data, which aim at adjusting for compositional biases across cells, for example `scuttle::computePooledFactors()`, or at stabilizing the variance of such low-counts data, for example `Seurat:SCTranform()`
+:::
 :::
 
 We can inspect whether size factors have a spatial pattern. 
 
-```{r}
+```{r day2-1a-normalization-visium-segmented-5}
 colData(sfe)$sizeFactor <- sizeFactors(sfe)
 
 plotSpatialFeature(
@@ -103,13 +106,13 @@ Normalization adjusts for differences in total counts between observations. Scal
 
 Here we demonstrate scaling on a small set of marker genes.
 
-```{r}
+```{r day2-1a-normalization-visium-segmented-6}
 marker_genes <- c("PIGR", "CEACAM5", "MUC17", "OLFM4")
 marker_genes <- intersect(marker_genes, rownames(sfe))
 marker_genes
 ```
 
-```{r}
+```{r day2-1a-normalization-visium-segmented-7}
 scale_rows <- function(x) {
   t(base::scale(t(x)))
 }
@@ -158,14 +161,14 @@ Not necessarily. Some spatial pattern in size factors may reflect technical effe
 
 We save the normalized Visium HD object for downstream exercises.
 
-```{r}
+```{r day2-1a-normalization-visium-segmented-8}
 dir.create("results/day2", showWarnings = FALSE, recursive = TRUE)
 alabaster.sfe::saveObject(sfe, "results/day2/02.1_sfe")
 ```
 
 Clear your environment:
 
-```{r}
+```{r day2-1a-normalization-visium-segmented-9}
 #| eval: false
 rm(list = ls())
 gc()

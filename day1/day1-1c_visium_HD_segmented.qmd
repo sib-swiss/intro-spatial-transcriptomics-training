@@ -146,7 +146,7 @@ spe_seg <- spe_seg[, spatialCoords(spe_seg)[, 1] >= roi_visium[["xmin"]] &
 
 <!--
 The slot spe_seg$map includes interesting info, which allows us to calculate the cell area for example
-```{r, eval=F}
+```{r day1-1c-visium-HD-segmented-1, eval=F}
 spe_seg$map |> head()
 ```
 --->
@@ -245,7 +245,7 @@ colGeometries(sfe_seg)
 <!--
 Testing import of segmentation data directly from the data/ folder instead 
 
-```{r, eval=F}
+```{r day1-1c-visium-HD-segmented-2, eval=F}
 geo_data <- st_read("data/segmented_outputs/cell_segmentations.geojson")
 ## Assuming the cells are in the same order
 geo_data <- geo_data[spatialCoords(spe_seg)[, 1] >= roi_visium[["xmin"]] &
@@ -282,7 +282,7 @@ Details on SpaceRanger segmentation algo: https://www.10xgenomics.com/support/so
 TO DO? 
 Julien: could be potentially nice to add the cell area, here is some code inspired from the OSTA book to do it
 
-```{r, eval=F}
+```{r day1-1c-visium-HD-segmented-3, eval=F}
 # get cell area = 4um x number of 2um bins
 um2 <- 4*sapply(sfe_seg$map, nrow) 
 sfe_seg$um2 <- um2
@@ -297,7 +297,7 @@ sfe_seg$nuc_um2 <- sfe_seg$um2*sfe_seg$nuc
 ```
 
 But see below, it's simpler to calculate the area from the geometry directly anyway 
-```{r, eval=F}
+```{r day1-1c-visium-HD-segmented-4, eval=F}
 st_area(colGeometries(sfe_seg)[["cellSeg"]]) |> head()
 plot(st_area(colGeometries(sfe_seg)[["cellSeg"]]), sfe_seg$um2)
 ## just a scaling factor, from um^2 to pixels (?)
@@ -307,7 +307,7 @@ plot(st_area(colGeometries(sfe_seg)[["cellSeg"]]), colSums(counts(sfe_seg)), log
 ```
 
 TO DO: Maybe simpler to import directly to SFE with function from SpatialFeatureExperiment package?
-```{r, eval=F}
+```{r day1-1c-visium-HD-segmented-5, eval=F}
 sfe3 <- readVisiumHD(data_dir="data/", use_cellseg = TRUE, unit = "full_res_image_pixel")
 ## TO DO: uniquifyFeatureNames, etc
 
@@ -350,7 +350,7 @@ plotSpatialFeature(sfe_seg,
                    features="PIGR", 
                    exprs_values = "counts") 
 ```  
-:::
+
 
 ::: callout-important
 ## BONUS: Exercise 3
@@ -395,7 +395,7 @@ As you could see above, the `SpatialFeatureExperiment` includes additional layer
 
 A nice way to save the object is to use the `alabaster.sfe` package, implementing a (language agnostic) format to represent `SpatialFeatureExperiment` on disk (see the ArtifactDB project https://github.com/ArtifactDB). See the package vignette here:  https://bioconductor.org/packages/3.23/bioc/vignettes/alabaster.sfe/inst/doc/Overview.html
 
-```{r}
+```{r day1-1c-visium-HD-segmented-6}
 # The "cellseg" slot of the metadata is problematic, let's remove it because it's now stored as colGeometry slot 
 metadata(sfe_seg) <- metadata(sfe_seg)[1:2]  
 
@@ -405,4 +405,3 @@ fs::dir_tree("results/day1/01.1c_sfe_visium")
 ```
 
 For the rest of the exercises, we will use this Visium HD segmented object, but feel free to replace by the binned object (`Exercise 1A`) or the Xenium object (`Exercise 1B`) to compare the results.
- 

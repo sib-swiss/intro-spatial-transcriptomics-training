@@ -1,5 +1,5 @@
 ---
-title: "Exercise 5"
+title: "Exercise 5: Feature Selection and Dimensionality Reduction"
 format: html
 editor: source
 editor_options: 
@@ -22,7 +22,7 @@ By the end of this exercise, you will be able to:
 
 ## Libraries
 
-```{r}
+```{r day2-2-feature-dimred-1}
 #| message: false
 #| warning: false
 #| output: false
@@ -49,13 +49,15 @@ library(igraph)
 
 We will start by loading the normalized Visium HD dataset stored in the `SpatialFeatureExperiment` object generated in the previous exercise. It contains filtered cells, and genes with at least 1 count across all retained cells.
 
-```{r}
+```{r day2-2-feature-dimred-2}
 # Reload the SpatialFeatureExperiment object if not in the R session already
 sfe <- readObject("results/day2/02.1_sfe/")
 sfe
 ```
 
-*NOTE*: Feel free to use the normalized Xenium dataset, and compare your results to the others.
+::: callout-note
+Feel free to use the normalized Xenium dataset, and compare your results to the others.
+:::
 
 ## Feature Selection
 
@@ -65,9 +67,11 @@ Similar to scRNA-seq analysis, feature selection is a crucial step to focus on g
 
 In order to identify HVGs, we will first model the gene variance using a Poisson-noise model with `scran::modelGeneVarByPoisson()`
 
-*NOTE*: this function will soon be deprecated in favor of the faster `scrapper::chooseRnaHvgs.se()`
+::: callout-note
+this function will soon be deprecated in favor of the faster `scrapper::chooseRnaHvgs.se()`
+:::
 
-```{r}
+```{r day2-2-feature-dimred-3}
 # Model gene variance to identify highly variable genes.
 # This function fits a mean-variance trend to the log-normalized counts.
 dec <- modelGeneVarByPoisson(sfe)
@@ -92,7 +96,7 @@ How do you interpret this plot, compared to similar ones generated from scRNA-se
 Once we have modeled the gene variance, we can proceed to select the top HVGs. 
 For demonstration purposes, we will visualize the expression patterns of the top 6 HVGs on the tissue slide. We exclude the mitochondrial genes, since those genes tend to be highly variable but do not provide much information about cell types or spatial domains.
 
-```{r}
+```{r day2-2-feature-dimred-4}
 # Top 6 HVGs
 top_HVG <- row.names(dec)[1:6]
 top_HVG
@@ -108,7 +112,7 @@ How would you define the spatial expression patterns of these genes? Look a bit 
 
 For downstream analysis, we use the defined larger group of HVG, see the list in the `rowData` slot:
 
-```{r}
+```{r day2-2-feature-dimred-5}
 # Select the top 1000 highly variable genes.
 hvg <- getTopHVGs(dec, n = 1000) 
 
@@ -123,7 +127,7 @@ dec[rownames(sfe)[rowData(sfe)$hvg], ]$bio |> summary()
 
 Here, the idea is to get an intuition about the difference between HVGs and SVGs. For this, we first select randomly 6 other HVGs from the list, and plot their expression:
 
-```{r}
+```{r day2-2-feature-dimred-6}
 # Select randomly 6 HVGs
 set.seed(123)
 random_HVG <- sample(row.names(sfe)[rowData(sfe)$hvg], size = 6)
@@ -141,7 +145,9 @@ How would you define the spatial expression patterns of these genes in compariso
 
 `nnSVG` detects SVGs by modeling spatial gene expression using Gaussian processes, capturing smooth gradients or spatial trends. 
 
-*NOTE*: `nnSVG` is quite slow to run, so we will launch it only on the top HVGs. While it is running, take a look at the [nnSVG paper](https://www.nature.com/articles/s41467-023-39748-z) and the [package vignette](https://bioconductor.org/packages/devel/bioc/vignettes/nnSVG/inst/doc/nnSVG.html) to better understand how the method works, including its handling of covariates and multiple samples.
+::: callout-note
+`nnSVG` is quite slow to run, so we will launch it only on the top HVGs. While it is running, take a look at the [nnSVG paper](https://www.nature.com/articles/s41467-023-39748-z) and the [package vignette](https://bioconductor.org/packages/devel/bioc/vignettes/nnSVG/inst/doc/nnSVG.html) to better understand how the method works, including its handling of covariates and multiple samples.
+:::
 
 We will launch it on a small subset of the HVGs 
 ```{r day2-2-svg-feature-set-signatures-4}
@@ -176,6 +182,7 @@ top_nnSVG <- res_nnSVG$Symbol[seq_len(6)]
 ```
 
 The main output is in `rowData` of the `SpatialExperiment` object, which includes: the likelihood ratio statistic (`LR_stat`), the gene’s rank based on this statistic (`rank`), raw p-values from a chi-squared test with 2 degrees of freedom (`pval`), p-values adjusted for multiple testing (`padj`), and the estimated effect size (`prop_sv`), defined as the proportion of spatial variance relative to total variance.
+:::
 
 ## Dimensionality Reduction (DR)
 Thereafter we make use of the highly variable genes (HVGs) to perform dimensionality reduction and clustering.
@@ -186,7 +193,7 @@ Thereafter we make use of the highly variable genes (HVGs) to perform dimensiona
 
 We can perform dimensionality reduction using Principal Component Analysis (PCA) on the log-normalized expression values of the HVGs. This method is agnostic to spatial information, and focuses solely on capturing the main axes of variation in the gene expression data.
 
-```{r}
+```{r day2-2-feature-dimred-7}
 # Run PCA on the log-normalized counts of the HVGs
 sfe <- runPCA(sfe, ncomponents = 30, subset_row = rowData(sfe)$hvg)
 
@@ -199,7 +206,7 @@ plot(attr(reducedDim(sfe, "PCA"), "percentVar"),
 ```
 
 <!--
-```{r}
+```{r day2-2-feature-dimred-8}
 library(Voyager)
 ElbowPlot(sfe)
 plotDimLoadings(sfe)
@@ -220,7 +227,7 @@ We can select the first 10 PCs for downstream analysis, as they seem to capture 
 
 Choose the number of PCs accordingly for downstream analysis. Visualize the PCs on the tissue slice coordinates.
 
-```{r}
+```{r day2-2-feature-dimred-9}
 # Run PCA on the log-normalized counts of the HVGs using the top PCs, for example 10 PCs
 sfe <- runPCA(sfe, ncomponents = 10, subset_row = rowData(sfe)$hvg)
 
@@ -244,7 +251,7 @@ Extract the genes most associated with one of these PCs
 We observe a strong correlation between the PCs scores and the expression patterns observed above for the top HVGs, suggesting that they reflect cell type or domain biology.
 
 To extract the 10 genes most associated to PC2: 
-```{r}
+```{r day2-2-feature-dimred-10}
 attributes(reducedDims(sfe)[["PCA"]])$rotation[, "PC2"] |> abs() |> sort(decreasing = TRUE) |> names() |> head(n=10)
 ```
 :::
@@ -253,7 +260,7 @@ attributes(reducedDims(sfe)[["PCA"]])$rotation[, "PC2"] |> abs() |> sort(decreas
 
 We can also perform spatially aware dimensionality reduction using the `Banksy` method, which integrates spatial coordinates and gene expression into the PCA framework. This allows us to capture spatial patterns in the data while reducing dimensionality. 
 
-```{r}
+```{r day2-2-feature-dimred-11}
 # 'Banksy' parameter settings
 k <- 20   # consider first order neighbors
 l <- 0.8 # use spatial information with weight lambda
@@ -284,7 +291,7 @@ Have a look at the `sfe` object to see the dimensionality reduction slots. How m
 ::: {.callout-tip collapse="true"}
 #### Answer
 
-```{r}
+```{r day2-2-feature-dimred-12}
 sfe
 reducedDimNames(sfe)
 ```
@@ -304,7 +311,7 @@ Select PCs from Banksy dimensionality reduction space and visualise them on the 
 ::: {.callout-tip collapse="true"}
 #### Answer
 
-```{r}
+```{r day2-2-feature-dimred-13}
 ## Visualize PCs on the tissue slice coordinates
 spatialReducedDim(sfe, "PCA_banksy", 10, colGeometryName = "cellSeg", 
                   scattermore = TRUE, divergent = TRUE, diverge_center = 0)
@@ -321,13 +328,13 @@ Try to change Banksy parameters k and lambda. How does it affect the results?
 
 For visualization purposes only, we'll produce UMAPs based on both spatially aware and not spatially aware PCA results:
 
-```{r}
+```{r day2-2-feature-dimred-14}
 # UMAP
 sfe <- runUMAP(sfe, dimred="PCA", name="UMAP")
 sfe <- runUMAP(sfe, dimred="PCA_banksy", name="UMAP_banksy")
 ```
 
-```{r}
+```{r day2-2-feature-dimred-15}
 # Visualise
 plotReducedDim(sfe, dimred = "UMAP", colour_by = "detected") + 
   scale_colour_gradient(trans = "log", high = "yellow", low = "red")
@@ -346,6 +353,6 @@ If you tried different parameters for Banksy, how does it affect the UMAP result
 
 ## Save data for later
 
-```{r}
+```{r day2-2-feature-dimred-16}
 alabaster.sfe::saveObject(sfe, "results/day2/02.2_sfe")
 ```

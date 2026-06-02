@@ -17,7 +17,7 @@ title: "Course schedule"
 | block 3 | 11:45 | 12:30 | Lecture: pre-processing, and data structure | Deepak Tanwar | \- | [link](../assets/pdf/03_space_ranger_spe.pdf) |  |
 | break | 12:30 | 13:30 | Lunch |  | \- |  |  |
 | block 3 | 1:30 | 2:00 | Exercise: setup and data structure | Deepak Tanwar, Julien Roux | Visium HD binned, Xenium, Visium HD segmented |  | [Setup](../day1/day1-0_setup.qmd), [Exercise 1A](../day1/day1-1a_SpatialExperiment.qmd), [Exercise 1B](../day1/day1-1b_SpatialFeatureExperiment.qmd), [Exercise 1C](../day1/day1-1c_visium_HD_segmented.qmd) |
-| block 4 | 2:00 | 3:30 | Quality control and normalization (sequencing-based) | Deepak Tanwar | Visium HD | [link](../assets/pdf/04_qc_norm.pdf) | [Exercise 2A](../day1/day1-2_spotsweeper_qc_segmented.qmd) |
+| block 4 | 2:00 | 3:30 | Quality control and normalization (sequencing-based) | Deepak Tanwar | Visium HD | [link](../assets/pdf/04_qc_norm.pdf) | [Exercise 2A](../day1/day1-2a_spotsweeper_qc_segmented.qmd) |
 | break | 3:30 | 4:00 | Coffee break |  | \- |  |  |
 | block 4 | 4:00 | 5:00 | Quality control (image-based) | Ivan Berest | Xenium | [link](../assets/pdf/05_qc_img.pdf) | [Exercise 2B](../day1/day1-2b_img_qc.qmd) |
 
@@ -26,7 +26,7 @@ title: "Course schedule"
 | block | start | end | topic | instructors | dataset | presentation | exercise |
 |----|----|----|----|----|----|----|----|
 | recap | 9:00 | 9:15 | Recap from day 1 | Joana Carlevaro-Fita | \- |  |  |
-| block 1 | 9:15 | 10:15 | Normalization and scaling | Deepak Tanwar | Visium HD, Xenium | [link](../assets/pdf/06_normalization.pdf) | [Exercise 4A](../day2/day2-1a_normalization_visium.qmd), [Exercise 4B](../day2/day2-1b_normalization_xenium.qmd) |
+| block 1 | 9:15 | 10:15 | Normalization and scaling | Deepak Tanwar | Visium HD, Xenium | [link](../assets/pdf/06_normalization.pdf) | [Exercise 4A](../day2/day2-1a_normalization_visium_segmented.qmd), [Exercise 4B](../day2/day2-1b_normalization_xenium.qmd) |
 | break | 10:15 | 10:45 | Coffee break |  | \- |  |  |
 | block 2 | 10:45 | 11:30 | Lecture: feature selection, dimensionality reduction | Joana Carlevaro-Fita | \- | [link](../assets/pdf/07_feature_selection_dim_red.pdf) |  |
 | block 2 | 11:30 | 12:30 | Exercise: feature selection, dimensionality reduction | Joana Carlevaro-Fita, Julien Roux | Visium HD |  | [Exercise 5](../day2/day2-2_feature_dimred.qmd) |
@@ -46,6 +46,6 @@ title: "Course schedule"
 | break | 10:15 | 10:45 | Coffee break |  | \- |  |  |
 | block 2 | 10:45 | 12:30 | Multi-scale analysis | Martin Emons, Samuel Gunz | not assigned yet | [link](../assets/pdf/11_spastat_lecture.pdf) | [Exercise 8](../day3/day3-1_spatial_stats.qmd) |
 | break | 12:30 | 13:30 | Lunch |  | \- |  |  |
-| block 3 | 1:30 | 3:00 | DSP for spatial data | Peiying Cai | not assigned yet | [link](../assets/pdf/12_svg_dsp.pdf) | [Exercise 9](../day3/day3-2_svg_feature_set_signatures.qmd), [Exercise 10](../day3/day3-3_differential_spatial_pattern.qmd) |
+| block 3 | 1:30 | 3:00 | DSP for spatial data | Peiying Cai | not assigned yet | [link](../assets/pdf/12_svg_dsp.pdf) | [Exercise 9](../day3/day3-2_differential_spatial_pattern.qmd) |
 | break | 3:00 | 3:30 | Coffee break |  | \- |  |  |
 | post-course | 4:45 | 5:00 | Post-course information | Deepak Tanwar | \- | [link](../assets/pdf/13_post_course.pdf) |  |

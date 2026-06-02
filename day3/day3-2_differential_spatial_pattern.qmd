@@ -1,5 +1,5 @@
 ---
-title: "Exercise 9"
+title: "Exercise 9: Differential Analysis"
 format: html
 editor: source
 editor_options: 
@@ -47,7 +47,7 @@ library(DESpace)
 We will work with the same VisiumHD dataset from the human colon cancer study [recently published](https://www.nature.com/articles/s41588-025-02193-3). Here we use a subsetted dataset containing 4 slides from three patients (P1CRC, P5CRC, P3NAT, and P5NAT), representing either colorectal carcinoma (CRC) or normal adjacent tissue (NAT), all with pre-computed clusters.
 
 ```{r}
-spe <- readObject("results/day3/03.1_sfeMultNorm")
+spe <- readObject("data/day3/03.1_sfeMultNorm")
 
 # Extract sample labels
 sample_id <- colData(spe)[["sample_id"]]

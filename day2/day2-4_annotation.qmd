@@ -1,5 +1,5 @@
 ---
-title: "Exercise 7"
+title: "Exercise 7: Annotation"
 format: html
 editor: source
 editor_options: 
@@ -8,7 +8,7 @@ execute:
   warning: false
 ---
 
-```{r}
+```{r day2-4-annotation-1}
 #| message: false
 #| warning: false
 #| output: false
@@ -31,7 +31,7 @@ library(alabaster.sfe)
 ## Dataset loading
 We will start by loading the segmented Visium HD dataset stored in the `SpatialFeatureExperiment` object generated in the previous exercise. It contains information on the non-spatially-aware and spatially-aware clusters computed with graph-based clustering Banksy and PCA.
 
-```{r}
+```{r day2-4-annotation-2}
 # Reload the SpatialFeatureExperiment object if not in the R session already
 sfe <- readObject("results/day2/02.3_sfe/")
 sfe
@@ -164,7 +164,7 @@ To annotate each cell, we use the `SingleR()` method, which uses a correlation-b
 
 We will use below the highest-level annotation available. A pseudo-bulk aggregation step before the comparison allows for a better performance. We also disable the fine tuning setp for faster computation here:
 
-```{r}
+```{r day2-4-annotation-3}
 table(colData(ref.sce)$Level1)
 
 # Predict cell-type using SingleR 
@@ -203,7 +203,7 @@ Try annotating the dataset with the higher-resolution cell-types lables in `ref.
 :::{.callout-tip collapse="true"}
 ### Answer
 Let's calculate the proportion of cells from each cell type:
-```{r}
+```{r day2-4-annotation-4}
 prop.table(table(ref.sce$Level1))
 prop.table(table(sfe$SingleR_label))
 ```
@@ -213,7 +213,7 @@ The annotation allows us to identify the different structures of the [intestine 
 
 
 Let's compare the annotation to the Leiden clustering for example:
-```{r}
+```{r day2-4-annotation-5}
 plotSpatialFeature(sfe,  
                    colGeometryName = "cellSeg",
                    features = "SingleR_label") +
@@ -270,7 +270,7 @@ How do you interpret the results?
 
 See the vignette here: https://raw.githack.com/dmcable/spacexr/master/vignettes/spatial-transcriptomics.html
 
-```{r, eval=F}
+```{r day2-4-annotation-6, eval=F}
 ## Install latest version from Github
 BiocManager::install("dmcable/spacexr")
 library(spacexr)
@@ -333,7 +333,7 @@ Weird vertical line, esp. visible for epithelial, fibroblast... Is this a tile b
 
 ## Saving the final `SpatialFeatureExperiment` object
 
-```{r}
+```{r day2-4-annotation-7}
 alabaster.sfe::saveObject(sfe, "results/day2/02.4_sfe")
 ```
 

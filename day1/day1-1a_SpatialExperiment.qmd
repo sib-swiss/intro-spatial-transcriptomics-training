@@ -86,17 +86,17 @@ options(timeout = 600)
 if (!dir.exists("data/Human_Colon_Cancer_P2/")) {
   dir.create("data", showWarnings = FALSE)
   download.file(
-    url = "https://intro-spatial-transcriptomics-training.s3.eu-central-1.amazonaws.com/Human_Colon_Cancer_P2.tar.gz",
-    destfile = "data/Human_Colon_Cancer_P2.tar.gz",
+    url = "https://intro-spatial-transcriptomics-training.s3.eu-central-1.amazonaws.com/spatial_course_data.tar.gz",
+    destfile = "data/spatial_course_data.tar.gz",
     mode = "wb"
   )
 
   untar(
-    tarfile = "data/Human_Colon_Cancer_P2.tar.gz",
+    tarfile = "data/spatial_course_data.tar.gz",
     exdir = "data/"
   )
 
-  file.remove("data/Human_Colon_Cancer_P2.tar.gz")
+  file.remove("data/spatial_course_data.tar.gz")
 } else {
   message("Data exists, please proceed to next steps!")
 }

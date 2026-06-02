@@ -26,7 +26,7 @@ By the end of this exercise, you will be able to:
 
 ## Libraries
 
-```{r}
+```{r day2-1b-normalization-xenium-1}
 #| message: false
 #| warning: false
 #| output: false
@@ -45,7 +45,7 @@ library(alabaster.sfe)
 
 We start with the QC-filtered Xenium object saved at the end of Exercise 2B.
 
-```{r}
+```{r day2-1b-normalization-xenium-2}
 # Reload the SpatialFeatureExperiment object if not in the R session already
 sfe <- readObject("results/day1/01.2b_sfe_xenium/")
 sfe
@@ -57,9 +57,11 @@ The Xenium object starts with raw counts. Some segmented cells may have zero cou
 
 We use the `scuttle::logNormCounts()` function to compute size factors and add a `logcounts` assay.
 
-*NOTE:* This function will deprecate soon and replaced by the faster `scrapper::normalizeRnaCounts.se()` function.
+::: callout-note
+This function will deprecate soon and replaced by the faster `scrapper::normalizeRnaCounts.se()` function.
+:::
 
-```{r}
+```{r day2-1b-normalization-xenium-3}
 assayNames(sfe)
 
 cell_totals <- colSums(counts(sfe))
@@ -82,7 +84,7 @@ How many zero-count cells were removed before normalization? Why can zero-count 
 ::: {.callout-tip collapse="true"}
 ## Answer
 
-```{r}
+```{r day2-1b-normalization-xenium-4}
 table(cell_totals == 0)
 ```
 
@@ -107,7 +109,7 @@ Specific to the Xenium is the targeted panel design. Because Xenium measures a s
 
 We can compare raw and log-normalized spatial patterns for a marker present in the Xenium panel.
 
-```{r}
+```{r day2-1b-normalization-xenium-5}
 p_counts <- plotSpatialFeature(sfe, "PIGR", exprs_values = "counts") +
   ggtitle("PIGR counts")
 
@@ -127,13 +129,13 @@ How does the `PIGR` pattern change after log-normalization? Does normalization r
 
 Scaling centers and rescales features so that they can be compared on a common scale. This is useful for visualization and multivariate methods, but here the features are from a targeted panel.
 
-```{r}
+```{r day2-1b-normalization-xenium-6}
 marker_genes <- c("PIGR", "CEACAM5", "MUC17", "OLFM4")
 marker_genes <- intersect(marker_genes, rownames(sfe))
 marker_genes
 ```
 
-```{r}
+```{r day2-1b-normalization-xenium-7}
 scale_rows <- function(x) {
   t(base::scale(t(x)))
 }
@@ -158,14 +160,14 @@ A positive scaled value means that the cell has expression above the average for
 
 We save the normalized Xenium object for later optional comparisons.
 
-```{r}
+```{r day2-1b-normalization-xenium-8}
 dir.create("results/day2", showWarnings = FALSE, recursive = TRUE)
 alabaster.sfe::saveObject(sfe, "results/day2/02.1b_sfe_xenium")
 ```
 
 Clear your environment:
 
-```{r}
+```{r day2-1b-normalization-xenium-9}
 #| eval: false
 rm(list = ls())
 gc()

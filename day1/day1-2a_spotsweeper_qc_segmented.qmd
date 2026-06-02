@@ -13,7 +13,9 @@ execute:
 
 In this second exercise, we will focus on the critical step of quality control (QC) for sequencing-based spatial transcriptomics data. We will focus on the segmented Visium HD dataset used in `Exercise 1C`, so each observation is an individual cell with the selected region of interest. QC helps flag low-quality cells or technical artifacts before downstream analysis.
 
-*NOTE:* A similar QC can be done per bin or aggregated bin if a binned analysis of Visium HD is performed.
+::: callout-note
+A similar QC can be done per bin or aggregated bin if a binned analysis of Visium HD is performed.
+:::
 
 ## Learning objectives
 
@@ -26,7 +28,7 @@ By the end of this exercise, you will be able to:
 
 
 ## Libraries
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-1}
 #| message: false
 #| warning: false
 #| output: false
@@ -56,7 +58,7 @@ We will start by calculating QC metrics that are also commonly used in scRNA-seq
 We will start by loading our `SpatialFeatureExperiment` object, which was saved in the previous exercise, and prepare it for quality control analysis.  
 
 
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-2}
 # Reload the SpatialFeatureExperiment object if not in the R session already
 sfe <- readObject("results/day1/01.1c_sfe_visium/")
 ## Otherwise, quickly go through Exercise day1-1c to recreate the object
@@ -71,11 +73,13 @@ Need a solution or don't delete previous object
 
 Now, we will calculate per-cell QC metrics using the `scuttle` package. The function `addPerCellQCMetrics` adds QC metrics, including mitochondrial gene percentage, to the `colData` of the `SpatialFeatureExperiment` object. 
 
-*NOTE*: This function will soon be deprecated and replaced by a faster function in the `scrapper` package (function `quickRnaQc.se()`).
+::: callout-note
+This function will soon be deprecated and replaced by a faster function in the `scrapper` package (function `quickRnaQc.se()`).
+:::
 
 Run the following code to compute these metrics:
 
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-3}
 sfe <- addPerCellQCMetrics(sfe, subsets = list(Mito = is.mito))
 ```
 
@@ -88,7 +92,7 @@ Check which metadata has been added to `colData`. Do you recognize the different
 :::{.callout-tip collapse="true"}
 ### Answer
 
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-4}
 # Display the colData to see the newly added QC metrics.
 colData(sfe)
 ```
@@ -108,7 +112,7 @@ To set up these thresholds and adapt them to this technology, we can look for in
 
 This is not exactly transposable to the segmented cell output, but conveys the message that the UMI counts are low, much lower than what is observed with scRNA-seq data! We can also have a look and plot distributions of the values to decide which is the best cutoff:
 
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-5}
 # Plot library size vs. detected genes
 p1 <- ggcells(sfe, aes(x=detected, y=sum)) + 
   geom_point() +
@@ -123,7 +127,7 @@ p1 <- ggcells(sfe, aes(x=detected, y=sum)) +
   ggtitle("Library size vs. detected")
 
 # Plot mito proportion vs. detected genes
-p2 <- ggcells(sfe, aes(x=detected, y=subsets_Mito_percent*100)) + 
+p2 <- ggcells(sfe, aes(x=detected, y=subsets_Mito_percent)) + 
   geom_point() +
   geom_density_2d() +
   scale_x_log10() +
@@ -139,11 +143,11 @@ p1 + p2
 
 And further check how many cells would be removed with the given thresholds:
 
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-6}
 # Flag cells based on fixed thresholds
 sfe$qc_lib_size <- sfe$sum < 300
 sfe$qc_detected <- sfe$detected < 200
-sfe$qc_mito_prop <- sfe$subsets_Mito_percent > 0.1
+sfe$qc_mito_prop <- sfe$subsets_Mito_percent > 10
 
 # Tabulate number of cells flagged by each
 qc <- grep("^qc", names(colData(sfe)))
@@ -162,7 +166,7 @@ Try using more stringent cutoffs to see which cells would be excluded. What do y
 :::{.callout-tip collapse="true"}
 ### Answer
 
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-7}
 ## Plot the metrics
 p1 <- plotSpatialFeature(sfe, colGeometryName = "cellSeg", features = "subsets_Mito_percent") +
   theme(plot.title=element_text(hjust=0.5)) +
@@ -216,7 +220,7 @@ The `SpotSweeper` package provides functions to identify local outliers based on
 We will use `localOutliers` from `SpotSweeper`, which helps identify cells that deviate significantly from their local neighborhood.
 
 
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-8}
 # Identify local outliers based on library size ("sum" of counts).
 # cells with unusually low library size compared to their neighbors will be flagged.
 sfe <- localOutliers(sfe,
@@ -258,7 +262,7 @@ As we have seen before, visualizing the QC metrics is crucial for understanding 
 
 :::{.callout-tip collapse="true"}
 ### Answer
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-9}
 # Count the number of cells flagged as local outliers.
 table(sfe$local_outliers)
 
@@ -268,7 +272,7 @@ plotObsQC(sfe,
 ```
 
 We can visualize the spatial distribution of the local outliers together with the QC metrics, for example plot the spatial distribution of local outliers for mitochondrial percentage.
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-10}
 plotQCmetrics(sfe,
   metric = "subsets_Mito_percent", outliers = "subsets_Mito_percent_outliers",
   point_size = 1, stroke = 0.5
@@ -287,7 +291,7 @@ Plot the spatial distribution of local outliers for library size and number of d
 :::{.callout-tip collapse="true"}
 ### Answer
 
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-11}
 # Plot the spatial distribution of local outliers for library size.
 plotQCmetrics(sfe,
   metric = "sum_log", outliers = "sum_outliers", 
@@ -310,7 +314,7 @@ Very few cells seem to be flagged as outliers
 
 We can visualize the z-scores from the local outlier detection test and compare them to the global threshold used earlier. How do you interpret this?
 
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-12}
 plotObsQC(sfe, plot_type = "violin", x_metric = "subsets_Mito_percent_z", annotate = "qc_mito_prop")
 ```
 
@@ -326,7 +330,7 @@ For the next steps we choose to:
 - adjust the global cutoffs to be less stringent
 - combine the (new) global and local outliers to perform the QC filtering
 
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-13}
 # adjust global filtering cutoff
 sfe$qc_lib_size <- sfe$sum < 120
 sfe$qc_detected <- sfe$detected < 100
@@ -349,7 +353,7 @@ Visualize the cells that will be discarded based on the combined criteria. How m
 
 :::{.callout-tip collapse="true"}
 ### Answer
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-14}
 # check how many cells will be discarded
 table(sfe$discard)
 
@@ -364,7 +368,7 @@ plotSpatialFeature(sfe, colGeometryName = "cellSeg", features = "discard")
 
 Technical artifacts can arise during tissue preparation, for example tissue dissection can cause mechanical damage, leading to large areas with artificially low biological heterogeneity. These can be detected with the `findArtifacts` function of the `spotSweeper` package.
 
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-15}
 # find artifacts using SpotSweeper
 sfe <- tryCatch(
   findArtifacts(sfe,
@@ -394,7 +398,7 @@ Plot the spatial distribution of the `artifact` column identified by `SpotSweepe
 :::{.callout-tip collapse="true"}
 ### Answer
 
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-16}
 # Plot the spatial distribution of the detected artifacts.
 plotQCmetrics(sfe,
     metric = "subsets_Mito_percent", 
@@ -413,7 +417,7 @@ Here indeed the method separates two global-regions, one on the left with less v
 ## Filtering 
 We decide to filter out the low-quality cells from the `SpatialFeatureExperiment` object based on the combined criteria of global thresholds and local outliers. Additionally, we will remove any features (genes) that have zero counts across all remaining cells.
 
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-17}
 # remove the cells considered of low quality based on both global and local metrics
 sfe <- sfe[, !sfe$discard]
 
@@ -427,12 +431,12 @@ What is the size of the dataset after filtering?
 ## Save the object
 
 Save the filtered `SpatialFeatureExperiment` object for the next steps:
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-18}
 alabaster.sfe::saveObject(sfe, "results/day1/01.2_sfe_visium")
 ```
 
 Clear your environment:
-```{r}
+```{r day1-2a-spotsweeper-qc-segmented-19}
 #| eval: false
 rm(list = ls())
 gc()

@@ -2,8 +2,10 @@ project:
   type: website
   execute-dir: project
   render:
+    - "index.qmd"
+    - "qmd/*.qmd"
     - "day*/*.qmd"
-    - "!CONTRIBUTIONG.md"
+    - "!CONTRIBUTING.md"
     - "!LICENSE.md"
     - "!scripts/prepare_2026_course_data.qmd"
 
@@ -17,10 +19,12 @@ website:
   navbar:
     background: "#003eaa"
     left:
-      - href: index.qmd
+      - href: "index.qmd"
         text: Home
-      - href: qmd/precourse_preparations.qmd
-      - href: qmd/course_schedule.qmd
+      - href: "qmd/precourse_preparations.qmd"
+        text: "Pre-course preparation"
+      - href: "qmd/course_schedule.qmd"
+        text: Schedule
       - text: "day 1"
         menu:
           - href: "day1/day1-0_setup.qmd"
@@ -31,7 +35,7 @@ website:
           - href: "day1/day1-2b_img_qc.qmd"
       - text: "day 2"
         menu:
-          - href: "day2/day2-1a_normalization_visium.qmd"
+          - href: "day2/day2-1a_normalization_visium_segmented.qmd"
           - href: "day2/day2-1b_normalization_xenium.qmd"
           - href: "day2/day2-2_feature_dimred.qmd"
           - href: "day2/day2-3_clustering_find_markers.qmd"
