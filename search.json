@@ -329,6 +329,90 @@
     "text": "Login and set up\nChoose one of the following:\n\n\nEnrolled: if you are enrolled in a course with a teacher\n\nOwn installation: if you want to install packages on your own local Rstudio installation\n\nDocker: if you want to use the docker image locally\n\n\n\nEnrolled\nOwn installation\nDocker\n\n\n\nLog in to Rstudio server with the provided link, username and password.\n\n\nInstall the required packages using renv\n\ninstall.packages(\"renv\")\n\nrenv::restore(lockfile = \"https://raw.githubusercontent.com/sib-swiss/intro-spatial-transcriptomics-training/refs/heads/main/renv.lock\")\n\n\n\nWith docker, you can use exactly the same environment as we use in the enrolled course, but than running locally.\nIn the video below there’s a short tutorial on how to set up a docker container for this course. Note that you will need administrator rights, and that if you are using Windows, you need the latest version of Windows 10.\nThe command to run the environment required for this course looks like this (in a terminal):\n\n\n\n\n\n\nWarningModify the script\n\n\n\nThe home directory within the container is mounted to your current directory ($PWD), if you want to change this behaviour, modify the path after -v to the working directory on your computer before running it.\n\n\n\ndocker run \\\n--rm \\\n-p 8787:8787 \\\n-e PASSWORD=test \\\n-v $PWD:/home/rstudio \\\nsibswiss/training-intro-spatial-transcriptomics-rstudio\n\nIf this command has run successfully, approach Rstudio server like this:\nhttp://localhost:8787\nCopy this URL into your browser. If you used the snippet above, the credentials will be:\n\n\nUsername: rstudio\n\n\nPassword: test\n\n\nGreat! Now you will be able to use Rstudio with all required installations.\n\n\n\n\n\n\nNoteAbout the options\n\n\n\nThe option -v mounts a local directory in your computer to the directory /home/rstudio in the docker container (‘rstudio’ is the default user for Rstudio containers). In that way, you have files available both in the container and on your computer. Use this directory on your computer. Change the first path to a path on your computer that you want to use as a working directory.\nThe part sibswiss/training-intro-spatial-transcriptomics-rstudio is the image we are going to load into the container. The image contains all the information about software and dependencies needed for this course. When you run this command for the first time it will download the image. Once it’s on your computer, it will start immediately.\n\n\n\n\n\nCreate a project\nNow that you have access to an environment with the required installations, we will set up a project in a new directory. On the top right choose the button Project (None) and select New Project…\n\nContinue by choosing New Directory\n\nAs project type select New Project\n\nFinally, type in the project name. This should be spatial_course. Finish by clicking Create Project.\n\nWe have setup a project and a project directory (it is in /home/rstudio/spatial_course)."
   },
   {
+    "objectID": "qmd/course_schedule.html",
+    "href": "qmd/course_schedule.html",
+    "title": "Course schedule",
+    "section": "",
+    "text": "Note\n\n\n\nApart from the starting time the time schedule is indicative. Because we can not plan a course by the minute, in practice the time points will deviate."
+  },
+  {
+    "objectID": "qmd/course_schedule.html#day-1",
+    "href": "qmd/course_schedule.html#day-1",
+    "title": "Course schedule",
+    "section": "Day 1",
+    "text": "Day 1\n\n\n\nblock\nstart\nend\ntopic\ninstructors\ndataset\npresentation\nexercise\n\n\n\n\nintroduction\n9:00\n9:30\nIntroduction to the course\nDeepak Tanwar\n-\nlink\n\n\n\nblock 1\n9:30\n10:15\nIntroduction to spatial omics\nJoana Carlevaro-Fita\n-\nlink\n\n\n\nbreak\n10:15\n10:45\nCoffee break\n\n-\n\n\n\n\nblock 2\n10:45\n11:45\nSegmentation\nIvan Berest\n-\nlink\n\n\n\nblock 3\n11:45\n12:30\nLecture: pre-processing, and data structure\nDeepak Tanwar\n-\nlink\n\n\n\nbreak\n12:30\n13:30\nLunch\n\n-\n\n\n\n\nblock 3\n1:30\n2:00\nExercise: setup and data structure\nDeepak Tanwar, Julien Roux\nVisium HD binned, Xenium, Visium HD segmented\n\nSetup, Exercise 1A, Exercise 1B, Exercise 1C\n\n\nblock 4\n2:00\n3:30\nQuality control and normalization (sequencing-based)\nDeepak Tanwar\nVisium HD\nlink\nExercise 2A\n\n\nbreak\n3:30\n4:00\nCoffee break\n\n-\n\n\n\n\nblock 4\n4:00\n5:00\nQuality control (image-based)\nIvan Berest\nXenium\nlink\nExercise 2B"
+  },
+  {
+    "objectID": "qmd/course_schedule.html#day-2",
+    "href": "qmd/course_schedule.html#day-2",
+    "title": "Course schedule",
+    "section": "Day 2",
+    "text": "Day 2\n\n\n\nblock\nstart\nend\ntopic\ninstructors\ndataset\npresentation\nexercise\n\n\n\n\nrecap\n9:00\n9:15\nRecap from day 1\nJoana Carlevaro-Fita\n-\n\n\n\n\nblock 1\n9:15\n10:15\nNormalization and scaling\nDeepak Tanwar\nP2 CRC Visium HD and Xenium\nlink\nExercise 4A, Exercise 4B\n\n\nbreak\n10:15\n10:45\nCoffee break\n\n-\n\n\n\n\nblock 2\n10:45\n11:30\nLecture: feature selection, dimensionality reduction\nJoana Carlevaro-Fita\nP2 CRC Visium HD\nlink\n\n\n\nblock 2\n11:30\n12:30\nExercise: feature selection, dimensionality reduction\nJoana Carlevaro-Fita, Julien Roux\nP2 CRC Visium HD\n\nExercise 5\n\n\nbreak\n12:30\n13:30\nLunch\n\n-\n\n\n\n\nblock 3\n1:30\n2:00\nLecture: clustering\nJoana Carlevaro-Fita\nP2 CRC Visium HD\nlink\n\n\n\nblock 3\n2:00\n2:45\nExercise: clustering and visualization\nJoana Carlevaro-Fita, Julien Roux\nP2 CRC Visium HD\n\nExercise 6\n\n\nbreak\n2:45\n3:15\nCoffee break\n\n-\n\n\n\n\nblock 4\n3:15\n3:45\nLecture: annotation\nIvan Berest\nsingle-cell reference; dataset to be confirmed\nlink\n\n\n\nblock 4\n3:45\n4:45\nExercise: annotation\nIvan Berest, Julien Roux\nsingle-cell reference; dataset to be confirmed\n\nExercise 7"
+  },
+  {
+    "objectID": "qmd/course_schedule.html#day-3",
+    "href": "qmd/course_schedule.html#day-3",
+    "title": "Course schedule",
+    "section": "Day 3",
+    "text": "Day 3\n\n\n\nblock\nstart\nend\ntopic\ninstructors\ndataset\npresentation\nexercise\n\n\n\n\nrecap\n9:00\n9:15\nRecap from day 2\nJoana Carlevaro-Fita\n-\n\n\n\n\nblock 1\n9:15\n10:15\nSpatial statistics\nMark Robinson\nnot assigned yet\nlink\n\n\n\nbreak\n10:15\n10:45\nCoffee break\n\n-\n\n\n\n\nblock 2\n10:45\n12:30\nMulti-scale analysis\nMartin Emons, Samuel Gunz\nnot assigned yet\nlink\nExercise 8\n\n\nbreak\n12:30\n13:30\nLunch\n\n-\n\n\n\n\nblock 3\n1:30\n3:00\nSVG and DSP for spatial data\nPeiying Cai\nnot assigned yet\nlink\nExercise 9\n\n\nbreak\n3:00\n3:30\nCoffee break\n\n-\n\n\n\n\npost-course\n4:45\n5:00\nPost-course information\nDeepak Tanwar\n-\nlink"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introduction to Spatial Transcriptomics Data Analysis",
+    "section": "",
+    "text": "Deepak Tanwar ORCiD\nJoana Carlevaro-Fita ORCiD\nMartin Emons ORCiD\nPeiying Cai ORCiD\nSamuel Gunz ORCiD\nMark Robinson ORCiD\nIvan Berest ORCiD\nJulien Roux ORCiD\nGeert van Geest ORCiD"
+  },
+  {
+    "objectID": "index.html#authors",
+    "href": "index.html#authors",
+    "title": "Introduction to Spatial Transcriptomics Data Analysis",
+    "section": "",
+    "text": "Deepak Tanwar ORCiD\nJoana Carlevaro-Fita ORCiD\nMartin Emons ORCiD\nPeiying Cai ORCiD\nSamuel Gunz ORCiD\nMark Robinson ORCiD\nIvan Berest ORCiD\nJulien Roux ORCiD\nGeert van Geest ORCiD"
+  },
+  {
+    "objectID": "index.html#license-copyright",
+    "href": "index.html#license-copyright",
+    "title": "Introduction to Spatial Transcriptomics Data Analysis",
+    "section": "License & copyright",
+    "text": "License & copyright\nLicense: CC BY 4.0\nCopyright: SIB Swiss Institute of Bioinformatics"
+  },
+  {
+    "objectID": "index.html#learning-outcomes",
+    "href": "index.html#learning-outcomes",
+    "title": "Introduction to Spatial Transcriptomics Data Analysis",
+    "section": "Learning outcomes",
+    "text": "Learning outcomes\n\nGeneral learning outcomes\nAt the end of the course, the participants are expected to:\n\nExplain the principles and describe applications of both sequencing-based and imaging-based spatially-resolved transcriptomics (SRT)\nIdentify potential pitfalls and limitations of SRT experiments and analysis workflows.\nDefine applications for cell segmentation and apply frequently-used cell segmentation methods\nAssess and interpret raw outputs and spatial metadata files, understanding their structure and relevance for downstream analyses.\nDefine important aspects of quality control, feature selection, dimensionality reduction and differential gene expression to SRT data and apply those.\nClarify various spatial statistics and their application to biological questions.\nUse frequently-used methods to analyze multi-sample SRT experiments.\n\n\n\nLearning outcomes explained\nTo reach the general learning outcomes above, we have set a number of smaller learning outcomes. Each chapter starts with these smaller learning outcomes. Use these at the start of a chapter to get an idea what you will learn. Use them also at the end of a chapter to evaluate whether you have learned what you were expected to learn."
+  },
+  {
+    "objectID": "index.html#learning-experiences",
+    "href": "index.html#learning-experiences",
+    "title": "Introduction to Spatial Transcriptomics Data Analysis",
+    "section": "Learning experiences",
+    "text": "Learning experiences\nTo reach the learning outcomes we will use lectures, exercises, polls and group work. During exercises, you are free to discuss with other participants. During lectures, focus on the lecture only.\n\nExercises\nSeveral blocks has practical work involved. Some more than others. We’ll have a (short) discussion after each exercise block. All answers to the practicals are incorporated, but they are hidden. Do the exercise first by yourself, before checking out the answer. If your answer is different from the answer in the practicals, try to figure out why they are different."
+  },
+  {
+    "objectID": "qmd/about.html",
+    "href": "qmd/about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "qmd/precourse_preparations.html",
+    "href": "qmd/precourse_preparations.html",
+    "title": "Precourse preparations",
+    "section": "",
+    "text": "You should meet the learning outcomes of: Single-Cell Transcriptomics with R\nIn summary, participants must already have a basic knowledge in: - Next Generation Sequencing (NGS) techniques - Analyzing gene expression data - Dimensionality reduction (PCA, UMAP) - Graph-based clustering - R (evaluate your R skills here) - UNIX (self-assess your skills with the e-learning course UNIX Fundamentals, and this quiz)\n\n\n\nAttendees should have a Wi-Fi enabled computer. An online R and RStudio environment will be provided. In order to access that environment your computer needs to be able to access http websites (not https). You can check this by browsing to http://www.httpforever.com. However, in case you wish to perform the practical exercises on your own computer, please take a moment to install the following before the course:\n\nR version &gt; 4.5.\nLatest RStudio version, the free version is perfectly fine.\nThe R packages necessary for the course. Find the renv to install them here."
+  },
+  {
+    "objectID": "qmd/precourse_preparations.html#required-competences",
+    "href": "qmd/precourse_preparations.html#required-competences",
+    "title": "Precourse preparations",
+    "section": "",
+    "text": "You should meet the learning outcomes of: Single-Cell Transcriptomics with R\nIn summary, participants must already have a basic knowledge in: - Next Generation Sequencing (NGS) techniques - Analyzing gene expression data - Dimensionality reduction (PCA, UMAP) - Graph-based clustering - R (evaluate your R skills here) - UNIX (self-assess your skills with the e-learning course UNIX Fundamentals, and this quiz)\n\n\n\nAttendees should have a Wi-Fi enabled computer. An online R and RStudio environment will be provided. In order to access that environment your computer needs to be able to access http websites (not https). You can check this by browsing to http://www.httpforever.com. However, in case you wish to perform the practical exercises on your own computer, please take a moment to install the following before the course:\n\nR version &gt; 4.5.\nLatest RStudio version, the free version is perfectly fine.\nThe R packages necessary for the course. Find the renv to install them here."
+  },
+  {
     "objectID": "day1/day1-1a_SpatialExperiment.html",
     "href": "day1/day1-1a_SpatialExperiment.html",
     "title": "Exercise 1A: SpatialExperiment - VisiumHD binned",
