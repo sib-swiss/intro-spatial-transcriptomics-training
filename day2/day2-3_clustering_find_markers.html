@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">
 <li>
     <a class="dropdown-item" href="../day3/day3-1_spatial_stats.html">
- <span class="dropdown-text">Exercise 8 : Spatial Stats</span></a>
+ <span class="dropdown-text">Exercise 8 : Multi-scale analysis</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../day3/day3-2_differential_spatial_pattern.html">
@@ -336,7 +336,7 @@ sample01: </code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    1    2    3    4    5    6    7    8    9 
-7113 1730 1388 6168 3788 4458 3642 4912  564 </code></pre>
+5437 5030 4681 4334 4257 1853 2933  784 4454 </code></pre>
 </div>
 </div>
 </section><section id="spatialy-aware-clustering" class="level3"><h3 class="anchored" data-anchor-id="spatialy-aware-clustering">Spatialy aware clustering</h3>
@@ -387,7 +387,7 @@ sample01: </code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    1    2    3    4    5    6    7    8 
-5342 2533 5253 3787 1511  921 2304  768 </code></pre>
+5346 2537 5259 3775 1509  922 2309  762 </code></pre>
 </div>
 </div>
 </section><section id="graph-based-banksy" class="level4"><h4 class="anchored" data-anchor-id="graph-based-banksy">Graph-based: Banksy</h4>
@@ -402,7 +402,7 @@ sample01: </code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    1    2    3    4    5    6 
-8681 1462 9992   85 3639 9904 </code></pre>
+6467 5058 6830 4142 9905 1361 </code></pre>
 </div>
 </div>
 </section><section id="exercise-2-bonus" class="level4"><h4 class="anchored" data-anchor-id="exercise-2-bonus">Exercise 2: Bonus</h4>
@@ -419,7 +419,7 @@ sample01: </code></pre>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## If BayesSpace waas run on the spe object</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## If BayesSpace was run on the spe object</span></span>
 <span><span class="co"># Colorblind friendly palette</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"ditto_colors"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotVisium.html">plotVisium</a></span><span class="op">(</span><span class="va">spe</span>,</span>
@@ -445,7 +445,7 @@ sample01: </code></pre>
 <span>    <span class="va">plt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature</a></span><span class="op">(</span><span class="va">sfe</span>, features <span class="op">=</span> <span class="st">"foo"</span><span class="op">)</span></span>
 <span>    <span class="va">plt</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/wrap_plots.html">wrap_plots</a></span><span class="op">(</span>nrow<span class="op">=</span><span class="fl">3</span><span class="op">)</span> <span class="op">&amp;</span></span>
+<span>  <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/wrap_plots.html">wrap_plots</a></span><span class="op">(</span>nrow<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">&amp;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"white"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span> <span class="op">&amp;</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span>, legend.position<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">

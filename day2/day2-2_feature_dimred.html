@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">
 <li>
     <a class="dropdown-item" href="../day3/day3-1_spatial_stats.html">
- <span class="dropdown-text">Exercise 8 : Spatial Stats</span></a>
+ <span class="dropdown-text">Exercise 8 : Multi-scale analysis</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../day3/day3-2_differential_spatial_pattern.html">
@@ -244,6 +244,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#spatially-variable-genes-svgs" id="toc-spatially-variable-genes-svgs" class="nav-link" data-scroll-target="#spatially-variable-genes-svgs">Spatially Variable Genes (SVGs)</a></li>
   </ul>
 </li>
+  <li>
+<a href="#dimensionality-reduction-dr" id="toc-dimensionality-reduction-dr" class="nav-link" data-scroll-target="#dimensionality-reduction-dr">Dimensionality Reduction (DR)</a>
+  <ul class="collapse">
+<li><a href="#non-spatially-aware-dr" id="toc-non-spatially-aware-dr" class="nav-link" data-scroll-target="#non-spatially-aware-dr">Non-spatially aware DR</a></li>
+  <li><a href="#spatially-aware-dr-with-banksy" id="toc-spatially-aware-dr-with-banksy" class="nav-link" data-scroll-target="#spatially-aware-dr-with-banksy">Spatially aware DR with Banksy</a></li>
+  <li><a href="#umap-and-comparison-of-non-spatially-aware-and-spatially-aware-dr" id="toc-umap-and-comparison-of-non-spatially-aware-and-spatially-aware-dr" class="nav-link" data-scroll-target="#umap-and-comparison-of-non-spatially-aware-and-spatially-aware-dr">UMAP and comparison of non-spatially aware and spatially aware DR</a></li>
+  </ul>
+</li>
+  <li><a href="#save-data-for-later" id="toc-save-data-for-later" class="nav-link" data-scroll-target="#save-data-for-later">Save data for later</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -320,12 +329,36 @@ Graphs:
 sample01: </code></pre>
 </div>
 </div>
-<p><em>NOTE</em>: Feel free to use the normalized Xenium dataset, and compare your results to the others.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Feel free to use the normalized Xenium dataset, and compare your results to the others.</p>
+</div>
+</div>
 </section><section id="feature-selection" class="level2"><h2 class="anchored" data-anchor-id="feature-selection">Feature Selection</h2>
 <section id="highly-variable-genes-hvgs" class="level3"><h3 class="anchored" data-anchor-id="highly-variable-genes-hvgs">Highly Variable Genes (HVGs)</h3>
 <p>Similar to scRNA-seq analysis, feature selection is a crucial step to focus on genes that are most likely to show significant biological variation across cells, and thus increase the signal to noise ratio. We typically aim at focusing on “Highly Variable Genes” (HVGs) as these are more likely to distinguish different cell types or spatial domains.</p>
 <p>In order to identify HVGs, we will first model the gene variance using a Poisson-noise model with <code><a href="https://rdrr.io/pkg/scran/man/modelGeneVarByPoisson.html">scran::modelGeneVarByPoisson()</a></code></p>
-<p><em>NOTE</em>: this function will soon be deprecated in favor of the faster <code>scrapper::chooseRnaHvgs.se()</code></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>this function will soon be deprecated in favor of the faster <code>scrapper::chooseRnaHvgs.se()</code></p>
+</div>
+</div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Model gene variance to identify highly variable genes.</span></span>
 <span><span class="co"># This function fits a mean-variance trend to the log-normalized counts.</span></span>
@@ -404,10 +437,10 @@ sample01: </code></pre>
 <span><span class="va">dec</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">$</span><span class="va">hvg</span><span class="op">]</span>, <span class="op">]</span><span class="op">$</span><span class="va">bio</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-0.01180 0.01519 0.02126 0.08349 0.04142 8.85107 </code></pre>
+0.01195 0.01533 0.02136 0.08363 0.04150 8.84573 </code></pre>
 </div>
 </div>
-</section><section id="spatially-variable-genes-svgs" class="level3"><h3 class="anchored">Spatially Variable Genes (SVGs)</h3>
+</section><section id="spatially-variable-genes-svgs" class="level3"><h3 class="anchored" data-anchor-id="spatially-variable-genes-svgs">Spatially Variable Genes (SVGs)</h3>
 <p>Here, the idea is to get an intuition about the difference between HVGs and SVGs. For this, we first select randomly 6 other HVGs from the list, and plot their expression:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Select randomly 6 HVGs</span></span>
@@ -436,9 +469,21 @@ sample01: </code></pre>
 <p>How would you define the spatial expression patterns of these genes in comparison to the <code>top_HVG</code> list? Which ones would you qualify as SVGs?</p>
 </div>
 </div>
-<section id="bonus-svg-detection-with-nnsvg" class="level4"><h4 class="anchored">Bonus: SVG detection with nnSVG</h4>
+<section id="bonus-svg-detection-with-nnsvg" class="level4"><h4 class="anchored" data-anchor-id="bonus-svg-detection-with-nnsvg">Bonus: SVG detection with nnSVG</h4>
 <p><code>nnSVG</code> detects SVGs by modeling spatial gene expression using Gaussian processes, capturing smooth gradients or spatial trends.</p>
-<p><em>NOTE</em>: <code>nnSVG</code> is quite slow to run, so we will launch it only on the top HVGs. While it is running, take a look at the <a href="https://www.nature.com/articles/s41467-023-39748-z">nnSVG paper</a> and the <a href="https://bioconductor.org/packages/devel/bioc/vignettes/nnSVG/inst/doc/nnSVG.html">package vignette</a> to better understand how the method works, including its handling of covariates and multiple samples.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>nnSVG</code> is quite slow to run, so we will launch it only on the top HVGs. While it is running, take a look at the <a href="https://www.nature.com/articles/s41467-023-39748-z">nnSVG paper</a> and the <a href="https://bioconductor.org/packages/devel/bioc/vignettes/nnSVG/inst/doc/nnSVG.html">package vignette</a> to better understand how the method works, including its handling of covariates and multiple samples.</p>
+</div>
+</div>
 <p>We will launch it on a small subset of the HVGs</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
@@ -469,7 +514,7 @@ This took 4 minutes to run on my laptop
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -478,7 +523,7 @@ This took 4 minutes to run on my laptop
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Select top SVGs</span></span>
@@ -491,31 +536,34 @@ This took 4 minutes to run on my laptop
            &lt;character&gt; &lt;character&gt;        &lt;factor&gt;    &lt;logical&gt; &lt;logical&gt;
 LAMB1  ENSG00000091136       LAMB1 Gene Expression        FALSE      TRUE
 CPQ    ENSG00000104324         CPQ Gene Expression        FALSE      TRUE
-BMPR2  ENSG00000204217       BMPR2 Gene Expression        FALSE      TRUE
+NRP2   ENSG00000118257        NRP2 Gene Expression        FALSE      TRUE
 SPOCK2 ENSG00000107742      SPOCK2 Gene Expression        FALSE      TRUE
 ITPR1  ENSG00000150995       ITPR1 Gene Expression        FALSE      TRUE
-ADA2   ENSG00000093072        ADA2 Gene Expression        FALSE      TRUE
+COL1A1 ENSG00000108821      COL1A1 Gene Expression        FALSE      TRUE
          sigma.sq    tau.sq         phi    loglik   runtime      mean       var
         &lt;numeric&gt; &lt;numeric&gt;   &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-LAMB1  0.01080745 0.1345915 4.75471e+01 -15072.64     5.884 0.1195187 0.1452390
-CPQ    0.00244816 0.0751375 3.66186e+00  -4630.25     2.367 0.0562255 0.0775610
-BMPR2  0.01101202 0.1670222 3.44077e+01 -18528.95     3.896 0.1402710 0.1778655
-SPOCK2 0.00631247 0.0611798 1.32956e+02  -2237.78     3.033 0.0418059 0.0675663
-ITPR1  0.00110560 0.0629643 7.24635e-05  -1477.40     3.184 0.0470433 0.0640744
-ADA2   0.00781089 0.1109479 8.37616e+01 -11792.91     3.864 0.0855133 0.1188903
-           spcov   prop_sv loglik_lm   LR_stat      rank      pval      padj
-       &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-LAMB1   0.869813 0.0743296 -15336.38  527.4946        11         0         0
-CPQ     0.880008 0.0315543  -4746.36  232.2186        16         0         0
-BMPR2   0.748110 0.0618534 -18757.37  456.8333        12         0         0
-SPOCK2  1.900476 0.0935288  -2417.46  359.3503        14         0         0
-ITPR1   0.706808 0.0172562  -1521.65   88.5021        19         0         0
-ADA2    1.033515 0.0657711 -11957.06  328.2928        15         0         0</code></pre>
+LAMB1  0.01080745 0.1345915 4.75471e+01 -15072.64     6.192 0.1195187 0.1452390
+CPQ    0.00244816 0.0751375 3.66186e+00  -4630.25     2.457 0.0562255 0.0775610
+NRP2   0.02839062 0.1594157 1.66708e+01 -18318.31     3.714 0.1603421 0.1871791
+SPOCK2 0.00631247 0.0611798 1.32956e+02  -2237.78     3.179 0.0418059 0.0675663
+ITPR1  0.00110560 0.0629643 7.24635e-05  -1477.40     3.339 0.0470433 0.0640744
+COL1A1 2.70819987 0.3858016 2.05784e+01 -43434.70     4.995 1.1521191 2.9774671
+           spcov   prop_sv loglik_lm    LR_stat      rank      pval      padj
+       &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;  &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
+LAMB1   0.869813 0.0743296 -15336.38   527.4946         8         0         0
+CPQ     0.880008 0.0315543  -4746.36   232.2186        14         0         0
+NRP2    1.050848 0.1511697 -19618.97  2601.3188         5         0         0
+SPOCK2  1.900476 0.0935288  -2417.46   359.3503        11         0         0
+ITPR1   0.706808 0.0172562  -1521.65    88.5021        18         0         0
+COL1A1  1.428377 0.8753066 -66326.07 45782.7393         1         0         0</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top_nnSVG</span> <span class="op">&lt;-</span> <span class="va">res_nnSVG</span><span class="op">$</span><span class="va">Symbol</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The main output is in <code>rowData</code> of the <code>SpatialExperiment</code> object, which includes: the likelihood ratio statistic (<code>LR_stat</code>), the gene’s rank based on this statistic (<code>rank</code>), raw p-values from a chi-squared test with 2 degrees of freedom (<code>pval</code>), p-values adjusted for multiple testing (<code>padj</code>), and the estimated effect size (<code>prop_sv</code>), defined as the proportion of spatial variance relative to total variance.</p>
-<section id="dimensionality-reduction-dr" class="level2"><h2 class="anchored" data-anchor-id="dimensionality-reduction-dr">Dimensionality Reduction (DR)</h2>
+</div>
+</div>
+</div>
+</section></section></section><section id="dimensionality-reduction-dr" class="level2"><h2 class="anchored" data-anchor-id="dimensionality-reduction-dr">Dimensionality Reduction (DR)</h2>
 <p>Thereafter we make use of the highly variable genes (HVGs) to perform dimensionality reduction and clustering.</p>
 <section id="non-spatially-aware-dr" class="level3"><h3 class="anchored" data-anchor-id="non-spatially-aware-dr">Non-spatially aware DR</h3>
 <section id="pca" class="level4"><h4 class="anchored" data-anchor-id="pca">PCA</h4>
@@ -575,7 +623,7 @@ plotDimLoadings(sfe)
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -584,7 +632,7 @@ plotDimLoadings(sfe)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We can select the first 10 PCs for downstream analysis, as they seem to capture a significant proportion of the variance in the data before the explained variance starts to level off.</p>
 </div>
@@ -622,7 +670,7 @@ plotDimLoadings(sfe)
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -631,7 +679,7 @@ plotDimLoadings(sfe)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>We observe a strong correlation between the PCs scores and the expression patterns observed above for the top HVGs, suggesting that they reflect cell type or domain biology.</p>
 <p>To extract the 10 genes most associated to PC2:</p>
@@ -683,7 +731,7 @@ plotDimLoadings(sfe)
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -692,7 +740,7 @@ plotDimLoadings(sfe)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfe</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -745,7 +793,7 @@ sample01: </code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -754,7 +802,7 @@ sample01: </code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Visualize PCs on the tissue slice coordinates</span></span>
@@ -829,11 +877,7 @@ sample01: </code></pre>
 </div>
 
 
-</section>
-</div>
-</div>
-</div>
-</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();

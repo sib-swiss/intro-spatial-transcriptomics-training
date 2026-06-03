@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">
 <li>
     <a class="dropdown-item" href="../day3/day3-1_spatial_stats.html">
- <span class="dropdown-text">Exercise 8 : Spatial Stats</span></a>
+ <span class="dropdown-text">Exercise 8 : Multi-scale analysis</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../day3/day3-2_differential_spatial_pattern.html">
@@ -313,7 +313,19 @@ sample01: </code></pre>
 </div>
 </section><section id="log-normalization" class="level2"><h2 class="anchored" data-anchor-id="log-normalization">Log-normalization</h2>
 <p>The object contains raw counts. We use the <code><a href="https://rdrr.io/pkg/scuttle/man/logNormCounts.html">scuttle::logNormCounts()</a></code> function to compute size factors and add a <code>logcounts</code> assay.</p>
-<p><em>NOTE:</em> This function will deprecate soon and replaced by the faster <code>scrapper::normalizeRnaCounts.se()</code> function.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This function will deprecate soon and replaced by the faster <code>scrapper::normalizeRnaCounts.se()</code> function.</p>
+</div>
+</div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">assayNames</span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -335,7 +347,7 @@ sample01: </code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -344,7 +356,7 @@ sample01: </code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">assayNames</span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -358,7 +370,19 @@ sample01: </code></pre>
 </div>
 </div>
 <p>The <code>logcounts</code> assay contains log-normalized expression values. The size factors adjust for differences in total count depth between cells.</p>
-<p><em>NOTE</em>: Other more advanced normalization methods exist for scRNA-seq data, which aim at adjusting for compositional biases across cells, for example <code><a href="https://rdrr.io/pkg/scuttle/man/computePooledFactors.html">scuttle::computePooledFactors()</a></code>, or at stabilizing the variance of such low-counts data, for example <code>Seurat:SCTranform()</code></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Other more advanced normalization methods exist for scRNA-seq data, which aim at adjusting for compositional biases across cells, for example <code><a href="https://rdrr.io/pkg/scuttle/man/computePooledFactors.html">scuttle::computePooledFactors()</a></code>, or at stabilizing the variance of such low-counts data, for example <code>Seurat:SCTranform()</code></p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -435,7 +459,7 @@ OLFM4           -0.3805620         -0.3805620</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -444,7 +468,7 @@ OLFM4           -0.3805620         -0.3805620</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>A positive scaled value means that the cell has expression above the average for that gene, relative to the variation of that gene across the dataset. Scaling should be applied after normalization because raw counts are strongly affected by sequencing depth.</p>
 </div>
@@ -480,7 +504,7 @@ OLFM4           -0.3805620         -0.3805620</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -489,7 +513,7 @@ OLFM4           -0.3805620         -0.3805620</code></pre>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Not necessarily. Some spatial pattern in size factors may reflect technical effects, but some may reflect real tissue structure, local cell density, or biological differences. A spatially-aware method should avoid removing meaningful spatial biology while reducing unwanted technical variation.</p>
 </div>

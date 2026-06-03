@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">
 <li>
     <a class="dropdown-item" href="../day3/day3-1_spatial_stats.html">
- <span class="dropdown-text">Exercise 8 : Spatial Stats</span></a>
+ <span class="dropdown-text">Exercise 8 : Multi-scale analysis</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="../day3/day3-2_differential_spatial_pattern.html">
@@ -366,10 +366,7 @@ sample01: </code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span><span class="op">(</span><span class="st">"data/FLEX/"</span>, pattern <span class="op">=</span> <span class="st">"P2CRC"</span><span class="op">)</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "GSM8594533_P1L1_P2CRC_BC1_count_filtered_feature_bc_matrix.h5"
-[2] "GSM8594534_P1L2_P2CRC_BC1_count_filtered_feature_bc_matrix.h5"
-[3] "GSM8594535_P1L3_P2CRC_BC1_count_filtered_feature_bc_matrix.h5"
-[4] "GSM8594536_P1L4_P2CRC_BC1_count_filtered_feature_bc_matrix.h5"</code></pre>
+<pre><code>[1] "GSM8594533_P1L1_P2CRC_BC1_count_filtered_feature_bc_matrix.h5"</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">ref.sce</span> <span class="op">&lt;-</span> <span class="fu">DropletUtils</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/DropletUtils/man/read10xCounts.html">read10xCounts</a></span><span class="op">(</span><span class="st">"data/FLEX/GSM8594533_P1L1_P2CRC_BC1_count_filtered_feature_bc_matrix.h5"</span><span class="op">)</span></span>
 <span><span class="va">ref.sce</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
