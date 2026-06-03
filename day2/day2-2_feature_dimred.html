@@ -437,7 +437,7 @@ Note
 <span><span class="va">dec</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">$</span><span class="va">hvg</span><span class="op">]</span>, <span class="op">]</span><span class="op">$</span><span class="va">bio</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-0.01195 0.01533 0.02136 0.08363 0.04150 8.84573 </code></pre>
+0.01172 0.01499 0.02112 0.08338 0.04127 8.84989 </code></pre>
 </div>
 </div>
 </section><section id="spatially-variable-genes-svgs" class="level3"><h3 class="anchored" data-anchor-id="spatially-variable-genes-svgs">Spatially Variable Genes (SVGs)</h3>
@@ -532,30 +532,30 @@ This took 4 minutes to run on my laptop
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">res_nnSVG</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>DataFrame with 6 rows and 19 columns
-                    ID      Symbol            Type subsets_Mito       hvg
-           &lt;character&gt; &lt;character&gt;        &lt;factor&gt;    &lt;logical&gt; &lt;logical&gt;
-LAMB1  ENSG00000091136       LAMB1 Gene Expression        FALSE      TRUE
-CPQ    ENSG00000104324         CPQ Gene Expression        FALSE      TRUE
-NRP2   ENSG00000118257        NRP2 Gene Expression        FALSE      TRUE
-SPOCK2 ENSG00000107742      SPOCK2 Gene Expression        FALSE      TRUE
-ITPR1  ENSG00000150995       ITPR1 Gene Expression        FALSE      TRUE
-COL1A1 ENSG00000108821      COL1A1 Gene Expression        FALSE      TRUE
-         sigma.sq    tau.sq         phi    loglik   runtime      mean       var
-        &lt;numeric&gt; &lt;numeric&gt;   &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-LAMB1  0.01080745 0.1345915 4.75471e+01 -15072.64     6.192 0.1195187 0.1452390
-CPQ    0.00244816 0.0751375 3.66186e+00  -4630.25     2.457 0.0562255 0.0775610
-NRP2   0.02839062 0.1594157 1.66708e+01 -18318.31     3.714 0.1603421 0.1871791
-SPOCK2 0.00631247 0.0611798 1.32956e+02  -2237.78     3.179 0.0418059 0.0675663
-ITPR1  0.00110560 0.0629643 7.24635e-05  -1477.40     3.339 0.0470433 0.0640744
-COL1A1 2.70819987 0.3858016 2.05784e+01 -43434.70     4.995 1.1521191 2.9774671
-           spcov   prop_sv loglik_lm    LR_stat      rank      pval      padj
-       &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;  &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
-LAMB1   0.869813 0.0743296 -15336.38   527.4946         8         0         0
-CPQ     0.880008 0.0315543  -4746.36   232.2186        14         0         0
-NRP2    1.050848 0.1511697 -19618.97  2601.3188         5         0         0
-SPOCK2  1.900476 0.0935288  -2417.46   359.3503        11         0         0
-ITPR1   0.706808 0.0172562  -1521.65    88.5021        18         0         0
-COL1A1  1.428377 0.8753066 -66326.07 45782.7393         1         0         0</code></pre>
+                   ID      Symbol            Type subsets_Mito       hvg
+          &lt;character&gt; &lt;character&gt;        &lt;factor&gt;    &lt;logical&gt; &lt;logical&gt;
+MDFIC ENSG00000135272       MDFIC Gene Expression        FALSE      TRUE
+YWHAZ ENSG00000164924       YWHAZ Gene Expression        FALSE      TRUE
+BMPR2 ENSG00000204217       BMPR2 Gene Expression        FALSE      TRUE
+DDIT4 ENSG00000168209       DDIT4 Gene Expression        FALSE      TRUE
+ITPR1 ENSG00000150995       ITPR1 Gene Expression        FALSE      TRUE
+ADA2  ENSG00000093072        ADA2 Gene Expression        FALSE      TRUE
+        sigma.sq    tau.sq         phi    loglik   runtime      mean       var
+       &lt;numeric&gt; &lt;numeric&gt;   &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
+MDFIC 0.00378417 0.1064014 5.91250e+00 -10537.97     5.036 0.0783034 0.1101381
+YWHAZ 0.07322184 0.3723851 2.58846e+00 -32390.28     3.061 0.4392026 0.4410260
+BMPR2 0.01101202 0.1670222 3.44077e+01 -18528.95     4.599 0.1402710 0.1778655
+DDIT4 0.00556181 0.0715665 9.87672e+01  -4507.21     2.942 0.0558141 0.0770677
+ITPR1 0.00110560 0.0629643 7.24635e-05  -1477.40     3.220 0.0470433 0.0640744
+ADA2  0.00781089 0.1109479 8.37616e+01 -11792.91     3.913 0.0855133 0.1188903
+          spcov   prop_sv loglik_lm   LR_stat      rank      pval      padj
+      &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;
+MDFIC  0.785606 0.0343436 -10666.20  256.4530        16         0         0
+YWHAZ  0.616106 0.1643193 -34087.06 3393.5474         4         0         0
+BMPR2  0.748110 0.0618534 -18757.37  456.8333        12         0         0
+DDIT4  1.336177 0.0721111  -4638.63  262.8368        15         0         0
+ITPR1  0.706808 0.0172562  -1521.65   88.5021        18         0         0
+ADA2   1.033515 0.0657711 -11957.06  328.2928        14         0         0</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">top_nnSVG</span> <span class="op">&lt;-</span> <span class="va">res_nnSVG</span><span class="op">$</span><span class="va">Symbol</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq_len</a></span><span class="op">(</span><span class="fl">6</span><span class="op">)</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
