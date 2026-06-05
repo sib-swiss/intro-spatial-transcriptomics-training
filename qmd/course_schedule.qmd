@@ -25,7 +25,7 @@ title: "Course schedule"
 
 | block | start | end | topic | instructors | dataset | presentation | exercise |
 |----|----|----|----|----|----|----|----|
-| recap | 9:00 | 9:15 | Recap from day 1 | Joana Carlevaro-Fita | \- |  |  |
+| recap | 9:00 | 9:15 | Recap from day 1 | Joana Carlevaro-Fita | \- | [link](../assets/pdf/recap_day1.pdf) |  |
 | block 1 | 9:15 | 10:30 | Quality control (sequencing-based) | Deepak Tanwar, Julien Roux | Visium HD | [link](../assets/pdf/05_qc_seq.pdf) | [Exercise 2A](../day1/day1-2a_spotsweeper_qc_segmented.qmd) |
 | break | 10:30 | 11:00 | Coffee break |  | \- |  |  |
 | block 2 | 11:00 | 12:00 | Normalization and scaling | Deepak Tanwar, Julien Roux | P2 CRC Visium HD and Xenium | [link](../assets/pdf/07_norm_scale.pdf) | [Exercise 4A](../day2/day2-1a_normalization_visium_segmented.qmd), [Exercise 4B](../day2/day2-1b_normalization_xenium.qmd) |
