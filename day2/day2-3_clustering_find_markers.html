@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.8.27">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
 <title>Exercise 6: Clustering and Domains – Spatial Transcriptomics</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -57,6 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -67,14 +68,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../assets/SIB_logo.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9730263449f324b8eff48836539e3013.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-416d0afab5eaf77b6e3abee7d4113ad9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -100,13 +103,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-<!-- Cookie Consent & Matomo Tracking --><script src="assets/cookie-consent.js"></script><!-- End Matomo Code -->
+}</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+<!-- Cookie Consent & Matomo Tracking -->
+<script src="assets/cookie-consent.js"></script>
+<!-- End Matomo Code -->
+
+
 </head>
+
 <body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Spatial Transcriptomics</span>
@@ -118,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -134,8 +145,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">day 1</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-1">
-<li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-1">    
+        <li>
     <a class="dropdown-item" href="../day1/day1-0_setup.html">
  <span class="dropdown-text">Setup</span></a>
   </li>  
@@ -160,13 +171,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Exercise 2B: Xenium QC</span></a>
   </li>  
     </ul>
-</li>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">day 2</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-2">
-<li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-2">    
+        <li>
     <a class="dropdown-item" href="../day2/day2-1a_normalization_visium_segmented.html">
  <span class="dropdown-text">Exercise 4A: Visium HD Normalization</span></a>
   </li>  
@@ -187,13 +198,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Exercise 7: Annotation</span></a>
   </li>  
     </ul>
-</li>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">day 3</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">
-<li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">    
+        <li>
     <a class="dropdown-item" href="../day3/day3-1_spatial_stats.html">
  <span class="dropdown-text">Exercise 8 : Multi-scale analysis</span></a>
   </li>  
@@ -202,20 +213,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Exercise 9: Differential Analysis</span></a>
   </li>  
     </ul>
-</li>
+  </li>
 </ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/sib-swiss/intro-spatial-transcriptomics-training"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -223,33 +236,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
+      <img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
       </div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#clustering-and-spatially-aware-clustering" id="toc-clustering-and-spatially-aware-clustering" class="nav-link active" data-scroll-target="#clustering-and-spatially-aware-clustering">Clustering and Spatially-aware clustering</a></li>
+  <li><a href="#clustering-and-spatially-aware-clustering" id="toc-clustering-and-spatially-aware-clustering" class="nav-link active" data-scroll-target="#clustering-and-spatially-aware-clustering">Clustering and Spatially-aware clustering</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li>
-<a href="#clustering" id="toc-clustering" class="nav-link" data-scroll-target="#clustering">Clustering</a>
+  <li><a href="#clustering" id="toc-clustering" class="nav-link" data-scroll-target="#clustering">Clustering</a>
   <ul class="collapse">
-<li><a href="#non-spatial-aware-clustering" id="toc-non-spatial-aware-clustering" class="nav-link" data-scroll-target="#non-spatial-aware-clustering">Non-spatial aware clustering</a></li>
+  <li><a href="#non-spatial-aware-clustering" id="toc-non-spatial-aware-clustering" class="nav-link" data-scroll-target="#non-spatial-aware-clustering">Non-spatial aware clustering</a></li>
   <li><a href="#spatialy-aware-clustering" id="toc-spatialy-aware-clustering" class="nav-link" data-scroll-target="#spatialy-aware-clustering">Spatialy aware clustering</a></li>
-  </ul>
-</li>
+  </ul></li>
   <li><a href="#comparison-of-results-from-the-different-clustering-methods" id="toc-comparison-of-results-from-the-different-clustering-methods" class="nav-link" data-scroll-target="#comparison-of-results-from-the-different-clustering-methods">Comparison of results from the different clustering methods</a></li>
   <li><a href="#save-the-object" id="toc-save-the-object" class="nav-link" data-scroll-target="#save-the-object">Save the object</a></li>
-  </ul></nav>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
 <h1 class="title">Exercise 6: Clustering and Domains</h1>
 </div>
 
@@ -264,41 +287,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/prabhakarlab/Banksy">Banksy</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r.igraph.org/">igraph</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/ggspavis">ggspavis</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">BayesSpace</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/nnSVG">nnSVG</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bioconductor.org/packages/HDF5Array">HDF5Array</a></span><span class="op">)</span> <span class="co"># For loading object</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/drighelli/SpatialExperiment">SpatialExperiment</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/pachterlab/SpatialFeatureExperiment">SpatialFeatureExperiment</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/pachterlab/voyager">Voyager</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MarioniLab/scran/">scran</a></span><span class="op">)</span> </span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://bioconductor.org/packages/scater/">scater</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">bluster</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/SingleR-inc/SingleR">SingleR</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/qsbase/qs2">qs2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://sjmgarnier.github.io/viridis/">viridis</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RColorBrewer</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">pheatmap</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">alabaster.sfe</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</header>
+
+
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Banksy)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggspavis)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BayesSpace)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nnSVG)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(HDF5Array) <span class="co"># For loading object</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpatialExperiment)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpatialFeatureExperiment)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Voyager)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scran) </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scater)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bluster)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SingleR)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(qs2)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pheatmap)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(alabaster.sfe)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="clustering-and-spatially-aware-clustering" class="level2"><h2 class="anchored" data-anchor-id="clustering-and-spatially-aware-clustering">Clustering and Spatially-aware clustering</h2>
+<section id="clustering-and-spatially-aware-clustering" class="level2">
+<h2 class="anchored" data-anchor-id="clustering-and-spatially-aware-clustering">Clustering and Spatially-aware clustering</h2>
 <p>In the next section we will explore clustering methods for spatial transcriptomics data, including classical non-spatially aware and spatially-aware approaches.</p>
-</section><section id="learning-objectives" class="level2"><h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
 <p>By the end of this exercise, you will be able to:</p>
 <ul>
 <li>Perform non-spatially aware clustering using graph-based methods (Leiden clustering).</li>
 <li>Perform spatially-aware clustering using Bayesian modeling (BayesSpace) and graph-based methods (Banksy + Leiden).</li>
 <li>Visualize and compare clustering results from different methods on tissue slides.</li>
-</ul></section><section id="clustering" class="level2"><h2 class="anchored" data-anchor-id="clustering">Clustering</h2>
+</ul>
+</section>
+<section id="clustering" class="level2">
+<h2 class="anchored" data-anchor-id="clustering">Clustering</h2>
 <p>We will start by loading the normalized Visium HD dataset stored in the <code>SpatialFeatureExperiment</code> object generated in the previous exercise. It contains information on the HVGs and dimensionationality reduction computed with Banksy and PCA.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Reload the SpatialFeatureExperiment object if not in the R session already</span></span>
-<span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu">readObject</span><span class="op">(</span><span class="st">"results/day2/02.2_sfe/"</span><span class="op">)</span></span>
-<span><span class="va">sfe</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reload the SpatialFeatureExperiment object if not in the R session already</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sfe <span class="ot">&lt;-</span> <span class="fu">readObject</span>(<span class="st">"results/day2/02.2_sfe/"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>sfe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>class: SpatialFeatureExperiment 
 dim: 18878 33763 
@@ -324,135 +356,152 @@ Graphs:
 sample01: </code></pre>
 </div>
 </div>
-<section id="non-spatial-aware-clustering" class="level3"><h3 class="anchored" data-anchor-id="non-spatial-aware-clustering">Non-spatial aware clustering</h3>
+<section id="non-spatial-aware-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="non-spatial-aware-clustering">Non-spatial aware clustering</h3>
 <p>Clustering methods can be categorized into non-spatially aware, e.g., these include the methods classically used for scRNA-seq analysis, and spatially-aware methods. We will first explore non-spatially aware clustering using graph-based methods.</p>
 <p>As commonly done in single-cell RNA-seq analysis, we can perform graph-based clustering using the Leiden algorithm on a shared nearest-neighbor (SNN) graph constructed from the PCA results.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># build cellular shared nearest-neighbor (SNN) graph</span></span>
-<span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/bluster/man/makeSNNGraph.html">makeSNNGraph</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/reducedDims.html">reducedDim</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="st">"PCA"</span><span class="op">)</span>, type<span class="op">=</span><span class="st">"jaccard"</span>, k<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span>
-<span><span class="co"># cluster using Leiden community detection algorithm</span></span>
-<span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r.igraph.org/reference/cluster_leiden.html">cluster_leiden</a></span><span class="op">(</span><span class="va">g</span>, objective_function<span class="op">=</span><span class="st">"modularity"</span>, resolution<span class="op">=</span><span class="fl">0.6</span><span class="op">)</span></span>
-<span><span class="co"># assign cluster labels to sfe object</span></span>
-<span><span class="va">sfe</span><span class="op">$</span><span class="va">Leiden</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">membership</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">$</span><span class="va">Leiden</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># build cellular shared nearest-neighbor (SNN) graph</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">makeSNNGraph</span>(<span class="fu">reducedDim</span>(sfe, <span class="st">"PCA"</span>), <span class="at">type=</span><span class="st">"jaccard"</span>, <span class="at">k=</span><span class="dv">20</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cluster using Leiden community detection algorithm</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">cluster_leiden</span>(g, <span class="at">objective_function=</span><span class="st">"modularity"</span>, <span class="at">resolution=</span><span class="fl">0.6</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># assign cluster labels to sfe object</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>sfe<span class="sc">$</span>Leiden <span class="ot">&lt;-</span> <span class="fu">factor</span>(k<span class="sc">$</span>membership)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sfe<span class="sc">$</span>Leiden)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    1    2    3    4    5    6    7    8    9 
 5515 4980 4141 3373 1375 4521 4321  784 4753 </code></pre>
 </div>
 </div>
-</section><section id="spatialy-aware-clustering" class="level3"><h3 class="anchored" data-anchor-id="spatialy-aware-clustering">Spatialy aware clustering</h3>
+</section>
+<section id="spatialy-aware-clustering" class="level3">
+<h3 class="anchored" data-anchor-id="spatialy-aware-clustering">Spatialy aware clustering</h3>
 <p>Clustering methods can also incorporate spatial information to identify spatial domains or regions in the tissue.</p>
-<section id="probabilistic-bayesspace" class="level4"><h4 class="anchored" data-anchor-id="probabilistic-bayesspace">Probabilistic: BayesSpace</h4>
+<section id="probabilistic-bayesspace" class="level4">
+<h4 class="anchored" data-anchor-id="probabilistic-bayesspace">Probabilistic: BayesSpace</h4>
 <p>The <code>BayesSpace</code> package performs spatially-aware clustering using a Bayesian modeling approach. Unfortunately it is not possible yet to use it on segmented data, see for example: https://github.com/edward130603/BayesSpace/issues/136</p>
-</section><section id="exercise-1-bonus" class="level4"><h4 class="anchored" data-anchor-id="exercise-1-bonus">Exercise 1: Bonus</h4>
+</section>
+<section id="exercise-1-bonus" class="level4">
+<h4 class="anchored" data-anchor-id="exercise-1-bonus">Exercise 1: Bonus</h4>
 <p>Go back to our binned data stored in a <code>SpatialExperiment</code> object to run <code>BayesSpace</code>. We need to quickly go through all the steps of normalization, HVG selection and dimensionality reduction.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">loadHDF5SummarizedExperiment</a></span><span class="op">(</span>dir<span class="op">=</span><span class="st">"results/day1/"</span>, prefix<span class="op">=</span><span class="st">"01.1a_spe_"</span><span class="op">)</span></span>
-<span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scuttle/man/logNormCounts.html">logNormCounts</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">dec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scran/man/modelGeneVarByPoisson.html">modelGeneVarByPoisson</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span></span>
-<span><span class="va">dec</span> <span class="op">&lt;-</span> <span class="va">dec</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">dec</span><span class="op">$</span><span class="va">bio</span>, decreasing <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>, <span class="op">]</span></span>
-<span><span class="va">hvg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scran/man/getTopHVGs.html">getTopHVGs</a></span><span class="op">(</span><span class="va">dec</span>, n <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span> </span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span><span class="op">$</span><span class="va">hvg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span><span class="op">$</span><span class="va">Symbol</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="va">hvg</span></span>
-<span></span>
-<span><span class="co">## non-spatial PCA</span></span>
-<span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BiocSingular/man/runPCA.html">runPCA</a></span><span class="op">(</span><span class="va">spe</span>, ncomponents <span class="op">=</span> <span class="fl">10</span>, subset_row <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span><span class="op">$</span><span class="va">hvg</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Banksy PCA (for comparison)</span></span>
-<span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fl">20</span>   <span class="co"># consider first order neighbors</span></span>
-<span><span class="va">l</span> <span class="op">&lt;-</span> <span class="fl">0.8</span> <span class="co"># use spatial information with weight lambda</span></span>
-<span><span class="va">a</span> <span class="op">&lt;-</span> <span class="st">"logcounts"</span> <span class="co"># assay to use</span></span>
-<span><span class="va">xy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"array_row"</span>, <span class="st">"array_col"</span><span class="op">)</span>  <span class="co"># spatial coordinate names</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
-<span><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Banksy/man/computeBanksy.html">computeBanksy</a></span><span class="op">(</span><span class="va">spe</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">rowData</a></span><span class="op">(</span><span class="va">spe</span><span class="op">)</span><span class="op">$</span><span class="va">hvg</span>, <span class="op">]</span>, </span>
-<span>                     assay_name<span class="op">=</span><span class="va">a</span>, </span>
-<span>                     coord_names<span class="op">=</span><span class="va">xy</span>, </span>
-<span>                     k_geom<span class="op">=</span><span class="va">k</span>, </span>
-<span>                     parallel<span class="op">=</span><span class="cn">T</span>,</span>
-<span>                     num_cores<span class="op">=</span><span class="fl">4</span><span class="op">)</span></span>
-<span><span class="va">tmp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Banksy/man/runBanksyPCA.html">runBanksyPCA</a></span><span class="op">(</span><span class="va">tmp</span>, </span>
-<span>                    lambda<span class="op">=</span><span class="va">l</span>, </span>
-<span>                    npcs<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/reducedDims.html">reducedDim</a></span><span class="op">(</span><span class="va">spe</span>, <span class="st">"PCA_banksy"</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/reducedDims.html">reducedDim</a></span><span class="op">(</span><span class="va">tmp</span>, <span class="st">"PCA_M0_lam0.8"</span><span class="op">)</span> </span>
-<span></span>
-<span></span>
-<span><span class="co"># Prepare data for 'BayesSpace'</span></span>
-<span><span class="co"># skipping PCA (already computed)</span></span>
-<span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BayesSpace/man/spatialPreprocess.html">spatialPreprocess</a></span><span class="op">(</span><span class="va">spe</span>, skip.PCA<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># perform spatial clustering with 'BayesSpace'</span></span>
-<span><span class="co"># using 'd=10' PCs and targeting 'q=8' clusters</span></span>
-<span><span class="va">spe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/BayesSpace/man/spatialCluster.html">spatialCluster</a></span><span class="op">(</span><span class="va">spe</span>, q<span class="op">=</span><span class="fl">8</span>, d<span class="op">=</span><span class="fl">10</span>, nrep<span class="op">=</span><span class="fl">1e3</span>, burn.in<span class="op">=</span><span class="fl">100</span><span class="op">)</span> </span>
-<span><span class="va">spe</span><span class="op">$</span><span class="va">BayesSpace</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">spatial.cluster</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">spe</span><span class="op">$</span><span class="va">BayesSpace</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">loadHDF5SummarizedExperiment</span>(<span class="at">dir=</span><span class="st">"results/day1/"</span>, <span class="at">prefix=</span><span class="st">"01.1a_spe_"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">logNormCounts</span>(spe)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>dec <span class="ot">&lt;-</span> <span class="fu">modelGeneVarByPoisson</span>(spe)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>dec <span class="ot">&lt;-</span> dec[<span class="fu">order</span>(dec<span class="sc">$</span>bio, <span class="at">decreasing =</span> T), ]</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>hvg <span class="ot">&lt;-</span> <span class="fu">getTopHVGs</span>(dec, <span class="at">n =</span> <span class="dv">1000</span>) </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">rowData</span>(spe)<span class="sc">$</span>hvg <span class="ot">&lt;-</span> <span class="fu">rowData</span>(spe)<span class="sc">$</span>Symbol <span class="sc">%in%</span> hvg</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="do">## non-spatial PCA</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">runPCA</span>(spe, <span class="at">ncomponents =</span> <span class="dv">10</span>, <span class="at">subset_row =</span> <span class="fu">rowData</span>(spe)<span class="sc">$</span>hvg)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Banksy PCA (for comparison)</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="dv">20</span>   <span class="co"># consider first order neighbors</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fl">0.8</span> <span class="co"># use spatial information with weight lambda</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="st">"logcounts"</span> <span class="co"># assay to use</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>xy <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"array_row"</span>, <span class="st">"array_col"</span>)  <span class="co"># spatial coordinate names</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">computeBanksy</span>(spe[<span class="fu">rowData</span>(spe)<span class="sc">$</span>hvg, ], </span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                     <span class="at">assay_name=</span>a, </span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>                     <span class="at">coord_names=</span>xy, </span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                     <span class="at">k_geom=</span>k, </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>                     <span class="at">parallel=</span>T,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>                     <span class="at">num_cores=</span><span class="dv">4</span>)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">runBanksyPCA</span>(tmp, </span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>                    <span class="at">lambda=</span>l, </span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>                    <span class="at">npcs=</span><span class="dv">10</span>)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="fu">reducedDim</span>(spe, <span class="st">"PCA_banksy"</span>) <span class="ot">&lt;-</span> <span class="fu">reducedDim</span>(tmp, <span class="st">"PCA_M0_lam0.8"</span>) </span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data for 'BayesSpace'</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="co"># skipping PCA (already computed)</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">spatialPreprocess</span>(spe, <span class="at">skip.PCA=</span><span class="cn">TRUE</span>)</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="co"># perform spatial clustering with 'BayesSpace'</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co"># using 'd=10' PCs and targeting 'q=8' clusters</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>spe <span class="ot">&lt;-</span> <span class="fu">spatialCluster</span>(spe, <span class="at">q=</span><span class="dv">8</span>, <span class="at">d=</span><span class="dv">10</span>, <span class="at">nrep=</span><span class="fl">1e3</span>, <span class="at">burn.in=</span><span class="dv">100</span>) </span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>spe<span class="sc">$</span>BayesSpace <span class="ot">&lt;-</span> <span class="fu">factor</span>(spe<span class="sc">$</span>spatial.cluster)</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(spe<span class="sc">$</span>BayesSpace)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    1    2    3    4    5    6    7    8 
 5343 3966 4931 3337  930 1916  773 1223 </code></pre>
 </div>
 </div>
-</section><section id="graph-based-banksy" class="level4"><h4 class="anchored" data-anchor-id="graph-based-banksy">Graph-based: Banksy</h4>
+</section>
+<section id="graph-based-banksy" class="level4">
+<h4 class="anchored" data-anchor-id="graph-based-banksy">Graph-based: Banksy</h4>
 <p>We have computed spatially-aware principal components using Banksy already in the previous practical. We will now used these to perform SNN graph-based Leiden clustering, in order to obtain spatially-aware clusters. When building the SNN graph, we will use the same parameters we have used before for the non-spatially aware graph.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># perform SNN graph-based clustering on 'Banksy' PCs using</span></span>
-<span><span class="va">g</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scran/man/buildSNNGraph.html">buildSNNGraph</a></span><span class="op">(</span><span class="va">sfe</span>, use.dimred<span class="op">=</span><span class="st">"PCA_banksy"</span>, type<span class="op">=</span><span class="st">"jaccard"</span>, k<span class="op">=</span><span class="fl">20</span><span class="op">)</span></span>
-<span><span class="co"># cluster using Leiden community detection algorithm</span></span>
-<span><span class="va">k</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r.igraph.org/reference/cluster_leiden.html">cluster_leiden</a></span><span class="op">(</span><span class="va">g</span>, objective_function<span class="op">=</span><span class="st">"modularity"</span>, resolution<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span></span>
-<span><span class="va">sfe</span><span class="op">$</span><span class="va">Banksy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">k</span><span class="op">$</span><span class="va">membership</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">$</span><span class="va">Banksy</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># perform SNN graph-based clustering on 'Banksy' PCs using</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> <span class="fu">buildSNNGraph</span>(sfe, <span class="at">use.dimred=</span><span class="st">"PCA_banksy"</span>, <span class="at">type=</span><span class="st">"jaccard"</span>, <span class="at">k=</span><span class="dv">20</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># cluster using Leiden community detection algorithm</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>k <span class="ot">&lt;-</span> <span class="fu">cluster_leiden</span>(g, <span class="at">objective_function=</span><span class="st">"modularity"</span>, <span class="at">resolution=</span><span class="fl">0.2</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>sfe<span class="sc">$</span>Banksy <span class="ot">&lt;-</span> <span class="fu">factor</span>(k<span class="sc">$</span>membership)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sfe<span class="sc">$</span>Banksy)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    1    2    3    4    5    6 
 8708 9358 3463 1359 9888  987 </code></pre>
 </div>
 </div>
-</section><section id="exercise-2-bonus" class="level4"><h4 class="anchored" data-anchor-id="exercise-2-bonus">Exercise 2: Bonus</h4>
+</section>
+<section id="exercise-2-bonus" class="level4">
+<h4 class="anchored" data-anchor-id="exercise-2-bonus">Exercise 2: Bonus</h4>
 <p>Perform a similar graph-based clustering on Banksy PCs in the binned <code>spe</code> object</p>
-</section></section></section><section id="comparison-of-results-from-the-different-clustering-methods" class="level2"><h2 class="anchored" data-anchor-id="comparison-of-results-from-the-different-clustering-methods">Comparison of results from the different clustering methods</h2>
+</section>
+</section>
+</section>
+<section id="comparison-of-results-from-the-different-clustering-methods" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-of-results-from-the-different-clustering-methods">Comparison of results from the different clustering methods</h2>
 <p>Let’s visualize the clustering results from the different methods on the tissue slide.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## 2 methods to compare for the sfe object</span></span>
-<span><span class="va">ks</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Leiden"</span>, <span class="st">"Banksy"</span><span class="op">)</span> </span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature</a></span><span class="op">(</span><span class="va">sfe</span>, features <span class="op">=</span> <span class="va">ks</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 methods to compare for the sfe object</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ks <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Leiden"</span>, <span class="st">"Banksy"</span>) </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plotSpatialFeature</span>(sfe, <span class="at">features =</span> ks)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day2-3_clustering_find_markers_files/figure-html/day2-3-clustering-find-markers-6-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day2-3_clustering_find_markers_files/figure-html/day2-3-clustering-find-markers-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## If BayesSpace was run on the spe object</span></span>
-<span><span class="co"># Colorblind friendly palette</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"ditto_colors"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotVisium.html">plotVisium</a></span><span class="op">(</span><span class="va">spe</span>,</span>
-<span>           annotate <span class="op">=</span> <span class="st">"BayesSpace"</span>,</span>
-<span>           zoom <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>           image <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>           point_size <span class="op">=</span> <span class="fl">1.5</span>,</span>
-<span>           point_shape <span class="op">=</span> <span class="fl">22</span><span class="op">)</span> <span class="op">+</span> </span>
-<span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="va">ditto_colors</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## If BayesSpace was run on the spe object</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Colorblind friendly palette</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"ditto_colors"</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plotVisium</span>(spe,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">annotate =</span> <span class="st">"BayesSpace"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">zoom =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">image =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">point_size =</span> <span class="fl">1.5</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>           <span class="at">point_shape =</span> <span class="dv">22</span>) <span class="sc">+</span> </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a> <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> ditto_colors)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day2-3_clustering_find_markers_files/figure-html/day2-3-clustering-find-markers-6-2.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day2-3_clustering_find_markers_files/figure-html/day2-3-clustering-find-markers-6-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>It can help us to visualise the clusters one by one, in order to better see their spatial distribution. We take as an example the Banksy clusters:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plot selected clusters in order of frequency, highlighting cells assigned to cluster 'k'</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">$</span><span class="va">Banksy</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>, \<span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="va">sfe</span><span class="op">$</span><span class="va">foo</span> <span class="op">&lt;-</span> <span class="va">sfe</span><span class="op">$</span><span class="va">Banksy</span> <span class="op">==</span> <span class="va">k</span></span>
-<span>    <span class="va">sfe</span> <span class="op">&lt;-</span> <span class="va">sfe</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/order.html">order</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">$</span><span class="va">foo</span><span class="op">)</span><span class="op">]</span></span>
-<span>    <span class="va">plt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature</a></span><span class="op">(</span><span class="va">sfe</span>, features <span class="op">=</span> <span class="st">"foo"</span><span class="op">)</span></span>
-<span>    <span class="va">plt</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="va">k</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html">guides</a></span><span class="op">(</span>fill<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://patchwork.data-imaginist.com/reference/wrap_plots.html">wrap_plots</a></span><span class="op">(</span>nrow<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">&amp;</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_color_manual</a></span><span class="op">(</span>values<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"white"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span> <span class="op">&amp;</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span>, legend.position<span class="op">=</span><span class="st">"none"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot selected clusters in order of frequency, highlighting cells assigned to cluster 'k'</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(<span class="fu">names</span>(<span class="fu">sort</span>(<span class="fu">table</span>(sfe<span class="sc">$</span>Banksy), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)), \(k) {</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    sfe<span class="sc">$</span>foo <span class="ot">&lt;-</span> sfe<span class="sc">$</span>Banksy <span class="sc">==</span> k</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    sfe <span class="ot">&lt;-</span> sfe[, <span class="fu">order</span>(sfe<span class="sc">$</span>foo)]</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    plt <span class="ot">&lt;-</span> <span class="fu">plotSpatialFeature</span>(sfe, <span class="at">features =</span> <span class="st">"foo"</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    plt <span class="sc">+</span> <span class="fu">ggtitle</span>(k) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill=</span><span class="st">"none"</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>}) <span class="sc">|&gt;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">wrap_plots</span>(<span class="at">nrow=</span><span class="dv">2</span>) <span class="sc">&amp;</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values=</span><span class="fu">c</span>(<span class="st">"white"</span>, <span class="st">"red"</span>)) <span class="sc">&amp;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>), <span class="at">legend.position=</span><span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day2-3_clustering_find_markers_files/figure-html/day2-3-clustering-find-markers-7-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day2-3_clustering_find_markers_files/figure-html/day2-3-clustering-find-markers-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -474,28 +523,33 @@ sample01: </code></pre>
 <!-- 
 TO DO: answer this
 -->
-</section><section id="save-the-object" class="level2"><h2 class="anchored" data-anchor-id="save-the-object">Save the object</h2>
+</section>
+<section id="save-the-object" class="level2">
+<h2 class="anchored" data-anchor-id="save-the-object">Save the object</h2>
 <p>Save the <code>SpatialFeatureExperiment</code> object for the next steps:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">alabaster.sfe</span><span class="fu">::</span><span class="fu">saveObject</span><span class="op">(</span><span class="va">sfe</span>, <span class="st">"results/day2/02.3_sfe"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>alabaster.sfe<span class="sc">::</span><span class="fu">saveObject</span>(sfe, <span class="st">"results/day2/02.3_sfe"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Potentially save the <code>SpatialExperiment</code> object used in bonus exercises</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/HDF5Array/man/saveHDF5SummarizedExperiment.html">saveHDF5SummarizedExperiment</a></span><span class="op">(</span><span class="va">spe</span>,</span>
-<span>  dir <span class="op">=</span> <span class="st">"results/day2"</span>, prefix <span class="op">=</span> <span class="st">"02.3_spe_"</span>, replace <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  chunkdim <span class="op">=</span> <span class="cn">NULL</span>, level <span class="op">=</span> <span class="cn">NULL</span>, as.sparse <span class="op">=</span> <span class="cn">NA</span>,</span>
-<span>  verbose <span class="op">=</span> <span class="cn">NA</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveHDF5SummarizedExperiment</span>(spe,</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">dir =</span> <span class="st">"results/day2"</span>, <span class="at">prefix =</span> <span class="st">"02.3_spe_"</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">chunkdim =</span> <span class="cn">NULL</span>, <span class="at">level =</span> <span class="cn">NULL</span>, <span class="at">as.sparse =</span> <span class="cn">NA</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="cn">NA</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Clear your environment:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/gc.html">gc</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu">.rs.restartR</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gc</span>()</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">.rs.restartR</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -896,6 +950,7 @@ TO DO: answer this
   });
   </script>
 </div> <!-- /content -->
+
 
 
 

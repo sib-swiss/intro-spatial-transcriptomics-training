@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.8.27">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
 <title>Exercise 2A: Visium HD QC – Spatial Transcriptomics</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -57,6 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
@@ -67,14 +68,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../assets/SIB_logo.svg" rel="icon" type="image/svg+xml">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9730263449f324b8eff48836539e3013.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-416d0afab5eaf77b6e3abee7d4113ad9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -100,13 +103,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-<!-- Cookie Consent & Matomo Tracking --><script src="assets/cookie-consent.js"></script><!-- End Matomo Code -->
+}</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
+<!-- Cookie Consent & Matomo Tracking -->
+<script src="assets/cookie-consent.js"></script>
+<!-- End Matomo Code -->
+
+
 </head>
+
 <body class="nav-sidebar floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Spatial Transcriptomics</span>
@@ -118,7 +129,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
@@ -134,8 +145,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-1" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">day 1</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-1">
-<li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-1">    
+        <li>
     <a class="dropdown-item" href="../day1/day1-0_setup.html">
  <span class="dropdown-text">Setup</span></a>
   </li>  
@@ -160,13 +171,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Exercise 2B: Xenium QC</span></a>
   </li>  
     </ul>
-</li>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-2" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">day 2</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-2">
-<li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-2">    
+        <li>
     <a class="dropdown-item" href="../day2/day2-1a_normalization_visium_segmented.html">
  <span class="dropdown-text">Exercise 4A: Visium HD Normalization</span></a>
   </li>  
@@ -187,13 +198,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Exercise 7: Annotation</span></a>
   </li>  
     </ul>
-</li>
+  </li>
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-day-3" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">day 3</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">
-<li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-day-3">    
+        <li>
     <a class="dropdown-item" href="../day3/day3-1_spatial_stats.html">
  <span class="dropdown-text">Exercise 8 : Multi-scale analysis</span></a>
   </li>  
@@ -202,20 +213,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Exercise 9: Differential Analysis</span></a>
   </li>  
     </ul>
-</li>
+  </li>
 </ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/sib-swiss/intro-spatial-transcriptomics-training"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -223,36 +236,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
+      <img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../assets/SIB_LogoQ_GBv.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
       </div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#quality-control-at-cell-level" id="toc-quality-control-at-cell-level" class="nav-link active" data-scroll-target="#quality-control-at-cell-level">Quality control at cell-level</a></li>
+  <li><a href="#quality-control-at-cell-level" id="toc-quality-control-at-cell-level" class="nav-link active" data-scroll-target="#quality-control-at-cell-level">Quality control at cell-level</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning objectives</a></li>
   <li><a href="#libraries" id="toc-libraries" class="nav-link" data-scroll-target="#libraries">Libraries</a></li>
-  <li>
-<a href="#calculate-qc-metrics" id="toc-calculate-qc-metrics" class="nav-link" data-scroll-target="#calculate-qc-metrics">Calculate QC metrics</a>
+  <li><a href="#calculate-qc-metrics" id="toc-calculate-qc-metrics" class="nav-link" data-scroll-target="#calculate-qc-metrics">Calculate QC metrics</a>
   <ul class="collapse">
-<li><a href="#global-outlier-detection" id="toc-global-outlier-detection" class="nav-link" data-scroll-target="#global-outlier-detection">Global outlier detection</a></li>
+  <li><a href="#global-outlier-detection" id="toc-global-outlier-detection" class="nav-link" data-scroll-target="#global-outlier-detection">Global outlier detection</a></li>
   <li><a href="#local-outlier-detection" id="toc-local-outlier-detection" class="nav-link" data-scroll-target="#local-outlier-detection">Local Outlier Detection</a></li>
-  </ul>
-</li>
+  </ul></li>
   <li><a href="#compare-and-combine-global-and-local-outliers-and-apply-filtering" id="toc-compare-and-combine-global-and-local-outliers-and-apply-filtering" class="nav-link" data-scroll-target="#compare-and-combine-global-and-local-outliers-and-apply-filtering">Compare and combine global and local outliers and apply filtering</a></li>
   <li><a href="#bonus-region-level-technical-artifacts" id="toc-bonus-region-level-technical-artifacts" class="nav-link" data-scroll-target="#bonus-region-level-technical-artifacts">Bonus: region-level technical artifacts</a></li>
   <li><a href="#filtering" id="toc-filtering" class="nav-link" data-scroll-target="#filtering">Filtering</a></li>
   <li><a href="#save-the-object" id="toc-save-the-object" class="nav-link" data-scroll-target="#save-the-object">Save the object</a></li>
-  </ul></nav>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
 <h1 class="title">Exercise 2A: Visium HD QC</h1>
 </div>
 
@@ -267,7 +290,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="quality-control-at-cell-level" class="level2"><h2 class="anchored" data-anchor-id="quality-control-at-cell-level">Quality control at cell-level</h2>
+</header>
+
+
+<section id="quality-control-at-cell-level" class="level2">
+<h2 class="anchored" data-anchor-id="quality-control-at-cell-level">Quality control at cell-level</h2>
 <p>In this second exercise, we will focus on the critical step of quality control (QC) for sequencing-based spatial transcriptomics data. We will focus on the segmented Visium HD dataset used in <code>Exercise 1C</code>, so each observation is an individual cell with the selected region of interest. QC helps flag low-quality cells or technical artifacts before downstream analysis.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -282,42 +309,49 @@ Note
 <p>A similar QC can be done per bin or aggregated bin if a binned analysis of Visium HD is performed.</p>
 </div>
 </div>
-</section><section id="learning-objectives" class="level2"><h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
 <p>By the end of this exercise, you will be able to:</p>
 <ul>
 <li>Calculate per-cell QC metrics.</li>
 <li>Identify local outliers based on various QC metrics.</li>
 <li>Detect spatial artifacts using <code>SpotSweeper</code>.</li>
 <li>Visualize QC metrics and detected artifacts.</li>
-</ul></section><section id="libraries" class="level2"><h2 class="anchored" data-anchor-id="libraries">Libraries</h2>
+</ul>
+</section>
+<section id="libraries" class="level2">
+<h2 class="anchored" data-anchor-id="libraries">Libraries</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/drighelli/SpatialExperiment">SpatialExperiment</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/pachterlab/SpatialFeatureExperiment">SpatialFeatureExperiment</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/pachterlab/voyager">Voyager</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://bioconductor.org/packages/HDF5Array">HDF5Array</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">alabaster.sfe</span><span class="op">)</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/MicTott/SpotSweeper">SpotSweeper</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">scuttle</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">scrapper</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://bioconductor.org/packages/scater/">scater</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/boyiguo1/escheR">escheR</a></span><span class="op">)</span> </span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jtlandis/ggside">ggside</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/lmweber/ggspavis">ggspavis</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com">patchwork</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpatialExperiment)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpatialFeatureExperiment)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(Voyager)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(HDF5Array)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(alabaster.sfe)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(SpotSweeper)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scuttle)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scrapper)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scater)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(escheR) </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggside)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggspavis)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="calculate-qc-metrics" class="level2"><h2 class="anchored" data-anchor-id="calculate-qc-metrics">Calculate QC metrics</h2>
+</section>
+<section id="calculate-qc-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="calculate-qc-metrics">Calculate QC metrics</h2>
 <p>We will start by calculating QC metrics that are also commonly used in scRNA-seq data analysis: total UMI counts, number of detected genes, and percentage of UMIs originating from genes of the mitochondrial genome. Here these metrics are calculated per segmented cell and used to identify low-quality cells.</p>
 <p>We will start by loading our <code>SpatialFeatureExperiment</code> object, which was saved in the previous exercise, and prepare it for quality control analysis.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Reload the SpatialFeatureExperiment object if not in the R session already</span></span>
-<span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu">readObject</span><span class="op">(</span><span class="st">"results/day1/01.1c_sfe_visium/"</span><span class="op">)</span></span>
-<span><span class="co">## Otherwise, quickly go through Exercise day1-1c to recreate the object</span></span>
-<span></span>
-<span><span class="co"># Identify mitochondrial genes (genes with symbol starting with "MT-")</span></span>
-<span><span class="va">is.mito</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"^MT-"</span>, <span class="fu"><a href="https://rdrr.io/r/base/colnames.html">rownames</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reload the SpatialFeatureExperiment object if not in the R session already</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sfe <span class="ot">&lt;-</span> <span class="fu">readObject</span>(<span class="st">"results/day1/01.1c_sfe_visium/"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Otherwise, quickly go through Exercise day1-1c to recreate the object</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify mitochondrial genes (genes with symbol starting with "MT-")</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>is.mito <span class="ot">&lt;-</span> <span class="fu">rownames</span>(sfe)[<span class="fu">grepl</span>(<span class="st">"^MT-"</span>, <span class="fu">rownames</span>(sfe))]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <!--- NOTE: HDF5-backed saving/loading via saveHDF5SummarizedExperiment() is reliable for assays, but it can leave sf geometries with invalid external pointers after reload (GEOS/s2), which then crash functions like localOutliers() with “external pointer is not valid”. 
 Need a solution or don't delete previous object 
@@ -338,7 +372,7 @@ Note
 </div>
 <p>Run the following code to compute these metrics:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scuttle/man/addPerCellQCMetrics.html">addPerCellQCMetrics</a></span><span class="op">(</span><span class="va">sfe</span>, subsets <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>Mito <span class="op">=</span> <span class="va">is.mito</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sfe <span class="ot">&lt;-</span> <span class="fu">addPerCellQCMetrics</span>(sfe, <span class="at">subsets =</span> <span class="fu">list</span>(<span class="at">Mito =</span> is.mito))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -366,8 +400,8 @@ Note
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Display the colData to see the newly added QC metrics.</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">colData</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the colData to see the newly added QC metrics.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colData</span>(sfe)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>DataFrame with 34874 rows and 8 columns
                      sample_id      area       sum  detected subsets_Mito_sum
@@ -406,7 +440,8 @@ cellid_000189343-1                    12              7.30496      2820</code></
 </div>
 </div>
 </div>
-<section id="global-outlier-detection" class="level3"><h3 class="anchored" data-anchor-id="global-outlier-detection">Global outlier detection</h3>
+<section id="global-outlier-detection" class="level3">
+<h3 class="anchored" data-anchor-id="global-outlier-detection">Global outlier detection</h3>
 <p>In order to detect low-quality cells and filter them out, QC methods similar to those from scRNA-seq analysis can be applied. A simple approach is to apply a fixed upper or lower threshold to a metric across all cells and remove the cells that do not pass the filtering criteria.</p>
 <p>To set up these thresholds and adapt them to this technology, we can look for information from 10x Genomics and the community, for example https://github.com/10XGenomics/HumanColonCancer_VisiumHD/issues/28. Based on this discussion the authors of the OSTA book wrote (see “Remove bins overlaying empty tissue” section in https://lmweber.org/OSTA/pages/seq-workflow-visium-hd-bin.html#dependencies):</p>
 <blockquote class="blockquote">
@@ -414,49 +449,50 @@ cellid_000189343-1                    12              7.30496      2820</code></
 </blockquote>
 <p>This is not exactly transposable to the segmented cell output, but conveys the message that the UMI counts are low, much lower than what is observed with scRNA-seq data! We can also have a look and plot distributions of the values to decide which is the best cutoff:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Plot library size vs. detected genes</span></span>
-<span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scater/man/ggsce.html">ggcells</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">detected</span>, y<span class="op">=</span><span class="va">sum</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density_2d.html">geom_density_2d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/ggside/man/geom_xsidehistogram.html">geom_xsidehistogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/ggside/man/geom_xsidehistogram.html">geom_ysidehistogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">200</span>, col<span class="op">=</span><span class="st">"red"</span>, lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">300</span>, col<span class="op">=</span><span class="st">"red"</span>, lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y<span class="op">=</span><span class="st">"Number of UMIs"</span>, x<span class="op">=</span><span class="st">"Number of detected genes"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Library size vs. detected"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Plot mito proportion vs. detected genes</span></span>
-<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/scater/man/ggsce.html">ggcells</a></span><span class="op">(</span><span class="va">sfe</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">detected</span>, y<span class="op">=</span><span class="va">subsets_Mito_percent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density_2d.html">geom_density_2d</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/ggside/man/geom_xsidehistogram.html">geom_xsidehistogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/ggside/man/geom_xsidehistogram.html">geom_ysidehistogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">200</span>, col<span class="op">=</span><span class="st">"red"</span>, lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">10</span>, col<span class="op">=</span><span class="st">"red"</span>, lty<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y<span class="op">=</span><span class="st">"% mitochondrial reads"</span>, x<span class="op">=</span><span class="st">"Number of detected genes"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Mito proportion vs. genes detected"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot library size vs. detected genes</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggcells</span>(sfe, <span class="fu">aes</span>(<span class="at">x=</span>detected, <span class="at">y=</span>sum)) <span class="sc">+</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_2d</span>() <span class="sc">+</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_xsidehistogram</span>() <span class="sc">+</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ysidehistogram</span>() <span class="sc">+</span> </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">200</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">300</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"Number of UMIs"</span>, <span class="at">x=</span><span class="st">"Number of detected genes"</span>) <span class="sc">+</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Library size vs. detected"</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot mito proportion vs. detected genes</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggcells</span>(sfe, <span class="fu">aes</span>(<span class="at">x=</span>detected, <span class="at">y=</span>subsets_Mito_percent)) <span class="sc">+</span> </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density_2d</span>() <span class="sc">+</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_xsidehistogram</span>() <span class="sc">+</span> </span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_ysidehistogram</span>() <span class="sc">+</span> </span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">200</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">10</span>, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lty=</span><span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y=</span><span class="st">"% mitochondrial reads"</span>, <span class="at">x=</span><span class="st">"Number of detected genes"</span>) <span class="sc">+</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Mito proportion vs. genes detected"</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-5-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>And further check how many cells would be removed with the given thresholds:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Flag cells based on fixed thresholds</span></span>
-<span><span class="va">sfe</span><span class="op">$</span><span class="va">qc_lib_size</span> <span class="op">&lt;-</span> <span class="va">sfe</span><span class="op">$</span><span class="va">sum</span> <span class="op">&lt;</span> <span class="fl">300</span></span>
-<span><span class="va">sfe</span><span class="op">$</span><span class="va">qc_detected</span> <span class="op">&lt;-</span> <span class="va">sfe</span><span class="op">$</span><span class="va">detected</span> <span class="op">&lt;</span> <span class="fl">200</span></span>
-<span><span class="va">sfe</span><span class="op">$</span><span class="va">qc_mito_prop</span> <span class="op">&lt;-</span> <span class="va">sfe</span><span class="op">$</span><span class="va">subsets_Mito_percent</span> <span class="op">&gt;</span> <span class="fl">10</span></span>
-<span></span>
-<span><span class="co"># Tabulate number of cells flagged by each</span></span>
-<span><span class="va">qc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span><span class="st">"^qc"</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">colData</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html">colData</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">[</span><span class="va">qc</span><span class="op">]</span>, <span class="va">table</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Flag cells based on fixed thresholds</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>sfe<span class="sc">$</span>qc_lib_size <span class="ot">&lt;-</span> sfe<span class="sc">$</span>sum <span class="sc">&lt;</span> <span class="dv">300</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>sfe<span class="sc">$</span>qc_detected <span class="ot">&lt;-</span> sfe<span class="sc">$</span>detected <span class="sc">&lt;</span> <span class="dv">200</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>sfe<span class="sc">$</span>qc_mito_prop <span class="ot">&lt;-</span> sfe<span class="sc">$</span>subsets_Mito_percent <span class="sc">&gt;</span> <span class="dv">10</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabulate number of cells flagged by each</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>qc <span class="ot">&lt;-</span> <span class="fu">grep</span>(<span class="st">"^qc"</span>, <span class="fu">names</span>(<span class="fu">colData</span>(sfe)))</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">colData</span>(sfe)[qc], table)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      qc_lib_size qc_detected qc_mito_prop
 FALSE       30425       31429        33638
@@ -474,7 +510,7 @@ TRUE         4449        3445         1236</code></pre>
 </div>
 <div class="callout-body-container callout-body">
 <p>What do you think about this potential QC filtering?</p>
-<p>Have a look at the metrics on the tissue section using the plotting functions used in the previous practical, or with the <code><a href="https://rdrr.io/pkg/ggspavis/man/plotObsQC.html">plotObsQC()</a></code> function from the <code>ggspavis</code> package. Where are the cells that would be excluded with such global cutoffs?</p>
+<p>Have a look at the metrics on the tissue section using the plotting functions used in the previous practical, or with the <code>plotObsQC()</code> function from the <code>ggspavis</code> package. Where are the cells that would be excluded with such global cutoffs?</p>
 <p>Try using more stringent cutoffs to see which cells would be excluded. What do you notice? What does it tell us retrospectively about the use of global cutoffs in the analysis of scRNA-seq data?</p>
 </div>
 </div>
@@ -491,59 +527,63 @@ TRUE         4449        3445         1236</code></pre>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Plot the metrics</span></span>
-<span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature</a></span><span class="op">(</span><span class="va">sfe</span>, colGeometryName <span class="op">=</span> <span class="st">"cellSeg"</span>, features <span class="op">=</span> <span class="st">"subsets_Mito_percent"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradientn</a></span><span class="op">(</span>colors<span class="op">=</span><span class="fu">pals</span><span class="fu">::</span><span class="fu"><a href="https://kwstat.github.io/pals/reference/continuous.html">jet</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature</a></span><span class="op">(</span><span class="va">sfe</span>, colGeometryName <span class="op">=</span> <span class="st">"cellSeg"</span>, features <span class="op">=</span> <span class="st">"sum"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradientn</a></span><span class="op">(</span>trans <span class="op">=</span> <span class="st">"log"</span>, colors<span class="op">=</span><span class="fu">pals</span><span class="fu">::</span><span class="fu"><a href="https://kwstat.github.io/pals/reference/continuous.html">jet</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Plot the metrics</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">plotSpatialFeature</span>(sfe, <span class="at">colGeometryName =</span> <span class="st">"cellSeg"</span>, <span class="at">features =</span> <span class="st">"subsets_Mito_percent"</span>) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors=</span>pals<span class="sc">::</span><span class="fu">jet</span>())</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">plotSpatialFeature</span>(sfe, <span class="at">colGeometryName =</span> <span class="st">"cellSeg"</span>, <span class="at">features =</span> <span class="st">"sum"</span>) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">trans =</span> <span class="st">"log"</span>, <span class="at">colors=</span>pals<span class="sc">::</span><span class="fu">jet</span>())</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-7-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Which cells would be excluded</span></span>
-<span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature</a></span><span class="op">(</span><span class="va">sfe</span>, colGeometryName <span class="op">=</span> <span class="st">"cellSeg"</span>, features <span class="op">=</span> <span class="st">"qc_lib_size"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"beige"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature</a></span><span class="op">(</span><span class="va">sfe</span>, colGeometryName <span class="op">=</span> <span class="st">"cellSeg"</span>, features <span class="op">=</span> <span class="st">"qc_mito_prop"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_fill_manual</a></span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"beige"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Which cells would be excluded</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">plotSpatialFeature</span>(sfe, <span class="at">colGeometryName =</span> <span class="st">"cellSeg"</span>, <span class="at">features =</span> <span class="st">"qc_lib_size"</span>) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"beige"</span>, <span class="st">"red"</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">plotSpatialFeature</span>(sfe, <span class="at">colGeometryName =</span> <span class="st">"cellSeg"</span>, <span class="at">features =</span> <span class="st">"qc_mito_prop"</span>) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"beige"</span>, <span class="st">"red"</span>))</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-7-2.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-7-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## A similar plot using the ggspavis::plotVisium() function (y-coordinates are flipped!)</span></span>
-<span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotVisium.html">plotVisium</a></span><span class="op">(</span><span class="va">sfe</span>, annotate <span class="op">=</span> <span class="st">"sum"</span>, image <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradientn</a></span><span class="op">(</span>colors<span class="op">=</span><span class="fu">pals</span><span class="fu">::</span><span class="fu"><a href="https://kwstat.github.io/pals/reference/continuous.html">jet</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotVisium.html">plotVisium</a></span><span class="op">(</span><span class="va">sfe</span>, annotate <span class="op">=</span> <span class="st">"sum"</span>, image <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title<span class="op">=</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>hjust<span class="op">=</span><span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_gradient.html">scale_fill_gradientn</a></span><span class="op">(</span>trans <span class="op">=</span> <span class="st">"log"</span>, colors<span class="op">=</span><span class="fu">pals</span><span class="fu">::</span><span class="fu"><a href="https://kwstat.github.io/pals/reference/continuous.html">jet</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## A similar plot using the ggspavis::plotVisium() function (y-coordinates are flipped!)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">plotVisium</span>(sfe, <span class="at">annotate =</span> <span class="st">"sum"</span>, <span class="at">image =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">colors=</span>pals<span class="sc">::</span><span class="fu">jet</span>())</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">plotVisium</span>(sfe, <span class="at">annotate =</span> <span class="st">"sum"</span>, <span class="at">image =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>)) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradientn</span>(<span class="at">trans =</span> <span class="st">"log"</span>, <span class="at">colors=</span>pals<span class="sc">::</span><span class="fu">jet</span>())</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-7-3.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-7-3.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## or with the ggspavis::plotObsQC() function</span></span>
-<span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotObsQC.html">plotObsQC</a></span><span class="op">(</span><span class="va">sfe</span>, </span>
-<span>                plot_type<span class="op">=</span><span class="st">"spot"</span>, annotate<span class="op">=</span><span class="st">"qc_lib_size"</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Library size (&lt; 300 UMI)"</span><span class="op">)</span></span>
-<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotObsQC.html">plotObsQC</a></span><span class="op">(</span><span class="va">sfe</span>, </span>
-<span>                plot_type<span class="op">=</span><span class="st">"spot"</span>, annotate<span class="op">=</span><span class="st">"qc_mito_prop"</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Mito proportion (&gt; 10%)"</span><span class="op">)</span></span>
-<span><span class="va">p1</span> <span class="op">+</span> <span class="va">p2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">## or with the ggspavis::plotObsQC() function</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">plotObsQC</span>(sfe, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">plot_type=</span><span class="st">"spot"</span>, <span class="at">annotate=</span><span class="st">"qc_lib_size"</span>) <span class="sc">+</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Library size (&lt; 300 UMI)"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">plotObsQC</span>(sfe, </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">plot_type=</span><span class="st">"spot"</span>, <span class="at">annotate=</span><span class="st">"qc_mito_prop"</span>) <span class="sc">+</span> </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Mito proportion (&gt; 10%)"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>p1 <span class="sc">+</span> p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-7-4.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-7-4.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -552,40 +592,42 @@ TRUE         4449        3445         1236</code></pre>
 </div>
 </div>
 </div>
-</section><section id="local-outlier-detection" class="level3"><h3 class="anchored" data-anchor-id="local-outlier-detection">Local Outlier Detection</h3>
+</section>
+<section id="local-outlier-detection" class="level3">
+<h3 class="anchored" data-anchor-id="local-outlier-detection">Local Outlier Detection</h3>
 <p>To avoid discarding whole layers of tissue, another approach to identify low-quality cells is to use local outlier detection methods that take into account the spatial context of each cell.</p>
 <p>The <code>SpotSweeper</code> package provides functions to identify local outliers based on common QC metrics (such as the ones we have seen in the previous section: library size, number of detected genes, and mitochondrial percentage).</p>
 <p>We will use <code>localOutliers</code> from <code>SpotSweeper</code>, which helps identify cells that deviate significantly from their local neighborhood.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Identify local outliers based on library size ("sum" of counts).</span></span>
-<span><span class="co"># cells with unusually low library size compared to their neighbors will be flagged.</span></span>
-<span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SpotSweeper/man/localOutliers.html">localOutliers</a></span><span class="op">(</span><span class="va">sfe</span>,</span>
-<span>  metric <span class="op">=</span> <span class="st">"sum"</span>,</span>
-<span>  direction <span class="op">=</span> <span class="st">"lower"</span>,</span>
-<span>  log <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Identify local outliers based on the number of unique genes detected ("detected").</span></span>
-<span><span class="co"># cells with an unusually low number of detected genes will be flagged.</span></span>
-<span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SpotSweeper/man/localOutliers.html">localOutliers</a></span><span class="op">(</span><span class="va">sfe</span>, </span>
-<span>  metric <span class="op">=</span> <span class="st">"detected"</span>,</span>
-<span>  direction <span class="op">=</span> <span class="st">"lower"</span>,</span>
-<span>  log <span class="op">=</span> <span class="cn">TRUE</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Identify local outliers based on the mitochondrial gene percentage.</span></span>
-<span><span class="co"># cells with an unusually high mitochondrial percentage will be flagged.</span></span>
-<span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/SpotSweeper/man/localOutliers.html">localOutliers</a></span><span class="op">(</span><span class="va">sfe</span>,</span>
-<span>  metric <span class="op">=</span> <span class="st">"subsets_Mito_percent"</span>,</span>
-<span>  direction <span class="op">=</span> <span class="st">"higher"</span>,</span>
-<span>  log <span class="op">=</span> <span class="cn">FALSE</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Combine all individual outlier flags into a single "local_outliers" column.</span></span>
-<span><span class="co"># A cell is considered a local outlier if it is flagged by any of the above metrics.</span></span>
-<span><span class="va">sfe</span><span class="op">$</span><span class="va">local_outliers</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">$</span><span class="va">sum_outliers</span><span class="op">)</span> <span class="op">|</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">$</span><span class="va">detected_outliers</span><span class="op">)</span> <span class="op">|</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/logical.html">as.logical</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">$</span><span class="va">subsets_Mito_percent_outliers</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify local outliers based on library size ("sum" of counts).</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># cells with unusually low library size compared to their neighbors will be flagged.</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>sfe <span class="ot">&lt;-</span> <span class="fu">localOutliers</span>(sfe,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">metric =</span> <span class="st">"sum"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"lower"</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">log =</span> <span class="cn">TRUE</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify local outliers based on the number of unique genes detected ("detected").</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># cells with an unusually low number of detected genes will be flagged.</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>sfe <span class="ot">&lt;-</span> <span class="fu">localOutliers</span>(sfe, </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">metric =</span> <span class="st">"detected"</span>,</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"lower"</span>,</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">log =</span> <span class="cn">TRUE</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify local outliers based on the mitochondrial gene percentage.</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># cells with an unusually high mitochondrial percentage will be flagged.</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>sfe <span class="ot">&lt;-</span> <span class="fu">localOutliers</span>(sfe,</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">metric =</span> <span class="st">"subsets_Mito_percent"</span>,</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"higher"</span>,</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">log =</span> <span class="cn">FALSE</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine all individual outlier flags into a single "local_outliers" column.</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co"># A cell is considered a local outlier if it is flagged by any of the above metrics.</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>sfe<span class="sc">$</span>local_outliers <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(sfe<span class="sc">$</span>sum_outliers) <span class="sc">|</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.logical</span>(sfe<span class="sc">$</span>detected_outliers) <span class="sc">|</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.logical</span>(sfe<span class="sc">$</span>subsets_Mito_percent_outliers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -614,33 +656,35 @@ TRUE         4449        3445         1236</code></pre>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Count the number of cells flagged as local outliers.</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">$</span><span class="va">local_outliers</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of cells flagged as local outliers.</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sfe<span class="sc">$</span>local_outliers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 FALSE  TRUE 
 34533   341 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotObsQC.html">plotObsQC</a></span><span class="op">(</span><span class="va">sfe</span>, </span>
-<span>          plot_type<span class="op">=</span><span class="st">"spot"</span>, annotate<span class="op">=</span><span class="st">"local_outliers"</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"All local outliers"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotObsQC</span>(sfe, </span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">plot_type=</span><span class="st">"spot"</span>, <span class="at">annotate=</span><span class="st">"local_outliers"</span>) <span class="sc">+</span> </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"All local outliers"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-9-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>We can visualize the spatial distribution of the local outliers together with the QC metrics, for example plot the spatial distribution of local outliers for mitochondrial percentage.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/SpotSweeper/man/plotQCmetrics.html">plotQCmetrics</a></span><span class="op">(</span><span class="va">sfe</span>,</span>
-<span>  metric <span class="op">=</span> <span class="st">"subsets_Mito_percent"</span>, outliers <span class="op">=</span> <span class="st">"subsets_Mito_percent_outliers"</span>,</span>
-<span>  point_size <span class="op">=</span> <span class="fl">1</span>, stroke <span class="op">=</span> <span class="fl">0.5</span></span>
-<span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Local outliers for %MT"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotQCmetrics</span>(sfe,</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">metric =</span> <span class="st">"subsets_Mito_percent"</span>, <span class="at">outliers =</span> <span class="st">"subsets_Mito_percent_outliers"</span>,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">point_size =</span> <span class="dv">1</span>, <span class="at">stroke =</span> <span class="fl">0.5</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Local outliers for %MT"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-10-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -675,27 +719,29 @@ FALSE  TRUE
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Plot the spatial distribution of local outliers for library size.</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/SpotSweeper/man/plotQCmetrics.html">plotQCmetrics</a></span><span class="op">(</span><span class="va">sfe</span>,</span>
-<span>  metric <span class="op">=</span> <span class="st">"sum_log"</span>, outliers <span class="op">=</span> <span class="st">"sum_outliers"</span>, </span>
-<span>  point_size <span class="op">=</span> <span class="fl">1</span>, stroke <span class="op">=</span> <span class="fl">0.5</span></span>
-<span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Local outliers for number of UMIs"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the spatial distribution of local outliers for library size.</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotQCmetrics</span>(sfe,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">metric =</span> <span class="st">"sum_log"</span>, <span class="at">outliers =</span> <span class="st">"sum_outliers"</span>, </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">point_size =</span> <span class="dv">1</span>, <span class="at">stroke =</span> <span class="fl">0.5</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Local outliers for number of UMIs"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-11-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Plot the spatial distribution of local outliers for number of detected genes.</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/SpotSweeper/man/plotQCmetrics.html">plotQCmetrics</a></span><span class="op">(</span><span class="va">sfe</span>,</span>
-<span>  metric <span class="op">=</span> <span class="st">"detected_log"</span>, outliers <span class="op">=</span> <span class="st">"detected_outliers"</span>, point_size <span class="op">=</span> <span class="fl">0.4</span>,</span>
-<span>  stroke <span class="op">=</span> <span class="fl">0.75</span></span>
-<span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Local outliers for number of detected genes"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the spatial distribution of local outliers for number of detected genes.</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotQCmetrics</span>(sfe,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">metric =</span> <span class="st">"detected_log"</span>, <span class="at">outliers =</span> <span class="st">"detected_outliers"</span>, <span class="at">point_size =</span> <span class="fl">0.4</span>,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">stroke =</span> <span class="fl">0.75</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Local outliers for number of detected genes"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-11-2.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-11-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -706,10 +752,11 @@ FALSE  TRUE
 </div>
 <p>We can visualize the z-scores from the local outlier detection test and compare them to the global threshold used earlier. How do you interpret this?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotObsQC.html">plotObsQC</a></span><span class="op">(</span><span class="va">sfe</span>, plot_type <span class="op">=</span> <span class="st">"violin"</span>, x_metric <span class="op">=</span> <span class="st">"subsets_Mito_percent_z"</span>, annotate <span class="op">=</span> <span class="st">"qc_mito_prop"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotObsQC</span>(sfe, <span class="at">plot_type =</span> <span class="st">"violin"</span>, <span class="at">x_metric =</span> <span class="st">"subsets_Mito_percent_z"</span>, <span class="at">annotate =</span> <span class="st">"qc_mito_prop"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-12-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -730,27 +777,31 @@ FALSE  TRUE
 </div>
 </div>
 </div>
-</section></section><section id="compare-and-combine-global-and-local-outliers-and-apply-filtering" class="level2"><h2 class="anchored" data-anchor-id="compare-and-combine-global-and-local-outliers-and-apply-filtering">Compare and combine global and local outliers and apply filtering</h2>
+</section>
+</section>
+<section id="compare-and-combine-global-and-local-outliers-and-apply-filtering" class="level2">
+<h2 class="anchored" data-anchor-id="compare-and-combine-global-and-local-outliers-and-apply-filtering">Compare and combine global and local outliers and apply filtering</h2>
 <p>For the next steps we choose to: - adjust the global cutoffs to be less stringent - combine the (new) global and local outliers to perform the QC filtering</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># adjust global filtering cutoff</span></span>
-<span><span class="va">sfe</span><span class="op">$</span><span class="va">qc_lib_size</span> <span class="op">&lt;-</span> <span class="va">sfe</span><span class="op">$</span><span class="va">sum</span> <span class="op">&lt;</span> <span class="fl">120</span></span>
-<span><span class="va">sfe</span><span class="op">$</span><span class="va">qc_detected</span> <span class="op">&lt;-</span> <span class="va">sfe</span><span class="op">$</span><span class="va">detected</span> <span class="op">&lt;</span> <span class="fl">100</span></span>
-<span><span class="va">sfe</span><span class="op">$</span><span class="va">qc_mito_prop</span> <span class="op">&lt;-</span> <span class="va">sfe</span><span class="op">$</span><span class="va">subsets_Mito_percent</span> <span class="op">&gt;</span> <span class="fl">30</span></span>
-<span></span>
-<span><span class="co"># compare global and local outliers being flagged</span></span>
-<span><span class="va">sfe</span><span class="op">$</span><span class="va">global_outliers</span> <span class="op">&lt;-</span> <span class="va">sfe</span><span class="op">$</span><span class="va">qc_lib_size</span> <span class="op">|</span> <span class="va">sfe</span><span class="op">$</span><span class="va">qc_detected</span> <span class="op">|</span> <span class="va">sfe</span><span class="op">$</span><span class="va">qc_mito_prop</span></span>
-<span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotObsQC.html">plotObsQC</a></span><span class="op">(</span><span class="va">sfe</span>, plot_type<span class="op">=</span><span class="st">"spot"</span>, annotate<span class="op">=</span><span class="st">"global_outliers"</span><span class="op">)</span></span>
-<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/ggspavis/man/plotObsQC.html">plotObsQC</a></span><span class="op">(</span><span class="va">sfe</span>, plot_type<span class="op">=</span><span class="st">"spot"</span>, annotate<span class="op">=</span><span class="st">"local_outliers"</span><span class="op">)</span></span>
-<span><span class="fu">gridExtra</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html">grid.arrange</a></span><span class="op">(</span><span class="va">p1</span>, <span class="va">p2</span>, ncol<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># adjust global filtering cutoff</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>sfe<span class="sc">$</span>qc_lib_size <span class="ot">&lt;-</span> sfe<span class="sc">$</span>sum <span class="sc">&lt;</span> <span class="dv">120</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>sfe<span class="sc">$</span>qc_detected <span class="ot">&lt;-</span> sfe<span class="sc">$</span>detected <span class="sc">&lt;</span> <span class="dv">100</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>sfe<span class="sc">$</span>qc_mito_prop <span class="ot">&lt;-</span> sfe<span class="sc">$</span>subsets_Mito_percent <span class="sc">&gt;</span> <span class="dv">30</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># compare global and local outliers being flagged</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>sfe<span class="sc">$</span>global_outliers <span class="ot">&lt;-</span> sfe<span class="sc">$</span>qc_lib_size <span class="sc">|</span> sfe<span class="sc">$</span>qc_detected <span class="sc">|</span> sfe<span class="sc">$</span>qc_mito_prop</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">plotObsQC</span>(sfe, <span class="at">plot_type=</span><span class="st">"spot"</span>, <span class="at">annotate=</span><span class="st">"global_outliers"</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">plotObsQC</span>(sfe, <span class="at">plot_type=</span><span class="st">"spot"</span>, <span class="at">annotate=</span><span class="st">"local_outliers"</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(p1, p2, <span class="at">ncol=</span><span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-13-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># combine local and global outliers to create a final discard flag</span></span>
-<span><span class="va">sfe</span><span class="op">$</span><span class="va">discard</span> <span class="op">&lt;-</span> <span class="va">sfe</span><span class="op">$</span><span class="va">global_outliers</span> <span class="op">|</span> <span class="va">sfe</span><span class="op">$</span><span class="va">local_outliers</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># combine local and global outliers to create a final discard flag</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>sfe<span class="sc">$</span>discard <span class="ot">&lt;-</span> sfe<span class="sc">$</span>global_outliers <span class="sc">|</span> sfe<span class="sc">$</span>local_outliers</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -778,18 +829,19 @@ FALSE  TRUE
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># check how many cells will be discarded</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/table.html">table</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">$</span><span class="va">discard</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check how many cells will be discarded</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sfe<span class="sc">$</span>discard)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 FALSE  TRUE 
 33763  1111 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># have a final look at the cells that we will discard</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/Voyager/man/plotSpatialFeature.html">plotSpatialFeature</a></span><span class="op">(</span><span class="va">sfe</span>, colGeometryName <span class="op">=</span> <span class="st">"cellSeg"</span>, features <span class="op">=</span> <span class="st">"discard"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># have a final look at the cells that we will discard</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotSpatialFeature</span>(sfe, <span class="at">colGeometryName =</span> <span class="st">"cellSeg"</span>, <span class="at">features =</span> <span class="st">"discard"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-14-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -797,27 +849,29 @@ FALSE  TRUE
 </div>
 </div>
 </div>
-</section><section id="bonus-region-level-technical-artifacts" class="level2"><h2 class="anchored" data-anchor-id="bonus-region-level-technical-artifacts">Bonus: region-level technical artifacts</h2>
+</section>
+<section id="bonus-region-level-technical-artifacts" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-region-level-technical-artifacts">Bonus: region-level technical artifacts</h2>
 <!--- JUNA: maybe we could skip the technical artifacts part, the result is not easy to interpret in this section -->
 <p>Technical artifacts can arise during tissue preparation, for example tissue dissection can cause mechanical damage, leading to large areas with artificially low biological heterogeneity. These can be detected with the <code>findArtifacts</code> function of the <code>spotSweeper</code> package.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># find artifacts using SpotSweeper</span></span>
-<span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/conditions.html">tryCatch</a></span><span class="op">(</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/pkg/SpotSweeper/man/findArtifacts.html">findArtifacts</a></span><span class="op">(</span><span class="va">sfe</span>,</span>
-<span>    mito_percent <span class="op">=</span> <span class="st">"subsets_Mito_percent"</span>,</span>
-<span>    mito_sum <span class="op">=</span> <span class="st">"subsets_Mito_sum"</span>,</span>
-<span>    n_order <span class="op">=</span> <span class="fl">5</span>,</span>
-<span>    name <span class="op">=</span> <span class="st">"artifact"</span></span>
-<span>  <span class="op">)</span>,</span>
-<span>  error <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">e</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span></span>
-<span>      <span class="st">"findArtifacts() could not fit an artifact model for this subset: "</span>,</span>
-<span>      <span class="fu"><a href="https://rdrr.io/r/base/conditions.html">conditionMessage</a></span><span class="op">(</span><span class="va">e</span><span class="op">)</span></span>
-<span>    <span class="op">)</span></span>
-<span>    <span class="va">sfe</span><span class="op">$</span><span class="va">artifact</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span></span>
-<span>    <span class="va">sfe</span></span>
-<span>  <span class="op">}</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># find artifacts using SpotSweeper</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>sfe <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">findArtifacts</span>(sfe,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">mito_percent =</span> <span class="st">"subsets_Mito_percent"</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mito_sum =</span> <span class="st">"subsets_Mito_sum"</span>,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_order =</span> <span class="dv">5</span>,</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"artifact"</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">message</span>(</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>      <span class="st">"findArtifacts() could not fit an artifact model for this subset: "</span>,</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">conditionMessage</span>(e)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    sfe<span class="sc">$</span>artifact <span class="ot">&lt;-</span> <span class="cn">FALSE</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    sfe</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -846,16 +900,17 @@ FALSE  TRUE
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Plot the spatial distribution of the detected artifacts.</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/SpotSweeper/man/plotQCmetrics.html">plotQCmetrics</a></span><span class="op">(</span><span class="va">sfe</span>,</span>
-<span>    metric <span class="op">=</span> <span class="st">"subsets_Mito_percent"</span>, </span>
-<span>    outliers <span class="op">=</span> <span class="st">"artifact"</span>, </span>
-<span>    point_size <span class="op">=</span> <span class="fl">1.1</span></span>
-<span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"Detected Spatial Artifacts"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the spatial distribution of the detected artifacts.</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotQCmetrics</span>(sfe,</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">metric =</span> <span class="st">"subsets_Mito_percent"</span>, </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">outliers =</span> <span class="st">"artifact"</span>, </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">point_size =</span> <span class="fl">1.1</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggtitle</span>(<span class="st">"Detected Spatial Artifacts"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-16-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="day1-2a_spotsweeper_qc_segmented_files/figure-html/day1-2a-spotsweeper-qc-segmented-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -865,15 +920,17 @@ FALSE  TRUE
 </div>
 </div>
 </div>
-</section><section id="filtering" class="level2"><h2 class="anchored" data-anchor-id="filtering">Filtering</h2>
+</section>
+<section id="filtering" class="level2">
+<h2 class="anchored" data-anchor-id="filtering">Filtering</h2>
 <p>We decide to filter out the low-quality cells from the <code>SpatialFeatureExperiment</code> object based on the combined criteria of global thresholds and local outliers. Additionally, we will remove any features (genes) that have zero counts across all remaining cells.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># remove the cells considered of low quality based on both global and local metrics</span></span>
-<span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="va">sfe</span><span class="op">[</span>, <span class="op">!</span><span class="va">sfe</span><span class="op">$</span><span class="va">discard</span><span class="op">]</span></span>
-<span></span>
-<span><span class="co"># remove features no count at all</span></span>
-<span><span class="va">sfe</span> <span class="op">&lt;-</span> <span class="va">sfe</span><span class="op">[</span><span class="fu">rowSums</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/BiocGenerics/man/dge.html">counts</a></span><span class="op">(</span><span class="va">sfe</span><span class="op">)</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">0</span>, <span class="op">]</span></span>
-<span><span class="va">sfe</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># remove the cells considered of low quality based on both global and local metrics</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>sfe <span class="ot">&lt;-</span> sfe[, <span class="sc">!</span>sfe<span class="sc">$</span>discard]</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># remove features no count at all</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>sfe <span class="ot">&lt;-</span> sfe[<span class="fu">rowSums</span>(<span class="fu">counts</span>(sfe)) <span class="sc">&gt;</span> <span class="dv">0</span>, ]</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>sfe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>class: SpatialFeatureExperiment 
 dim: 18878 33763 
@@ -900,16 +957,18 @@ sample01: </code></pre>
 </div>
 </div>
 <p>What is the size of the dataset after filtering?</p>
-</section><section id="save-the-object" class="level2"><h2 class="anchored" data-anchor-id="save-the-object">Save the object</h2>
+</section>
+<section id="save-the-object" class="level2">
+<h2 class="anchored" data-anchor-id="save-the-object">Save the object</h2>
 <p>Save the filtered <code>SpatialFeatureExperiment</code> object for the next steps:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">alabaster.sfe</span><span class="fu">::</span><span class="fu">saveObject</span><span class="op">(</span><span class="va">sfe</span>, <span class="st">"results/day1/01.2_sfe_visium"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>alabaster.sfe<span class="sc">::</span><span class="fu">saveObject</span>(sfe, <span class="st">"results/day1/01.2_sfe_visium"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Clear your environment:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/gc.html">gc</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu">.rs.restartR</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">gc</span>()</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">.rs.restartR</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -923,19 +982,19 @@ Important
 <div class="callout-body-container callout-body">
 <p><strong>Key Takeaways:</strong></p>
 <ul>
-<li>
-<code><a href="https://rdrr.io/pkg/scuttle/man/addPerCellQCMetrics.html">scuttle::addPerCellQCMetrics</a></code> provides essential per-cell QC metrics.</li>
-<li>
-<code><a href="https://rdrr.io/pkg/SpotSweeper/man/localOutliers.html">SpotSweeper::localOutliers</a></code> helps identify individual problematic cells relative to their local context.</li>
-<li>
-<code><a href="https://rdrr.io/pkg/SpotSweeper/man/findArtifacts.html">SpotSweeper::findArtifacts</a></code> is more controversial but could in certain case be useful to detect region-level artifacts</li>
+<li><code>scuttle::addPerCellQCMetrics</code> provides essential per-cell QC metrics.</li>
+<li><code>SpotSweeper::localOutliers</code> helps identify individual problematic cells relative to their local context.</li>
+<li><code>SpotSweeper::findArtifacts</code> is more controversial but could in certain case be useful to detect region-level artifacts</li>
 <li>Visualizing QC results is critical for data interpretation and downstream analysis decisions.</li>
 </ul>
 </div>
 </div>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -1336,6 +1395,7 @@ Important
   });
   </script>
 </div> <!-- /content -->
+
 
 
 
