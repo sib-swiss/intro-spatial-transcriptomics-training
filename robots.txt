@@ -1,1 +1,0 @@
-Sitemap: https://sib-swiss.github.io/intro-spatial-transcriptomics-training/sitemap.xml
