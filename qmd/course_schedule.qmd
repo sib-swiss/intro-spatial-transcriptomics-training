@@ -35,7 +35,7 @@ title: "Course schedule"
 | block 4 | 2:30 | 3:00 | Lecture: clustering | Joana Carlevaro-Fita | P2 CRC Visium HD | [link](../assets/pdf/09_clustering.pdf) |  |
 | break | 3:00 | 3:30 | Coffee break |  | \- |  |  |
 | block 4 | 3:30 | 4:15 | Exercise: clustering and visualization | Joana Carlevaro-Fita, Julien Roux | P2 CRC Visium HD |  | [Exercise 6](../day2/day2-3_clustering_find_markers.qmd) |
-| block 5 | 4:15 | 5:15 | Exercise: annotation | Ivan Berest, Julien Roux, Joana Carlevaro-Fita | single-cell reference; dataset to be confirmed |  | [Exercise 7](../day2/day2-4_annotation.qmd) |
+| block 5 | 4:15 | 5:15 | Exercise: annotation | Ivan Berest, Julien Roux | single-cell reference; dataset to be confirmed |  | [Exercise 7](../day2/day2-4_annotation.qmd) |
 
 ## Day 3
 
